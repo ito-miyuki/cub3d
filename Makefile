@@ -6,7 +6,10 @@ LIBFT = ./libft/libft.a
 MLX_DIR = ./MLX42
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS =	main.c
+SRCS =	main.c \
+		read_map.c \
+		print_error.c \
+		map_validation.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,10 +31,10 @@ makelibft:
 	@$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(MLX42) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(HEADERS) $(LIBS) -L$(LIBFT_DIR) -lft 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(HEADERS) $(LIBS) -L$(LIBFT_DIR) -lft
 
 $(MLX42):
-	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4	
+	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 
 $(LIBFT):
 	make -C ./libft
