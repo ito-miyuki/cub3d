@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/08/22 17:48:37 by mito             ###   ########.fr       */
+/*   Updated: 2024/08/26 15:07:02 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void map_validation(char *map)
 	if (!is_extention_cub(map))
 		print_error_exit(": Map file must be ***.cub");
 	//map_content_validation(); haven't implemented yet
+	/*
+		is_closed() by wall
+		
+	*/
 
 	ft_putstr_fd("map is valid\n", 1); // delete it
 }
