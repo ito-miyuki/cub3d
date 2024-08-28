@@ -7,9 +7,8 @@ MLX_DIR = ./MLX42
 MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS =	main.c \
-		read_map.c \
 		print_error.c \
-		map_validation.c
+		init_map.c
 
 OBJS = $(SRCS:.c=.o)
 
