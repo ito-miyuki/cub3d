@@ -8,7 +8,8 @@ MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS =	main.c \
 		print_error.c \
-		init_map.c
+		init_game.c \
+		create_2darray.c
 
 OBJS = $(SRCS:.c=.o)
 

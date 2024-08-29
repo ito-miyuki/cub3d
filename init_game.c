@@ -45,8 +45,6 @@ static int is_extention_cub(char *file_name)
 // // is void good? Think again
 // void map_validation(char *map)
 // {
-// 	if (!is_extention_cub(map))
-// 		print_error_exit(": Map file must be ***.cub");
 // 	map_content_validation(map);
 // 	/*
 // 		is_closed() by wall
@@ -61,31 +59,23 @@ static int is_extention_cub(char *file_name)
 
 // }
 
-// this is from so_long
-
-
-static t_game *init_map(t_game *game, char *map_file)
+static void	init_map(t_game *game, char *map_file)
 {
-	char	*map_str;
-	char	**map_array;
-	t_game	*map;
-
 	if (!is_extention_cub(map_file)) // check if the file is .cub
 		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
-	if (duplicate_file() == NULL)
-		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
+	game->map = create_2darray(map_file);
+	if (!game->map)
+		print_error_exit(": Failed to create map array"); // is it ok to exit without freeing?
 	// do check with NSWE
 	// do map valdation here
 	// if (ft_flood_fill(data) == false)
 	// {
-	// 	free(map_str);
-	// 	clean_up_exit(data, "Invalid path");
+		// 	free(map_str);
+		// 	clean_up_exit(data, "Invalid path");
 	// }
-	free(map_str);
-	return (map);
 }
 
-t_game *init_game(t_game *game, char *map)
+void	init_game(t_game *game, char *map_file)
 {
-	game->map = init_map(game, map);
+	init_map(game, map_file);
 }

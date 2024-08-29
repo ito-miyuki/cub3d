@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "./libft/libft.h"
-# include "MLX42.h"
+//# include "MLX42.h"
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -29,12 +29,11 @@ typedef struct s_game
 	size_t	width;
 	size_t	player_x;
 	size_t	player_y;
-	mlx_t	*mlx;
+	//mlx_t	*mlx;
 }	t_game;
 
-int		read_map(char *map);
 void	print_error_exit(char *message);
-//void	map_validation(char *map);
-t_game	*init_map(char *map);
+void	init_game(t_game *game, char *map);
+char	**create_2darray(char *map_file);
 
 #endif

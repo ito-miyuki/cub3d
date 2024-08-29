@@ -12,9 +12,3 @@
 
 #include "cub3d.h"
 
-// char **duplicate_file(char *map_file, t_game *game)
-// {
-// 	char **copy;
-
-// 	copy = malloc(sizeof(char *) * )
-// }
