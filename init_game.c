@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/08/28 11:26:32 by mito             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:14:27 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,26 @@ static int is_extention_cub(char *file_name)
 // }
 
 
+// int is_nswe(char *map_file)
+// {
+
+// }
+
 // this is from so_long
-t_map *init_map(char *map)
+
+
+static t_game *init_map(t_game *game, char *map_file)
 {
 	char	*map_str;
 	char	**map_array;
-	t_map	*map;
+	t_game	*map;
 
-	if (!is_extention_cub(map)) // check if the file is .cub
+	if (!is_extention_cub(map_file)) // check if the file is .cub
 		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
-	map_str = read_map(map); // remove empty line from here
-	if (map_str == NULL)
-		exit(EXIT_FAILURE); // change it
-	map_array = ft_split(map_str, '\n');
-	if (!map_array)
-	{
-		free(map_str); // think again about freeing things
-		print_error_exit(": malloc failed");
-	}
+	if (duplicate_file() == NULL)
+		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
+	// do check with NSWE
 	// do map valdation here
-	map = init_map_struct(map_str, map_array);
 	// if (ft_flood_fill(data) == false)
 	// {
 	// 	free(map_str);
@@ -83,4 +83,9 @@ t_map *init_map(char *map)
 	// }
 	free(map_str);
 	return (map);
+}
+
+t_game *init_game(t_game *game, char *map)
+{
+	game->map = init_map(game, map);
 }

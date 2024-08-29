@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:28:39 by mito              #+#    #+#             */
-/*   Updated: 2024/08/28 15:43:51 by mito             ###   ########.fr       */
+/*   Updated: 2024/08/29 09:55:26 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // free vector
 
 //realloc vector and copy elements to the new one
+
+
 static char **realloc_vector(char ***old_data, size_t max_size)
 {
 	char	**new_data;

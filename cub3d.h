@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/08/28 11:25:16 by mito             ###   ########.fr       */
+/*   Updated: 2024/08/29 12:06:11 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,23 @@
 
 # include <fcntl.h>
 # include <stdlib.h>
+#include <errno.h>
 
-typedef struct s_map
+typedef struct s_game
 {
-	//mlx_t *mlx; // do we need it?
-	char	**grid;
+	char	*filename;
+	char	**map;
+	char	**file_copy;
+	size_t	height;
+	size_t	width;
 	size_t	player_x;
 	size_t	player_y;
-	size_t	width;
-	size_t	height;
-} t_map;
+	mlx_t	*mlx;
+}	t_game;
 
 int		read_map(char *map);
 void	print_error_exit(char *message);
 //void	map_validation(char *map);
-t_map	*init_map(char *map);
+t_game	*init_map(char *map);
 
 #endif
