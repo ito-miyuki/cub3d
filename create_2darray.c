@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:09:02 by mito              #+#    #+#             */
-/*   Updated: 2024/08/29 12:24:12 by mito             ###   ########.fr       */
+/*   Updated: 2024/08/30 15:10:45 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*read_map(char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		print_error_exit("read failed");
+		print_error_exit(": read failed");
 	map_string = read_map_from_file(fd);
 	close(fd);
 	return (map_string);

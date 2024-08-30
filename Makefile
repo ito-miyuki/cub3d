@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
@@ -9,7 +9,10 @@ MLX42 = ./MLX42/build/libmlx42.a
 SRCS =	main.c \
 		print_error.c \
 		init_game.c \
-		create_2darray.c
+		create_2darray.c \
+		check_map_info.c \
+		copy_2darray.c \
+		free_grid.c
 
 OBJS = $(SRCS:.c=.o)
 

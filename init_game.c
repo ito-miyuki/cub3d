@@ -6,11 +6,24 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/08/29 12:14:27 by mito             ###   ########.fr       */
+/*   Updated: 2024/08/30 16:42:59 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// static void set_texture_info(t_game *game, char **file_copy)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i < 6)
+// 	{
+// 		if (file_copy[i][1] == 'N')
+// 			game->
+
+// 	}
+// }
 
 static int is_extention_cub(char *file_name)
 {
@@ -61,12 +74,33 @@ static int is_extention_cub(char *file_name)
 
 static void	init_map(t_game *game, char *map_file)
 {
-	if (!is_extention_cub(map_file)) // check if the file is .cub
+	if (!is_extention_cub(map_file))
 		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
-	game->map = create_2darray(map_file);
-	if (!game->map)
+	game->file_copy = create_2darray(map_file);
+	if (game->file_copy == NULL)
 		print_error_exit(": Failed to create map array"); // is it ok to exit without freeing?
-	// do check with NSWE
+
+	for (int j = 0; game->file_copy[j] != NULL; j++) // for testing
+		printf("Map line %d: %s\n", j, game->file_copy[j]); // for testing
+
+	game->info_flags = malloc(sizeof(t_flags));
+	if (game->info_flags == NULL)
+	{
+		free_grid(game->file_copy);
+		print_error_exit(": Failed to allocate memory for texture flags");
+	}
+	if (check_map_info(game->file_copy, game->info_flags) == 1) // err msg should hs more details(NO/WE is missing etc)
+	{
+		free_grid(game->file_copy);
+		print_error_exit(": map info is invalid"); // is it ok to exit without freeing?
+	}
+	//set_texture_info(game, game->file_copy);
+	game->map = copy_2darray(game->file_copy + 6);
+	free_grid(game->file_copy);
+	printf("\n\n"); // delet it
+	for (int j = 0; game->map[j] != NULL; j++) // for testing
+		printf("Map line %d: %s\n", j, game->map[j]); // for testing
+
 	// do map valdation here
 	// if (ft_flood_fill(data) == false)
 	// {
