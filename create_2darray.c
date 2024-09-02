@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h> // delete it
+#include "cub3D.h"
 
 static char	*read_map_from_file(int fd)
 {

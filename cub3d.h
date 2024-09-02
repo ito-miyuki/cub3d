@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "./libft/libft.h"
-# include "MLX42.h"
+//# include "MLX42.h"
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -39,6 +39,12 @@ typedef struct s_game
 	char	**map;
 	char	**file_copy;
 	t_flags *info_flags;
+	char	*no_texture;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	char	*floor_rgb;
+	char	*ceiling_rgb;
 	size_t	height;
 	size_t	width;
 	size_t	player_x;
