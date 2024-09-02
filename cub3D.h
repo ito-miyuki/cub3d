@@ -58,6 +58,7 @@ char	**create_2darray(char *map_file);
 int		check_map_info(char **map, t_flags *flags);
 char	**copy_2darray(char **src);
 void	free_grid(char **grid);
+void    set_map_info(t_game *game, char **file_copy);
 
 
 #endif
