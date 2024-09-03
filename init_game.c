@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 10:32:35 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/03 15:14:37 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	init_game(t_game *game, char *map_file)
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
 	if (!game->mlx)
 	{
-		// free everything
-		exit(1); // change it
+		free(game);
+		print_error_exit(": mlx_init() fail"); // change it
 	}
 }

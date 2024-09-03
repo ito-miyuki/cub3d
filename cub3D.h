@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 11:53:31 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/03 16:30:22 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ void    set_map_info(t_game *game, char **file_copy);
 int		map_validation(t_game *game, char **map);
 int		count_2darray_size(char **src);
 int 	run_game(t_game *game);
+int		check_colors(char *color_str);
+unsigned int	color(int r, int g, int b, int a);
+int		check_colors(char *color_str);
 
 #endif

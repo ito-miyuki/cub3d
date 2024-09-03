@@ -15,7 +15,9 @@ SRCS =	main.c \
 		free_grid.c \
 		set_map_info.c \
 		map_validation.c \
-		run_game.c
+		run_game.c \
+		check_colors.c \
+		color.c
 
 OBJS = $(SRCS:.c=.o)
 
