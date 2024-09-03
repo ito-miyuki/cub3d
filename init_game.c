@@ -31,34 +31,11 @@ static int is_extention_cub(char *file_name)
 	return (1);
 }
 
-// static map_content_validation(char *map)
-// {
-// 	int	fd;
-
-// 	fd = open(map, O_RDONLY);
-// 	if (fd == -1)
-// 		print_error_exit(": open() failed"); // is it good err message?
-
-
-// }
-
-// // is void good? Think again
-// void map_validation(char *map)
-// {
-// 	map_content_validation(map);
-// 	/*
-// 		is_closed() by wall
-
-// 	*/
-// 	ft_putstr_fd("map is valid\n", 1); // delete it
-// }
-
-
 static void	init_map(t_game *game, char *map_file)
 {
 	if (!is_extention_cub(map_file))
 		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
-	game->file_copy = create_2darray(map_file);
+	game->file_copy = create_2darray(map_file); // copy everything
 	if (game->file_copy == NULL)
 		print_error_exit(": Failed to create map array"); // is it ok to exit without freeing?
 
@@ -79,16 +56,14 @@ static void	init_map(t_game *game, char *map_file)
 	printf("\n\n"); // delet it
 	for (int j = 0; game->map[j] != NULL; j++) // for testing
 		printf("Map line %d: %s\n", j, game->map[j]); // for testing
-
-	// do map valdation here
-	// if (ft_flood_fill(data) == false)
-	// {
-		// 	free(map_str);
-		// 	clean_up_exit(data, "Invalid path");
-	// }
+	map_validation(game, game->map);
 }
 
 void	init_game(t_game *game, char *map_file)
 {
-	init_map(game, map_file);
+	init_map(game, map_file); // or free everything here instead of init_map() ?
+	//those below are not initialized yet
+	game->height = count_2darray_size(game->map);
+	// game->player_x;
+	// game->player_y;
 }

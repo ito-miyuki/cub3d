@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-static int count_2darray_size(char **src)
+int count_2darray_size(char **src)
 {
 	int i;
 

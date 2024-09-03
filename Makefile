@@ -14,7 +14,8 @@ SRCS =	main.c \
 		check_map_info.c \
 		copy_2darray.c \
 		free_grid.c \
-		set_map_info.c
+		set_map_info.c \
+		map_validation.c 
 
 OBJS = $(SRCS:.c=.o)
 

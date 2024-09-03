@@ -35,7 +35,7 @@ typedef struct s_flags
 
 typedef struct s_game
 {
-	char	*filename;
+	//char	*filename; // do we need it?
 	char	**map;
 	char	**file_copy;
 	t_flags *info_flags;
@@ -46,7 +46,7 @@ typedef struct s_game
 	char	*floor_rgb;
 	char	*ceiling_rgb;
 	size_t	height;
-	size_t	width;
+	// size_t	width; do we need it?
 	size_t	player_x;
 	size_t	player_y;
 	//mlx_t	*mlx;
@@ -59,6 +59,7 @@ int		check_map_info(char **map, t_flags *flags);
 char	**copy_2darray(char **src);
 void	free_grid(char **grid);
 void    set_map_info(t_game *game, char **file_copy);
-
+int		map_validation(t_game *game, char **map);
+int		count_2darray_size(char **src);
 
 #endif
