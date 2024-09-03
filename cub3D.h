@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/08/30 15:56:35 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/03 11:53:31 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 # define CUB3D_H
 
 # include "./libft/libft.h"
-//# include "MLX42.h"
+# include "MLX42.h"
 
 # include <fcntl.h>
 # include <stdlib.h>
 # include <errno.h>
 # include <stdio.h> // for printf, delete it
+
+# define WINDOW_WIDTH 640 // change it
+# define WINDOW_HEIGHT 480 // change it
 
 typedef struct s_flags
 {
@@ -36,21 +39,26 @@ typedef struct s_flags
 typedef struct s_game
 {
 	//char	*filename; // do we need it?
-	char	**map;
-	char	**file_copy;
-	t_flags *info_flags;
-	char	*no_texture;
-	char	*so_texture;
-	char	*we_texture;
-	char	*ea_texture;
-	char	*floor_rgb;
-	char	*ceiling_rgb;
-	size_t	height;
+	char		**map;
+	char		**file_copy;
+	t_flags 	*info_flags;
+	char		*no_tex_path;
+	char		*so_tex_path;
+	char		*we_tex_path;
+	char		*ea_tex_path;
+	char		*floor_rgb;
+	char		*ceiling_rgb;
+	size_t		height;
 	// size_t	width; do we need it?
-	size_t	player_x;
-	size_t	player_y;
-	//mlx_t	*mlx;
-}	t_game;
+	size_t		player_x;
+	size_t		player_y;
+	mlx_t		*mlx;
+	mlx_image_t	*canvas; // image
+	mlx_texture_t	*no_texture;
+	mlx_texture_t	*so_texture;
+	mlx_texture_t	*we_texture;
+	mlx_texture_t	*ea_texture;
+}				t_game;
 
 void	print_error_exit(char *message);
 void	init_game(t_game *game, char *map);
@@ -61,5 +69,6 @@ void	free_grid(char **grid);
 void    set_map_info(t_game *game, char **file_copy);
 int		map_validation(t_game *game, char **map);
 int		count_2darray_size(char **src);
+int 	run_game(t_game *game);
 
 #endif

@@ -1,11 +1,10 @@
-# this Makefile is for macOS
 NAME = cub3D
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
 
-# MLX_DIR = ./MLX42
-# MLX42 = ./MLX42/build/libmlx42.a
+MLX_DIR = ./MLX42
+MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS =	main.c \
 		print_error.c \
@@ -15,7 +14,8 @@ SRCS =	main.c \
 		copy_2darray.c \
 		free_grid.c \
 		set_map_info.c \
-		map_validation.c 
+		map_validation.c \
+		run_game.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -29,9 +29,9 @@ RM = rm -f
 
 all: makelibft $(NAME)
 
-# LDFLAGS = -L$(MLX_DIR)/build
+LDFLAGS = -L$(MLX_DIR)/build
 
-# LIBS = -lmlx42 -ldl -lglfw -pthread -lm
+LIBS = -lmlx42 -ldl -lglfw -pthread -lm
 
 makelibft:
 	@$(MAKE) -C $(LIBFT_DIR)
@@ -39,8 +39,8 @@ makelibft:
 $(NAME): $(LIBFT) $(MLX42) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(HEADERS) $(LIBS) -L$(LIBFT_DIR) -lft
 
-# $(MLX42):
-# 	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
+$(MLX42):
+	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 
 $(LIBFT):
 	make -C ./libft
@@ -51,7 +51,7 @@ $(LIBFT):
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(RM) $(OBJS)
-#	rm -rf MLX42/build
+	rm -rf MLX42/build
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
@@ -61,4 +61,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re makelibft
-

@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/08/30 16:39:24 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/03 10:56:38 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	// for (int j = 0; game->map[j] != NULL; j++) // for testing
 	// 	printf("Map line %d: %s\n", j, game->map[j]);
 	// free everything
+	mlx_loop(game->mlx);
 	free(game);
 	return (0);
 }
