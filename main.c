@@ -18,7 +18,6 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 		print_error_exit(": bad argument"); // think about better err msg
-
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		print_error_exit("Malloc failed for game struct");
@@ -27,6 +26,7 @@ int main(int argc, char **argv)
 	// 	printf("Map line %d: %s\n", j, game->map[j]);
 	// free everything
 	mlx_loop(game->mlx);
-	free(game);
+	// free(game->map);
+	// free(game);
 	return (0);
 }

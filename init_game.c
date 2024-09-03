@@ -34,25 +34,40 @@ static int is_extention_cub(char *file_name)
 static void	init_map(t_game *game, char *map_file)
 {
 	if (!is_extention_cub(map_file))
-		print_error_exit(": Map file must be ***.cub"); // is it ok to exit without freeing?
+	{
+		free(game);
+		print_error_exit(": Map file must be ***.cub");
+	}
 	game->file_copy = create_2darray(map_file); // copy everything
 	if (game->file_copy == NULL)
-		print_error_exit(": Failed to create map array"); // is it ok to exit without freeing?
-
+	{
+		free(game);
+		print_error_exit(": Failed to create map array");
+	}
 	game->info_flags = malloc(sizeof(t_flags));
 	if (game->info_flags == NULL)
 	{
 		free_grid(game->file_copy);
+		free(game);
 		print_error_exit(": Failed to allocate memory for texture flags");
 	}
 	if (check_map_info(game->file_copy, game->info_flags) == 1) // err msg should hs more details(NO/WE is missing etc)
 	{
 		free_grid(game->file_copy);
-		print_error_exit(": map info is invalid"); // is it ok to exit without freeing?
+		free(game->info_flags);
+		free(game);
+		print_error_exit(": map info is invalid");
 	}
+	free(game->info_flags);
 	set_map_info(game, game->file_copy);
 	game->map = copy_2darray(game->file_copy + 6);
 	free_grid(game->file_copy);
+	if (game->map == NULL)
+	{
+		free(game->info_flags);
+		free(game);
+		print_error_exit(": map info is invalid"); // is it ok to exit without freeing?
+	}
 	printf("\n\n"); // delet it
 	for (int j = 0; game->map[j] != NULL; j++) // for testing
 		printf("Map line %d: %s\n", j, game->map[j]); // for testing
