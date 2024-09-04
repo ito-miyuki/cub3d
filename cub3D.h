@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/08/30 15:56:35 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/02 14:12:35 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define PI 3.14159265
+# define FOV 60
+
 
 # include "./libft/libft.h"
 //# include "MLX42.h"
@@ -20,6 +24,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <stdio.h> // for printf, delete it
+# include <math.h>
 
 typedef struct s_flags
 {
