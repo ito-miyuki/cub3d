@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 09:53:56 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/04 12:36:32 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 
 # define WINDOW_WIDTH 640 // change it
 # define WINDOW_HEIGHT 480 // change it
+# define PLAYER_SPEED	0.045
+# define SQ_SIZE 10
+# define PI 3.14159265
+# define FOV 60
 
 typedef struct s_flags
 {
@@ -40,6 +44,13 @@ typedef struct s_flags
 	int all_flags;
 }	t_flags;
 
+typedef struct s_raycast
+{
+	double	player_angle;
+	int		player_rotation; //have to initialize this
+	int		up_down;
+	int		left_right;
+}	t_raycast;
 
 typedef struct s_game
 {
@@ -63,6 +74,7 @@ typedef struct s_game
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*we_texture;
 	mlx_texture_t	*ea_texture;
+	t_raycast		*raycast;
 }				t_game;
 
 void	print_error_exit(char *message);
