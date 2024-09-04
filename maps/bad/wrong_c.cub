@@ -2,7 +2,8 @@ NO textures/Mona_Lisa.png
 SO textures/Wheat_Field.png
 WE textures/the_starry_night.png
 EA textures/girl_with_a_pearl_earring.png
-FF 0,0,60
+F 0095 ,7     8,9
+C 00,78,05
         11111111111111111111111111
         100000000011100000000000001
         10110000011 110000000000001
