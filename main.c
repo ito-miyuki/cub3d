@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 16:23:03 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/04 14:46:15 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 	check_colors(game->floor_rgb);
 	check_colors(game->ceiling_rgb);
 	mlx_loop(game->mlx);
+	// mlx_loop_hook(game->mlx, &math_to_display(*dis), );
 	// free(game->map);
 	// free(game);
 	return (0);
