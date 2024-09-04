@@ -12,7 +12,12 @@ SRCS =	main.c \
 		create_2darray.c \
 		check_map_info.c \
 		copy_2darray.c \
-		free_grid.c
+		free_grid.c \
+		set_map_info.c \
+		map_validation.c \
+		run_game.c \
+		check_colors.c \
+		color.c
 
 OBJS = $(SRCS:.c=.o)
 
