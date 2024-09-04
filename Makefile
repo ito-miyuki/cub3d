@@ -17,7 +17,9 @@ SRCS =	main.c \
 		map_validation.c \
 		run_game.c \
 		check_colors.c \
-		color.c
+		color.c \
+		get_position.c \
+		ft_atol.c
 
 OBJS = $(SRCS:.c=.o)
 

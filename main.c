@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 16:23:03 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/04 10:47:37 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 	// free everything
 	check_colors(game->floor_rgb);
 	check_colors(game->ceiling_rgb);
+	get_position(game,game->map);
 	mlx_loop(game->mlx);
 	// free(game->map);
 	// free(game);
