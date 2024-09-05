@@ -6,18 +6,21 @@ LIBFT = ./libft/libft.a
 MLX_DIR = ./MLX42
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS =	main.c \
-		print_error.c \
-		init_game.c \
-		create_2darray.c \
-		check_map_info.c \
-		copy_2darray.c \
-		free_grid.c \
-		set_map_info.c \
-		map_validation.c \
-		run_game.c \
-		check_colors.c \
-		color.c
+SRCS =    main.c \
+        print_error.c \
+        init_game.c \
+        create_2darray.c \
+        check_map_info.c \
+        copy_2darray.c \
+        free_grid.c \
+        set_map_info.c \
+        map_validation.c \
+        run_game.c \
+        check_colors.c \
+        color.c \
+        get_position.c \
+        ft_atol.c \
+		raycasting.c
 
 OBJS = $(SRCS:.c=.o)
 

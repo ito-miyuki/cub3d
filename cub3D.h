@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 12:36:32 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/04 12:52:12 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,8 @@ int 	run_game(t_game *game);
 int		check_colors(char *color_str);
 unsigned int	color(int r, int g, int b, int a);
 int		check_colors(char *color_str);
+void	get_position(t_game *game, char **map);
+int		is_str_digit(char *str);
+long	ft_atol(const char *str);
 
 #endif
