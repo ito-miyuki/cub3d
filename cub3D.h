@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 11:41:57 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/05 11:52:39 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ typedef struct s_flags
 	int all_flags;
 }	t_flags;
 
+// typedef struct s_colors
+// {
+	// int			floor_r; //temp
+	// int			floor_g; //temp
+	// int			floor_b; //temp
+	// int			ceiling_r; //temp
+	// int			ceiling_g; //temp
+	// int			ceiling_b; //temp
+// }	t_colors;
 
 typedef struct s_game
 {
@@ -49,6 +58,12 @@ typedef struct s_game
 	char		*floor_rgb;
 	char		*ceiling_rgb;
 	size_t		height;
+	int			floor_r; //temp
+	int			floor_g; //temp
+	int			floor_b; //temp
+	int			ceiling_r; //temp
+	int			ceiling_g; //temp
+	int			ceiling_b; //temp
 	// size_t	width; do we need it?
 	size_t		player_x;
 	size_t		player_y;
@@ -70,11 +85,12 @@ void    set_map_info(t_game *game, char **file_copy);
 int		map_validation(t_game *game, char **map);
 int		count_2darray_size(char **src);
 int 	run_game(t_game *game);
-int		check_colors(char *color_str);
-unsigned int	color(int r, int g, int b, int a);
-int		check_colors(char *color_str);
 void	get_position(t_game *game, char **map);
 int		is_str_digit(char *str);
 long	ft_atol(const char *str);
+//unsigned int	color(int r, int g, int b, int a);
+unsigned int	color(int r, int g, int b);
+int				set_ceiling_colors(t_game *game, char *color_str);
+int				set_floor_colors(t_game *game, char *color_str);
 
 #endif

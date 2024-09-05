@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 10:38:44 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/05 11:59:53 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,13 @@ void	init_game(t_game *game, char *map_file)
 	//those below are not initialized yet
 	game->height = count_2darray_size(game->map);
 	get_position(game, game->map);
-	printf("player_x is:%zu\n", game->player_x); // delete it
-	printf("player_x is:%zu\n", game->player_y); // delete it
-	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
-	if (!game->mlx)
-	{
-		free(game);
-		print_error_exit(": mlx_init() fail"); // change it
-	}
+	//printf("player_x is:%zu\n", game->player_x); // delete it
+	//printf("player_x is:%zu\n", game->player_y); // delete it
+	// game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
+	// if (!game->mlx)
+	// {
+	// 	free(game);
+	// 	print_error_exit(": mlx_init() fail"); // change it
+	// }
+	// I moved this part to run_game;
 }

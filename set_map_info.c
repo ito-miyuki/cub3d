@@ -6,13 +6,13 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:17:27 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 11:12:20 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/05 10:37:24 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int set_tex_color_info(char **map_info, char *path_str)
+static int set_path_color_info(char **map_info, char *path_str)
 {
     while (*path_str == ' ' || *path_str == '\t')
         path_str++;
@@ -41,7 +41,7 @@ void    set_map_info(t_game *game, char **file_copy)
 			j++;
 		if (ft_strncmp(&file_copy[i][j], "NO", 2) == 0)
 		{
-            if (set_tex_color_info(&game->no_tex_path, &file_copy[i][j + 2]) != 0)
+            if (set_path_color_info(&game->no_tex_path, &file_copy[i][j + 2]) != 0)
             {
                 free_grid(game->file_copy);
                 free(game);
@@ -50,7 +50,7 @@ void    set_map_info(t_game *game, char **file_copy)
         }
 		else if (ft_strncmp(&file_copy[i][j], "SO", 2) == 0)
 		{
-            if (set_tex_color_info(&game->so_tex_path, &file_copy[i][j + 2]) != 0)
+            if (set_path_color_info(&game->so_tex_path, &file_copy[i][j + 2]) != 0)
             {
                 free_grid(game->file_copy);
                 free(game);
@@ -59,7 +59,7 @@ void    set_map_info(t_game *game, char **file_copy)
         }
 		else if (ft_strncmp(&file_copy[i][j], "WE", 2) == 0)
         {
-            if (set_tex_color_info(&game->we_tex_path, &file_copy[i][j + 2]) != 0)
+            if (set_path_color_info(&game->we_tex_path, &file_copy[i][j + 2]) != 0)
             {
                 free_grid(game->file_copy);
                 free(game);
@@ -68,7 +68,7 @@ void    set_map_info(t_game *game, char **file_copy)
         }
 		else if (ft_strncmp(&file_copy[i][j], "EA", 2) == 0)
         {
-            if (set_tex_color_info(&game->ea_tex_path, &file_copy[i][j + 2]) != 0)
+            if (set_path_color_info(&game->ea_tex_path, &file_copy[i][j + 2]) != 0)
             {
                 free_grid(game->file_copy);
                 free(game);
@@ -77,7 +77,7 @@ void    set_map_info(t_game *game, char **file_copy)
         }
 		else if (ft_strncmp(&file_copy[i][j], "F", 1) == 0)
         {
-            if (set_tex_color_info(&game->floor_rgb, &file_copy[i][j + 1]) != 0)
+            if (set_path_color_info(&game->floor_rgb, &file_copy[i][j + 1]) != 0)
             {
                 free_grid(game->file_copy);
                 free(game);
@@ -86,7 +86,7 @@ void    set_map_info(t_game *game, char **file_copy)
         }
 		else if (ft_strncmp(&file_copy[i][j], "C", 1) == 0)
         {
-            if (set_tex_color_info(&game->ceiling_rgb, &file_copy[i][j + 1]) != 0)
+            if (set_path_color_info(&game->ceiling_rgb, &file_copy[i][j + 1]) != 0)
             {
                 free_grid(game->file_copy);
                 free(game);

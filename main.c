@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 10:47:37 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/05 10:53:21 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ int main(int argc, char **argv)
 	// for (int j = 0; game->map[j] != NULL; j++) // for testing
 	// 	printf("Map line %d: %s\n", j, game->map[j]);
 	// free everything
-	check_colors(game->floor_rgb);
-	check_colors(game->ceiling_rgb);
+	set_floor_colors(game, game->floor_rgb);
+	set_ceiling_colors(game, game->ceiling_rgb);
 	get_position(game,game->map);
+	if (run_game(game) == 1)
+	{
+		//do error handlings;
+		print_error_exit(": mlx function fail");
+	}
 	mlx_loop(game->mlx);
 	// free(game->map);
 	// free(game);

@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:37:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 16:27:56 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/05 11:56:41 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 /**
  * Return a color which is defined by `rgba` value.
  */
-unsigned int	color(int r, int g, int b, int a)
+// unsigned int	color(int r, int g, int b, int a)
+// {
+//     return (r << 24 | g << 16 | b << 8 | a);
+// }
+
+// //this funstion set alpha 255 as default
+unsigned int	color(int r, int g, int b)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+    return (255 << 24 | r << 16 | g << 8 | b);
 }

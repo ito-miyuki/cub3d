@@ -16,7 +16,7 @@ SRCS =	main.c \
 		set_map_info.c \
 		map_validation.c \
 		run_game.c \
-		check_colors.c \
+		set_colors.c \
 		color.c \
 		get_position.c \
 		ft_atol.c
