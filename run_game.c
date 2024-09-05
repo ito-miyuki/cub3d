@@ -14,8 +14,8 @@
 
 static void	paint_floor_ceiling(t_game *game)
 {
-	int x;
-	int y;
+	uint32_t x;
+	uint32_t y;
 
 	x = 0;
 	y = 0;

@@ -83,7 +83,7 @@ int	set_floor_colors(t_game *game, char *color_str)
 int	set_ceiling_colors(t_game *game, char *color_str)
 {
 	char **color_split;
-	int rgb[3];
+	uint32_t rgb[3];
 	int i;
 
 	i = 0;

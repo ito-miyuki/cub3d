@@ -58,12 +58,12 @@ typedef struct s_game
 	char		*floor_rgb;
 	char		*ceiling_rgb;
 	size_t		height;
-	int			floor_r; //temp
-	int			floor_g; //temp
-	int			floor_b; //temp
-	int			ceiling_r; //temp
-	int			ceiling_g; //temp
-	int			ceiling_b; //temp
+	uint32_t			floor_r; //temp
+	uint32_t			floor_g; //temp
+	uint32_t			floor_b; //temp
+	uint32_t			ceiling_r; //temp
+	uint32_t			ceiling_g; //temp
+	uint32_t			ceiling_b; //temp
 	// size_t	width; do we need it?
 	size_t		player_x;
 	size_t		player_y;
@@ -89,7 +89,7 @@ void	get_position(t_game *game, char **map);
 int		is_str_digit(char *str);
 long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
-unsigned int	color(int r, int g, int b);
+uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 int				set_ceiling_colors(t_game *game, char *color_str);
 int				set_floor_colors(t_game *game, char *color_str);
 
