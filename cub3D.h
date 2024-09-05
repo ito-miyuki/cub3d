@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 15:41:00 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/05 11:41:19 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ typedef struct s_flags
 typedef struct s_raycast
 {
 	double	player_angle;
-	int		player_rotation; //have to initialize this
+	double	player_rotation;
+	int		player_fov; //have to initialize this
 	int		up_down;
 	int		left_right;
+	double	ray_angle;
 }	t_raycast;
 
 typedef struct s_game
