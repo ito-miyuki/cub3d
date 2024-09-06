@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/06 11:16:06 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/06 11:42:35 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,9 +150,9 @@ float	h_intersect(t_game *game, float angle)
 	float	x;
 	float	y;
 	int	move_ray;
+	
 	x_step = SQ_SIZE / tan(angle);
 	y_step = SQ_SIZE;
-	
 	y = floor (game->player_y / SQ_SIZE * SQ_SIZE); //nearest horizontal line below player's y position.
 	move_ray = move_ray_dir(game->raycast->ray_angle, &y, &y_step, 1);
 	x = game->player_x + (y - game->player_y) / tan(angle); //moves the ray along the x axis
@@ -171,7 +171,28 @@ float	h_intersect(t_game *game, float angle)
 
 float	v_intersect(t_game *game, float angle)
 {
+	float	x_step;
+	float	y_step;
+	float	x;
+	float	y;
+	int		move_ray;
 	
+	x_step = SQ_SIZE;
+	y_step = SQ_SIZE / tan(angle);
+	x = floor(game->player_x / SQ_SIZE) * SQ_SIZE;//calculates which tile the player stands on multiplying gets the top edge of tile
+	move_ray = move_ray_dir(game->raycast->ray_angle, &x, &x_step, 0);
+	y = game->player_y + (x - game->player_x) / tan(angle); //moves the ray along the y axis
+	if (check_ray_dir(angle, 'x') && y_step < 0 || //right and up (so make it go down)
+			!(check_ray_dir(angle, 'x') && y_step > 0)) //moving left and down (make it go up)
+				y_step *= -1;
+	while (!wall_hit(y, x = move_ray, game))
+	{
+		x += x_step;
+		y += y_step;
+	}
+	game->raycast->v_inter_x = x;
+	game->raycast->v_inter_y = y;
+	return (sqrt(pow(x - game->player_x, 2) + pow(y - game->player_y, 2)));
 }
 
 void	cast_rays(t_game *game)
