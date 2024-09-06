@@ -6,16 +6,12 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 12:52:12 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/05 10:19:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-# define PI 3.14159265
-# define FOV 60
-
 
 # include "./libft/libft.h"
 # include "MLX42.h"
@@ -28,7 +24,7 @@
 
 # define WINDOW_WIDTH 640 // change it
 # define WINDOW_HEIGHT 480 // change it
-# define PLAYER_SPEED	0.045
+# define PLAYER_SPEED 0.045
 # define SQ_SIZE 10
 # define PI 3.14159265
 # define FOV 60

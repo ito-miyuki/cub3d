@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/04 12:40:49 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/04 15:36:29 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,51 @@ void	find_mvmnt(t_game *game, t_raycast *ray)
 	double	move_y;
 	
 	if (ray->player_rotation == -1)
-		rotate_player(game, ray);
+	{
+		printf("break\n");
+	}
+		// rotate_player(game, ray);
 	if (ray->player_rotation == 1)
-		rotate_player(game, ray);
-	if (ray->up_down == 1)
+	{
+		printf("break\n");
+	}
+		// rotate_player(game, ray);
+	if (ray->left_right == 1) //moving right
 	{
 		move_x = -sin(ray->player_angle) * PLAYER_SPEED;
 		move_y = cos(ray->player_angle) * PLAYER_SPEED;
 	}
-		
+	if (ray->left_right == -1) //moving left
+	{
+		move_x = sin(ray->player_angle) * PLAYER_SPEED;
+		move_y = -cos(ray->player_angle) * PLAYER_SPEED;
+	}
+	if (ray->up_down == -1) //moving up
+	{
+		move_x = -sin(ray->player_angle) * PLAYER_SPEED;
+		move_y = -cos(ray->player_angle) * PLAYER_SPEED;
+	}
+	if (ray->up_down == 1) //moving down
+	{
+		move_x = sin(ray->player_angle) * PLAYER_SPEED;
+		move_y = cos(ray->player_angle) * PLAYER_SPEED;
+	}
 }
 
-void	math_to_display(t_game *game)
+void	cast_rays(t_game *game)
 {
+	double	h_inter;
+	double	v_inter;
+
+	
+}
+
+void	math_to_display(void *dis)
+{
+	t_game *game;
+	game = dis;
 	find_angle(game);
-	find_mvmnt(game->raycast);
-	//find_mvmnt
+	find_mvmnt(game, game->raycast);
 	//move_player
-	//cast_rays
+	cast_rays(game);
 }
