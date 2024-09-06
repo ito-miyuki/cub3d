@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/05 11:41:19 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/06 10:46:09 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ typedef struct s_raycast
 	int		up_down;
 	int		left_right;
 	double	ray_angle;
+	float	h_inter_x;
+	float	h_inter_y;
+	float	v_inter_x;
+	float	v_inter_y;
 }	t_raycast;
 
 typedef struct s_game
@@ -67,7 +71,7 @@ typedef struct s_game
 	char		*floor_rgb;
 	char		*ceiling_rgb;
 	size_t		height;
-	// size_t	width; do we need it?
+	size_t		width; //do we need it?
 	size_t		player_x;
 	size_t		player_y;
 	mlx_t		*mlx;
