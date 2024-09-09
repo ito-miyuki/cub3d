@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 10:38:44 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/09 11:26:51 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,30 @@ static void	init_map(t_game *game, char *map_file)
 	map_validation(game, game->map);
 }
 
+static size_t    get_longest(char **map)
+{
+    size_t i;
+    size_t longest;
+    size_t current;
+
+    i = 0;
+    longest = 0;
+    while(map[i] != NULL)
+    {
+        current = ft_strlen(map[i]);
+        if (current > longest)
+            longest = current;
+        i++;
+    }
+    return (longest);
+}
+
 void	init_game(t_game *game, char *map_file)
 {
 	init_map(game, map_file); // or free everything here instead of init_map() ?
 	//those below are not initialized yet
 	game->height = count_2darray_size(game->map);
+	game->width = get_longest(game->map);
 	get_position(game, game->map);
 	printf("player_x is:%zu\n", game->player_x); // delete it
 	printf("player_x is:%zu\n", game->player_y); // delete it

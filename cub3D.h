@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/05 10:19:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/09 10:57:40 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define SQ_SIZE 10
 # define PI 3.14159265
 # define FOV 60
+# define VFOV 90
 
 typedef struct s_flags
 {
@@ -43,9 +44,18 @@ typedef struct s_flags
 typedef struct s_raycast
 {
 	double	player_angle;
-	int		player_rotation; //have to initialize this
+	double	player_rotation;
+	int		player_fov; //have to initialize this
 	int		up_down;
 	int		left_right;
+	double	ray_angle;
+	float	h_inter_x;
+	float	h_inter_y;
+	float	v_inter_x;
+	float	v_inter_y;
+	double	distance;
+	bool	is_horizon;
+	int		index;
 }	t_raycast;
 
 typedef struct s_game
@@ -61,7 +71,7 @@ typedef struct s_game
 	char		*floor_rgb;
 	char		*ceiling_rgb;
 	size_t		height;
-	// size_t	width; do we need it?
+	size_t		width; //do we need it?
 	size_t		player_x;
 	size_t		player_y;
 	mlx_t		*mlx;
