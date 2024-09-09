@@ -58,13 +58,13 @@ typedef struct s_game
 	char		*floor_rgb;
 	char		*ceiling_rgb;
 	size_t		height;
+	size_t		width;
 	uint32_t			floor_r; //temp
 	uint32_t			floor_g; //temp
 	uint32_t			floor_b; //temp
 	uint32_t			ceiling_r; //temp
 	uint32_t			ceiling_g; //temp
 	uint32_t			ceiling_b; //temp
-	// size_t	width; do we need it?
 	size_t		player_x;
 	size_t		player_y;
 	mlx_t		*mlx;
