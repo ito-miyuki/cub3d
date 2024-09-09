@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/05 10:19:49 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/09 11:47:16 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	check_colors(game->ceiling_rgb);
 	get_position(game,game->map);
 	mlx_loop(game->mlx);
-	// mlx_loop_hook(game->mlx, &math_to_display(*dis), );
+	//mlx_loop_hook(game->mlx, &math_to_display(*dis), );
 	// free(game->map);
 	// free(game);
 	return (0);
