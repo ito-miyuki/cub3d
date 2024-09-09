@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/09 10:57:40 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/09 12:15:16 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,13 @@ typedef struct s_game
 	char		*floor_rgb;
 	char		*ceiling_rgb;
 	size_t		height;
-	size_t		width; //do we need it?
+	size_t		width;
+	uint32_t			floor_r; //temp
+	uint32_t			floor_g; //temp
+	uint32_t			floor_b; //temp
+	uint32_t			ceiling_r; //temp
+	uint32_t			ceiling_g; //temp
+	uint32_t			ceiling_b; //temp
 	size_t		player_x;
 	size_t		player_y;
 	mlx_t		*mlx;
@@ -93,11 +99,12 @@ void    set_map_info(t_game *game, char **file_copy);
 int		map_validation(t_game *game, char **map);
 int		count_2darray_size(char **src);
 int 	run_game(t_game *game);
-int		check_colors(char *color_str);
-unsigned int	color(int r, int g, int b, int a);
-int		check_colors(char *color_str);
 void	get_position(t_game *game, char **map);
 int		is_str_digit(char *str);
 long	ft_atol(const char *str);
+//unsigned int	color(int r, int g, int b, int a);
+uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
+int				set_ceiling_colors(t_game *game, char *color_str);
+int				set_floor_colors(t_game *game, char *color_str);
 
 #endif

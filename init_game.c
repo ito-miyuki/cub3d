@@ -6,11 +6,29 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/09 11:26:51 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/09 12:15:43 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static size_t    get_longest(char **map)
+{
+	size_t i;
+	size_t longest;
+	size_t current;
+
+	i = 0;
+	longest = 0;
+	while(map[i] != NULL)
+	{
+		current = ft_strlen(map[i]);
+		if (current > longest)
+			longest = current;
+		i++;
+	}
+	return (longest);
+}
 
 static int is_extention_cub(char *file_name)
 {
@@ -99,12 +117,14 @@ void	init_game(t_game *game, char *map_file)
 	game->height = count_2darray_size(game->map);
 	game->width = get_longest(game->map);
 	get_position(game, game->map);
-	printf("player_x is:%zu\n", game->player_x); // delete it
-	printf("player_x is:%zu\n", game->player_y); // delete it
-	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
-	if (!game->mlx)
-	{
-		free(game);
-		print_error_exit(": mlx_init() fail"); // change it
-	}
+
+	//printf("player_x is:%zu\n", game->player_x); // delete it
+	//printf("player_x is:%zu\n", game->player_y); // delete it
+	// game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
+	// if (!game->mlx)
+	// {
+	// 	free(game);
+	// 	print_error_exit(": mlx_init() fail"); // change it
+	// }
+	// I moved this part to run_game;
 }
