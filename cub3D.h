@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/09 12:15:16 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/10 17:05:43 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WINDOW_WIDTH 640 // change it
 # define WINDOW_HEIGHT 480 // change it
 # define PLAYER_SPEED 0.045
-# define SQ_SIZE 10
+# define SQ_SIZE 32
 # define PI 3.14159265
 # define FOV 60
 # define VFOV 90
@@ -45,7 +45,9 @@ typedef struct s_raycast
 {
 	double	player_angle;
 	double	player_rotation;
-	int		player_fov; //have to initialize this
+	double		player_fov; //have to initialize this
+	int	p_x;
+	int	p_y;
 	int		up_down;
 	int		left_right;
 	double	ray_angle;
@@ -106,5 +108,8 @@ long	ft_atol(const char *str);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 int				set_ceiling_colors(t_game *game, char *color_str);
 int				set_floor_colors(t_game *game, char *color_str);
+void	math_to_display(t_game *game);
+void	render_wall(t_game *game, int ray);
+float	adjust_angle(double angle);
 
 #endif

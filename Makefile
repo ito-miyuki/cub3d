@@ -7,20 +7,22 @@ MLX_DIR = ./MLX42
 MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS =    main.c \
+		check_map_info.c \
+		color.c \
+		copy_2darray.c \
+		create_2darray.c \
+		draw_wall.c \
+		free_grid.c \
+		ft_atol.c \
+		get_position.c \
+		init_game.c \
+		map_validation.c \
+		math_utils.c \
         print_error.c \
-        init_game.c \
-        create_2darray.c \
-        check_map_info.c \
-        copy_2darray.c \
-        free_grid.c \
+		raycasting.c \
+		run_game.c \
         set_map_info.c \
-        map_validation.c \
-        run_game.c \
-        check_colors.c \
-        color.c \
-        get_position.c \
-        ft_atol.c \
-		raycasting.c
+		set_colors.c 
 
 OBJS = $(SRCS:.c=.o)
 

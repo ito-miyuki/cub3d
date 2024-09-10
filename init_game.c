@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/09 12:15:43 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/09 12:18:41 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,6 @@ static void	init_map(t_game *game, char *map_file)
 	for (int j = 0; game->map[j] != NULL; j++) // for testing
 		printf("Map line %d: %s\n", j, game->map[j]); // for testing
 	map_validation(game, game->map);
-}
-
-static size_t    get_longest(char **map)
-{
-    size_t i;
-    size_t longest;
-    size_t current;
-
-    i = 0;
-    longest = 0;
-    while(map[i] != NULL)
-    {
-        current = ft_strlen(map[i]);
-        if (current > longest)
-            longest = current;
-        i++;
-    }
-    return (longest);
 }
 
 void	init_game(t_game *game, char *map_file)

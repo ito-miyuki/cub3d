@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:53:43 by alli              #+#    #+#             */
-/*   Updated: 2024/09/04 12:31:16 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/10 14:23:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,19 @@
     //  respectively.  Note that x is interpreted as specifying an angle in
     //  radians.
      
-double ft_tan(int degree)
+float  adjust_angle(double angle)
 {
-    double rad;
-    double output;
-    
-    rad = degree * PI / 180;
-    output = tan(rad);
-    return (output);
+    if (angle < 0)
+        angle += 2 * PI;
+    if (angle >= 2 * PI)
+        angle -= 2 * PI;
+	return (angle);
 }
 
-double ft_cos(int degree)
-{
-    double rad;
-    double output;
-
-    rad = degree * PI / 180;
-    output = (cos(rad));
-    return (output);
-}
-
-double player_angle()
-{
-
-}
-/*
-
-*/
+// float adjust_angle(double *angle)
+// {
+//     *angle = fmod(*angle, 2 * PI);
+//     if (*angle < 0)
+//         *angle += 2 * PI;
+//     return (float)(*angle);
+// }
