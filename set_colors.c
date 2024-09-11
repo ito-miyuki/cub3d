@@ -17,6 +17,8 @@ int is_str_digit(char *str)
 	int i;
 
 	i = 0;
+	if (str[i] == '-')
+		i++;
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))
@@ -43,6 +45,7 @@ static int is_color_digit(char **color_split)
 int	set_floor_colors(t_game *game, char *color_str)
 {
 	char **color_split;
+	//uint32_t rgb[3];
 	int rgb[3];
 	int i;
 
@@ -50,6 +53,8 @@ int	set_floor_colors(t_game *game, char *color_str)
 	color_split = ft_split(color_str, ','); // check if the str comes in a correct format
 	if (!color_split)
 		return (1);
+	for (int i = 0; color_split[i] != NULL; i++)
+		printf("splited str is '%s'\n", color_split[i]);
 	if (count_2darray_size(color_split) != 3)
 	{
 		// error handlings
@@ -64,7 +69,8 @@ int	set_floor_colors(t_game *game, char *color_str)
 	}
 	while (color_split[i] != NULL)
 	{
-		rgb[i] = ft_atol(color_split[i]); // atoi? rgb should be long?
+		rgb[i] = ft_atoi(color_split[i]); // atol? rgb should be long?
+		printf("rgb[%d] is %d\n",i,rgb[i]); // delete it
 		if (rgb[i] > 255 || rgb[i] < 0)
 		{
 			// error handlings
@@ -83,13 +89,16 @@ int	set_floor_colors(t_game *game, char *color_str)
 int	set_ceiling_colors(t_game *game, char *color_str)
 {
 	char **color_split;
-	uint32_t rgb[3];
+	//uint32_t rgb[3];
+	int rgb[3];
 	int i;
 
 	i = 0;
 	color_split = ft_split(color_str, ','); // check if the str comes in a correct format
 	if (!color_split)
 		return (1);
+	for (int i = 0; color_split[i] != NULL; i++)
+		printf("splited str is '%s'\n", color_split[i]);
 	if (count_2darray_size(color_split) != 3)
 	{
 		// error handlings
@@ -104,7 +113,8 @@ int	set_ceiling_colors(t_game *game, char *color_str)
 	}
 	while (color_split[i] != NULL)
 	{
-		rgb[i] = ft_atol(color_split[i]); // atoi? rgb should be long?
+		rgb[i] = ft_atoi(color_split[i]); // atoi? rgb should be long?
+		printf("rgb[%d] is %d\n",i,rgb[i]);
 		if (rgb[i] > 255 || rgb[i] < 0)
 		{
 		// error handlings

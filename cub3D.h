@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/05 11:52:39 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/11 13:55:10 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,8 @@ long	ft_atol(const char *str);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 int				set_ceiling_colors(t_game *game, char *color_str);
 int				set_floor_colors(t_game *game, char *color_str);
+int		is_map_closed(char **map);
+
+char	**ft_split_map(char const *s, char c);
 
 #endif

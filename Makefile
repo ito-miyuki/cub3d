@@ -19,7 +19,8 @@ SRCS =	main.c \
 		set_colors.c \
 		color.c \
 		get_position.c \
-		ft_atol.c
+		ft_atol.c \
+		is_map_closed.c \
 
 OBJS = $(SRCS:.c=.o)
 
