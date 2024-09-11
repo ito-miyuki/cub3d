@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:53:43 by alli              #+#    #+#             */
-/*   Updated: 2024/09/10 14:23:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/11 10:08:15 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@
 float  adjust_angle(double angle)
 {
     if (angle < 0)
+	{
         angle += 2 * PI;
+		return (angle);
+	}
     if (angle >= 2 * PI)
+	{
         angle -= 2 * PI;
+		return (angle);
+	}
 	return (angle);
 }
 

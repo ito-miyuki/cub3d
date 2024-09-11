@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/10 17:13:06 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/11 10:57:59 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,17 +224,13 @@ void	cast_rays(t_game *game)
 
 	ray = 0; //left most to right most ray
 	
-	printf("player_angle: %f\n", game->raycast->player_angle);
+	// printf("player_angle: %f\n", game->raycast->player_angle);
 	game->raycast->ray_angle = game->raycast->player_angle - (game->raycast->player_fov / 2);//have to initialize player_fov
 	while (ray < WINDOW_WIDTH)
 	{
 		game->raycast->is_horizon = 0;
-		// printf("before angle: %f\n", game->raycast->ray_angle);
 		h_inter = h_intersect(game, adjust_angle(game->raycast->ray_angle));
-		// printf("after angle = %f\n", game->raycast->ray_angle);
 		v_inter = v_intersect(game, adjust_angle(game->raycast->ray_angle));
-		// printf("h_inter: %f\n", h_inter);
-		// printf("v_inter: %f\n", v_inter);
 		if (v_inter <= h_inter)
 		{
 			game->raycast->distance = v_inter;
@@ -244,9 +240,7 @@ void	cast_rays(t_game *game)
 		{
 			game->raycast->distance = h_inter;
 			game->raycast->is_horizon = 1;
-			printf("distance of h_inter: %f\n", game->raycast->distance);
 		}
-		printf("distance before render_wall: %f\n", game->raycast->distance);
 		render_wall(game, ray);
 		ray++;
 		// printf("before ray_angle: %f\n", game->raycast->ray_angle);
@@ -261,7 +255,6 @@ void	cast_rays(t_game *game)
 void	math_to_display(t_game *game) //void	math_to_display(void *dis)
 {
 	game->raycast = malloc(sizeof(t_raycast));
-	// t_game *game;
 	// game = dis;
 	find_angle(game);
 	// find_mvmnt(game->raycast);

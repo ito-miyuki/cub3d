@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/10 16:33:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/11 10:56:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,13 @@ void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 
     // x = game->raycast->index;
     // y = 0;
-    (void)lower_p;
-	// printf("upper_p in draw wall: %f\n", upper_p);
-    // printf("wall_h: %f\n", wall_h);
-    while (wall_h < upper_p) //wall_h < upper_h
+    (void)wall_h;
+    while (upper_p <= lower_p) //wall_h < upper_h
     {
-        mlx_put_pixel(game->canvas, game->raycast->index, wall_h,
-                color(178, 255, 102));
-        wall_h++;
-        // printf("wall_h: %f\n", wall_h);
-    }
-	// printf("done drawing wall\n");
+		mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
+			color(178, 255, 255));
+		upper_p++;
+	}
 }
 void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p) // double wall_h
 {
@@ -53,6 +49,7 @@ void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p) // d
 	// printf("ceil: %d\n", ceil);
 	//0->upper_p = ceil
 	//lower_p->screen heigt = floor
+	printf("upper_p: %f\n", upper_p);
     while (ceil < upper_p)
     {
         mlx_put_pixel(game->canvas, ray, ceil,
@@ -87,7 +84,7 @@ void	render_wall(t_game *game, int ray)
 	if (upper_p	< 0)
 		upper_p = 0;
 	game->raycast->index = ray;
-	// printf("wall_h in render wall %f\n", wall_h);
+	printf("wall_h in render wall %f\n", wall_h);
 	draw_wall(game, lower_p, upper_p, wall_h);
 	draw_floor_ceil(game, ray, lower_p, upper_p);
 }
