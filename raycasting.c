@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/11 10:57:59 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/11 14:19:23 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,11 +165,11 @@ float	h_intersect(t_game *game, float angle)
 	x_step = SQ_SIZE / tan(angle);
 	y_step = SQ_SIZE;
 	y = floor(game->raycast->p_y / SQ_SIZE) * SQ_SIZE; //nearest horizontal line below player's y position.
-	printf("y = %f\n", y);
+	// printf("y = %f\n", y);
 	move_ray = move_ray_dir(angle, &y, &y_step, 1);
-	printf("player_x %d\n", game->raycast->p_x);
+	// printf("player_x %d\n", game->raycast->p_x);
 	x = game->raycast->p_x + (y - game->raycast->p_y) / tan(angle); //moves the ray along the x axis
-	printf("x = %f\n", x);
+	// printf("x = %f\n", x);
 	// if (angle > PI / 2 && angle < 3 * PI / 2)  // Moving left
     //     x_step = -fabs(x_step);
     // else  // Moving right
@@ -234,7 +234,7 @@ void	cast_rays(t_game *game)
 		if (v_inter <= h_inter)
 		{
 			game->raycast->distance = v_inter;
-			printf("distance of v_inter: %f\n", game->raycast->distance);	
+			// printf("distance of v_inter: %f\n", game->raycast->distance);	
 		}
 		else
 		{
@@ -252,8 +252,11 @@ void	cast_rays(t_game *game)
 	}
 }
 
-void	math_to_display(t_game *game) //void	math_to_display(void *dis)
+void	math_to_display(void *data) //void	math_to_display(void *dis)
 {
+	t_game *game;
+
+	game = (t_game *) data;
 	game->raycast = malloc(sizeof(t_raycast));
 	// game = dis;
 	find_angle(game);

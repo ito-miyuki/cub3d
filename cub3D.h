@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/10 17:05:43 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/11 15:34:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,17 @@ int		is_str_digit(char *str);
 long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
-int				set_ceiling_colors(t_game *game, char *color_str);
-int				set_floor_colors(t_game *game, char *color_str);
-void	math_to_display(t_game *game);
+int		set_ceiling_colors(t_game *game, char *color_str);
+int		set_floor_colors(t_game *game, char *color_str);
+
+/*raycasting*/
+void	math_to_display(void *game);
 void	render_wall(t_game *game, int ray);
 float	adjust_angle(double angle);
+int		wall_hit(float x, float y, t_game *game);
+void	cast_rays(t_game *game);
+
+/*movement*/
+void	move_hook(void *data);
 
 #endif

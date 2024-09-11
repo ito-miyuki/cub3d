@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/11 10:56:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/11 14:18:53 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p) // d
 	// printf("ceil: %d\n", ceil);
 	//0->upper_p = ceil
 	//lower_p->screen heigt = floor
-	printf("upper_p: %f\n", upper_p);
+	// printf("upper_p: %f\n", upper_p);
     while (ceil < upper_p)
     {
         mlx_put_pixel(game->canvas, ray, ceil,
@@ -84,7 +84,7 @@ void	render_wall(t_game *game, int ray)
 	if (upper_p	< 0)
 		upper_p = 0;
 	game->raycast->index = ray;
-	printf("wall_h in render wall %f\n", wall_h);
+	// printf("wall_h in render wall %f\n", wall_h);
 	draw_wall(game, lower_p, upper_p, wall_h);
 	draw_floor_ceil(game, ray, lower_p, upper_p);
 }
