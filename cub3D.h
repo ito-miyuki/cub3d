@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/11 13:55:10 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/12 11:24:55 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ int				set_ceiling_colors(t_game *game, char *color_str);
 int				set_floor_colors(t_game *game, char *color_str);
 int		is_map_closed(char **map);
 
-char	**ft_split_map(char const *s, char c);
+int		check_empty_line(t_game *game, char *map_file);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/05 11:59:53 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/12 11:22:51 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	init_map(t_game *game, char *map_file)
 		free(game);
 		print_error_exit(": Map file must be ***.cub");
 	}
-	game->file_copy = create_2darray(map_file); // copy everything
+	game->file_copy = create_2darray(map_file); // copy everything without empty lines
 	if (game->file_copy == NULL)
 	{
 		free(game);
@@ -78,6 +78,8 @@ static void	init_map(t_game *game, char *map_file)
 	}
 	free(game->info_flags);
 	set_map_info(game, game->file_copy);
+	check_empty_line(game, map_file);
+	printf("there is no empty line in map!\n");
 	game->map = copy_2darray(game->file_copy + 6);
 	free_grid(game->file_copy);
 	if (game->map == NULL)
