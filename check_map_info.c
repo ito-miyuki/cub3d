@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:48:21 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 14:59:19 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/12 12:00:38 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void print_missing_flags(t_flags *flags)
 		ft_putendl_fd("Please put EA texture path info in a correct format/position", 2);
 	if (flags->f == 0)
 		ft_putendl_fd("Please put floor color(F) in a correct format/position", 2);
-	if (flags->f == 0)
+	if (flags->c == 0)
 		ft_putendl_fd("Please put ceiling color(C) in a correct format/position", 2);
 }
 
@@ -52,7 +52,7 @@ static void	set_flag(char *line, char *prefix, int *flag, int *all_flags)
 	{
 		if (*flag == 1)
 		{
-			printf("%s is already existed\n", prefix); // for testing. free something!!
+			printf("%s appers twice\n", prefix); // for testing. free something!!
 			exit (1);
 		}
 		*flag = 1;
@@ -66,7 +66,7 @@ int	check_map_info(char **map, t_flags *flags)
 
 	i = 0;
 	init_flags(flags);
-	// while (map[i] != NULL)
+	//while (map[i] != NULL)
 	while (map[i] != NULL && i < 6)
 	{
 		set_flag(map[i], "NO ", &flags->no, &flags->all_flags);

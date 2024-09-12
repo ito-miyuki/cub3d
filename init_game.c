@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/12 11:22:51 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/12 15:21:37 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,48 +62,27 @@ static void	init_map(t_game *game, char *map_file)
 		free(game);
 		print_error_exit(": Failed to create map array");
 	}
-	game->info_flags = malloc(sizeof(t_flags));
-	if (game->info_flags == NULL)
+	if (game->file_copy[0] == NULL) // if the file is empty. it also when the file only has empty lines
 	{
+		free(game);
 		free_grid(game->file_copy);
-		free(game);
-		print_error_exit(": Failed to allocate memory for texture flags");
+		print_error_exit(": file is empty");
+
 	}
-	if (check_map_info(game->file_copy, game->info_flags) == 1) // err msg should hs more details(NO/WE is missing etc)
-	{
-		free_grid(game->file_copy);
-		free(game->info_flags);
-		free(game);
-		print_error_exit(": map info is invalid");
-	}
-	free(game->info_flags);
-	set_map_info(game, game->file_copy);
-	check_empty_line(game, map_file);
-	printf("there is no empty line in map!\n");
-	game->map = copy_2darray(game->file_copy + 6);
-	free_grid(game->file_copy);
-	if (game->map == NULL)
-	{
-		free(game->info_flags);
-		free(game);
-		print_error_exit(": map info is invalid"); // is it ok to exit without freeing?
-	}
-	printf("\n\n"); // delet it
-	for (int j = 0; game->map[j] != NULL; j++) // for testing
-		printf("Map line %d: %s\n", j, game->map[j]); // for testing
-	map_validation(game, game->map);
+	for (int j = 0; game->file_copy[j] != NULL; j++) // for testing
+		printf("file cppy %d: %s\n", j, game->file_copy[j]); // for testing
+	parsing(game); // if it returns 1?
 }
 
 void	init_game(t_game *game, char *map_file)
 {
 	init_map(game, map_file); // or free everything here instead of init_map() ?
 	//those below are not initialized yet
+	game->filename = map_file;
 	game->height = count_2darray_size(game->map);
 	game->width = get_longest(game->map);
 	get_position(game, game->map);
 
-	//printf("player_x is:%zu\n", game->player_x); // delete it
-	//printf("player_x is:%zu\n", game->player_y); // delete it
 	// game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
 	// if (!game->mlx)
 	// {

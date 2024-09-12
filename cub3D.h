@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/12 11:24:55 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/12 12:32:58 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_flags
 
 typedef struct s_game
 {
-	//char	*filename; // do we need it?
+	char	*filename; // do we need it?
 	char		**map;
 	char		**file_copy;
 	t_flags 	*info_flags;
@@ -100,5 +100,6 @@ int				set_floor_colors(t_game *game, char *color_str);
 int		is_map_closed(char **map);
 
 int		check_empty_line(t_game *game, char *map_file);
+int	parsing(t_game *game);
 
 #endif
