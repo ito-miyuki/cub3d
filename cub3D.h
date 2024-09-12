@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/11 15:34:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/12 11:36:44 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 # define WINDOW_WIDTH 640 // change it
 # define WINDOW_HEIGHT 480 // change it
-# define PLAYER_SPEED 0.045
+# define PLAYER_SPEED 7
+# define ROTATE_SPEED 0.045
 # define SQ_SIZE 32
 # define PI 3.14159265
 # define FOV 60
@@ -45,7 +46,7 @@ typedef struct s_raycast
 {
 	double	player_angle;
 	double	player_rotation;
-	double		player_fov; //have to initialize this
+	double	player_fov; //have to initialize this
 	int	p_x;
 	int	p_y;
 	int		up_down;
@@ -115,6 +116,7 @@ void	render_wall(t_game *game, int ray);
 float	adjust_angle(double angle);
 int		wall_hit(float x, float y, t_game *game);
 void	cast_rays(t_game *game);
+void	find_angle(t_game *game);
 
 /*movement*/
 void	move_hook(void *data);

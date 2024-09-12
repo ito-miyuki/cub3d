@@ -6,13 +6,13 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/11 14:19:23 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/12 11:57:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void find_angle(t_game *game)
+void	find_angle(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x]  == 'N')
 		game->raycast->player_angle = 3 * PI / 2;
@@ -25,13 +25,14 @@ void find_angle(t_game *game)
 	game->raycast->p_x = (game->player_x * SQ_SIZE) + SQ_SIZE / 2; //place player in the middle of the sq
 	game->raycast->p_y = (game->player_y * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->player_fov = (FOV * PI / 180);
+	printf("after player_angle in find_angle: %f\n", game->raycast->player_angle);
 	// printf("p_x: %f\n", game->raycast->p_x);
 	// printf("p_y: %f\n", game->raycast->p_y);
 	// printf("playr_angle = %f\n", game->raycast->player_angle);
 	//printf("player fov = %d\n", game->raycast->player_fov);
 }
 
-/*void	find_mvmnt(t_raycast *ray)
+void	find_mvmnt(t_raycast *ray)
 {
 	double	move_x;
 	double	move_y;
@@ -68,7 +69,7 @@ void find_angle(t_game *game)
 		move_x = sin(ray->player_angle) * PLAYER_SPEED;
 		move_y = cos(ray->player_angle) * PLAYER_SPEED;
 	}
-}*/
+}
 
 int	check_ray_dir(float angle, char c)
 {
@@ -169,7 +170,6 @@ float	h_intersect(t_game *game, float angle)
 	move_ray = move_ray_dir(angle, &y, &y_step, 1);
 	// printf("player_x %d\n", game->raycast->p_x);
 	x = game->raycast->p_x + (y - game->raycast->p_y) / tan(angle); //moves the ray along the x axis
-	// printf("x = %f\n", x);
 	// if (angle > PI / 2 && angle < 3 * PI / 2)  // Moving left
     //     x_step = -fabs(x_step);
     // else  // Moving right
@@ -234,7 +234,7 @@ void	cast_rays(t_game *game)
 		if (v_inter <= h_inter)
 		{
 			game->raycast->distance = v_inter;
-			// printf("distance of v_inter: %f\n", game->raycast->distance);	
+			// printf("distance of v_inter: %f\n", game->raycast->distance);
 		}
 		else
 		{
@@ -257,10 +257,9 @@ void	math_to_display(void *data) //void	math_to_display(void *dis)
 	t_game *game;
 
 	game = (t_game *) data;
-	game->raycast = malloc(sizeof(t_raycast));
-	// game = dis;
-	find_angle(game);
-	// find_mvmnt(game->raycast);
+	// game->raycast = malloc(sizeof(t_raycast));
+	// find_angle(game);
+	find_mvmnt(game->raycast);
 	//move_player
 	cast_rays(game);
 }
