@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/12 10:17:21 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/13 12:22:33 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,41 @@ void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
     (void)wall_h;
     while (upper_p <= lower_p) //wall_h < upper_h
     {
-		if (game->raycast->is_horizon == 1)
+		if (game->raycast->ray_angle < PI / 2 && game->raycast->ray_angle > 0)
 			mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
-				color(178, 255, 0));
-		else
+				color(235, 164, 110));
+		if (game->raycast->ray_angle < PI && game->raycast->ray_angle > PI / 2)
 			mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
-				color(178, 255, 254));
+				color(140, 185, 237));
+		if(game->raycast->ray_angle < 3 * PI / 2 && game->raycast->ray_angle > PI)
+			mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
+				color(197, 140, 237));
+		if (game->raycast->ray_angle < 2 * PI && game->raycast->ray_angle > 3 * PI / 2)
+			mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
+				color(178, 255, 255));
 		upper_p++;
 	}
 }
+/*if (vertical_intersection < horizontal_intersection) {
+    // Vertical wall hit
+    if (ray_dir_x > 0) {
+        // Ray moving right
+        wall_side = WEST_WALL;
+    } else {
+        // Ray moving left
+        wall_side = EAST_WALL;
+    }
+} else {
+    // Horizontal wall hit
+    if (ray_dir_y > 0) {
+        // Ray moving down
+        wall_side = NORTH_WALL;
+    } else {
+        // Ray moving up
+        wall_side = SOUTH_WALL;
+    }
+}*/
+
 void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p) // double wall_h
 {
 	uint32_t ceil;
@@ -59,7 +85,7 @@ void	render_wall(t_game *game, int ray)
 	double	upper_p;
 	
     wall_h = 0;
-	game->raycast->distance *= cos(adjust_angle(game->raycast->ray_angle - game->raycast->player_angle)); 
+	game->raycast->distance *= cos(adjust_angle(game->raycast->player_angle- game->raycast->ray_angle)); 
 	// printf("distance %f\n", fabs(game->raycast->distance));
 	wall_h = fabs((SQ_SIZE / game->raycast->distance) * (WINDOW_WIDTH / 2) / tan(game->raycast->player_fov / 2));
 	// printf("wall_h 1 in render wall %f\n", wall_h);

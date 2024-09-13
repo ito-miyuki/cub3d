@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/12 11:36:44 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/13 12:16:56 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ typedef struct s_flags
 	int all_flags;
 }	t_flags;
 
+enum wall_side
+{
+	NORTH_WALL,
+	EAST_WALL,
+	SOUTH_WALL,
+	WEST_WALL,
+};
+
 typedef struct s_raycast
 {
 	double	player_angle;
@@ -59,6 +67,7 @@ typedef struct s_raycast
 	double	distance;
 	bool	is_horizon;
 	int		index;
+	enum wall_side wall;
 }	t_raycast;
 
 typedef struct s_game
