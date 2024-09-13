@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/12 15:21:37 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 12:05:54 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,21 @@ static int is_extention_cub(char *file_name)
 static void	init_map(t_game *game, char *map_file)
 {
 	if (!is_extention_cub(map_file))
-	{
-		free(game);
-		print_error_exit(": Map file must be ***.cub");
-	}
+		clean_up_exit(game, ": Map file must be ***.cub");
 	game->file_copy = create_2darray(map_file); // copy everything without empty lines
 	if (game->file_copy == NULL)
-	{
-		free(game);
-		print_error_exit(": Failed to create map array");
-	}
+		clean_up_exit(game, ": Failed to create map array");
 	if (game->file_copy[0] == NULL) // if the file is empty. it also when the file only has empty lines
-	{
-		free(game);
-		free_grid(game->file_copy);
-		print_error_exit(": file is empty");
-
-	}
-	for (int j = 0; game->file_copy[j] != NULL; j++) // for testing
-		printf("file cppy %d: %s\n", j, game->file_copy[j]); // for testing
-	parsing(game); // if it returns 1?
+		clean_up_exit(game, ": file is empty");
+	// for (int j = 0; game->file_copy[j] != NULL; j++) // for testing
+	// 	printf("file cppy %d: %s\n", j, game->file_copy[j]); // for testing
+	parsing(game, map_file); // if it returns 1?
 }
 
 void	init_game(t_game *game, char *map_file)
 {
 	init_map(game, map_file); // or free everything here instead of init_map() ?
 	//those below are not initialized yet
-	game->filename = map_file;
 	game->height = count_2darray_size(game->map);
 	game->width = get_longest(game->map);
 	get_position(game, game->map);

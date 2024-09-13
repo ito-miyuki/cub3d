@@ -22,7 +22,8 @@ SRCS =	main.c \
 		ft_atol.c \
 		is_map_closed.c \
 		check_empty_line.c \
-		parsing.c
+		parsing.c \
+		clean_up.c
 
 OBJS = $(SRCS:.c=.o)
 

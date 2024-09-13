@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/12 12:32:58 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 12:09:20 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_flags
 
 typedef struct s_game
 {
-	char	*filename; // do we need it?
 	char		**map;
 	char		**file_copy;
 	t_flags 	*info_flags;
@@ -81,12 +80,13 @@ typedef struct s_game
 }				t_game;
 
 void	print_error_exit(char *message);
+void	print_error(char *message);
 void	init_game(t_game *game, char *map);
 char	**create_2darray(char *map_file);
 int		check_map_info(char **map, t_flags *flags);
 char	**copy_2darray(char **src);
 void	free_grid(char **grid);
-void    set_map_info(t_game *game, char **file_copy);
+int    set_map_info(t_game *game, char **file_copy);
 int		map_validation(t_game *game, char **map);
 int		count_2darray_size(char **src);
 int 	run_game(t_game *game);
@@ -100,6 +100,7 @@ int				set_floor_colors(t_game *game, char *color_str);
 int		is_map_closed(char **map);
 
 int		check_empty_line(t_game *game, char *map_file);
-int	parsing(t_game *game);
+void	clean_up_exit(t_game *game, char *message);
+int		parsing(t_game *game, char *map_file);
 
 #endif

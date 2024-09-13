@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:59:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/12 12:20:14 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 12:12:47 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_empty_line(t_game *game, char *map_file)
 	empty = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		print_error_exit(": read failed\n");
+		clean_up_exit(game, ": read failed\n");
 	while ((new_line = get_next_line(fd)))
 	{
 		// think about safer idea
@@ -51,7 +51,8 @@ int	check_empty_line(t_game *game, char *map_file)
 		{
 			free(new_line);
 			close(fd);
-			print_error_exit(": empty line in map");
+			print_error(": empty line in map");
+			return (1);
 		}
 		free(new_line);
 	}
