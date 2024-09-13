@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:28:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 12:17:00 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 13:55:15 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	parsing(t_game *game, char *map_file)
 	game->map = copy_2darray(game->file_copy + 6);
 	if (game->map == NULL)
 
-		clean_up_exit(": failed to create game->map array");
+		clean_up_exit(game, ": failed to create game->map array");
 	free_grid(game->file_copy);
 	map_validation(game, game->map);
 	return (0);

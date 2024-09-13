@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 13:41:00 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 13:58:43 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int		count_2darray_size(char **src);
 int 	run_game(t_game *game);
 void	get_position(t_game *game, char **map);
 int		is_str_digit(char *str);
-long	ft_atol(const char *str);
+long	ft_atol(const char *str)
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 int		is_map_closed(char **map);
