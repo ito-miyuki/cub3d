@@ -6,13 +6,13 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/11 10:08:20 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 13:42:24 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	paint_floor_ceiling(t_game *game)
+/*static void	paint_floor_ceiling(t_game *game)
 {
 	uint32_t x;
 	uint32_t y;
@@ -41,7 +41,8 @@ static void	paint_floor_ceiling(t_game *game)
         }
         y++;
     }
-}
+	printf("floor color is: r %d g %d b %d\n", game->floor_r, game->floor_g, game->floor_b);
+}*/
 
 // static int	load_texture(t_game *game)
 // {
@@ -83,7 +84,7 @@ int run_game(t_game *game) // change the function name
 		ft_putendl_fd("canvas is NULL", 2);
 		return (-1);
 	}
-	paint_floor_ceiling(game); // move it somewhere relevant
+	// paint_floor_ceiling(game);
 	if (!mlx_image_to_window(game->mlx, game->canvas, 0, 0))
 		return (-1);
 	// if (load_texture(game) == -1)

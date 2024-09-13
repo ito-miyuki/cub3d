@@ -6,16 +6,12 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 12:09:20 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 13:41:00 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-# define PI 3.14159265
-# define FOV 60
-
 
 # include "./libft/libft.h"
 # include "MLX42.h"
@@ -28,6 +24,12 @@
 
 # define WINDOW_WIDTH 640 // change it
 # define WINDOW_HEIGHT 480 // change it
+# define PLAYER_SPEED 7
+# define ROTATE_SPEED 0.045
+# define SQ_SIZE 32
+# define PI 3.14159265
+# define FOV 60
+# define VFOV 90
 
 typedef struct s_flags
 {
@@ -40,15 +42,33 @@ typedef struct s_flags
 	int all_flags;
 }	t_flags;
 
-// typedef struct s_colors
-// {
-	// int			floor_r; //temp
-	// int			floor_g; //temp
-	// int			floor_b; //temp
-	// int			ceiling_r; //temp
-	// int			ceiling_g; //temp
-	// int			ceiling_b; //temp
-// }	t_colors;
+enum wall_side
+{
+	NORTH_WALL,
+	EAST_WALL,
+	SOUTH_WALL,
+	WEST_WALL,
+};
+
+typedef struct s_raycast
+{
+	double	player_angle;
+	double	player_rotation;
+	double	player_fov; //have to initialize this
+	int	p_x;
+	int	p_y;
+	int		up_down;
+	int		left_right;
+	double	ray_angle;
+	float	h_inter_x;
+	float	h_inter_y;
+	float	v_inter_x;
+	float	v_inter_y;
+	double	distance;
+	bool	is_horizon;
+	int		index;
+	enum wall_side wall;
+}	t_raycast;
 
 typedef struct s_game
 {
@@ -77,6 +97,7 @@ typedef struct s_game
 	mlx_texture_t	*so_texture;
 	mlx_texture_t	*we_texture;
 	mlx_texture_t	*ea_texture;
+	t_raycast		*raycast;
 }				t_game;
 
 void	print_error_exit(char *message);
@@ -95,12 +116,23 @@ int		is_str_digit(char *str);
 long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
-int				set_ceiling_colors(t_game *game, char *color_str);
-int				set_floor_colors(t_game *game, char *color_str);
 int		is_map_closed(char **map);
 
 int		check_empty_line(t_game *game, char *map_file);
 void	clean_up_exit(t_game *game, char *message);
 int		parsing(t_game *game, char *map_file);
+int		set_ceiling_colors(t_game *game, char *color_str);
+int		set_floor_colors(t_game *game, char *color_str);
+
+/*raycasting*/
+void	math_to_display(void *game);
+void	render_wall(t_game *game, int ray);
+float	adjust_angle(double angle);
+int		wall_hit(float x, float y, t_game *game);
+void	cast_rays(t_game *game);
+void	find_angle(t_game *game);
+
+/*movement*/
+void	move_hook(void *data);
 
 #endif

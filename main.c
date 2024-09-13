@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 12:04:22 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/13 13:40:52 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int main(int argc, char **argv)
 		//do error handlings;
 		print_error_exit(": mlx function fail");
 	}
+	game->raycast = malloc(sizeof(t_raycast));
+	find_angle(game);
+	// mlx_key_hook(game->mlx, move_hook, game); // this will be for esc
+	mlx_loop_hook(game->mlx, math_to_display, game);
+	mlx_loop_hook(game->mlx, move_hook, game);
 	mlx_loop(game->mlx);
 	free(game->map);
 	free(game);
