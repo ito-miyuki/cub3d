@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 13:40:52 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:40:24 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ int main(int argc, char **argv)
 	t_game *game;
 
 	if (argc != 2)
-		print_error_exit(": bad argument"); // think about better err msg
+		print_error_exit(":  "); // think about better err msg
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		print_error_exit("Malloc failed for game struct");
 	init_game(game, argv[1]);
-	for (int j = 0; game->map[j] != NULL; j++) // for testing
-		printf("Map line %d: %s\n", j, game->map[j]); // for testing
-	// free everything
+	//for (int j = 0; game->map[j] != NULL; j++) // for testing
+	//	printf("Map line %d: %s\n", j, game->map[j]); // for testing
 	set_floor_colors(game, game->floor_rgb);
 	set_ceiling_colors(game, game->ceiling_rgb);
 	get_position(game,game->map);

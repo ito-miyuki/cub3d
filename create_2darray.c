@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:09:02 by mito              #+#    #+#             */
-/*   Updated: 2024/08/30 15:10:45 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:29:24 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static char	*read_map_from_file(int fd)
 	{
 		temp = line_joint;
 		line_joint = ft_strjoin(line_joint, new_line);
-		if (!line_joint) // ft_strjoin が NULL を返した場合のチェック
+		if (!line_joint)
 		{
 			free(temp);
 			free(new_line);
-			return (NULL); // メモリ割り当て失敗時の早期終了
+			return (NULL);
 		}
 		free(new_line);
 		free(temp);

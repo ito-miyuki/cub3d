@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:28:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 13:55:15 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:38:35 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,9 @@ int	parsing(t_game *game, char *map_file)
 		clean_up_exit(game, ": file if empty)");  // Map is empty?
 	if (check_empty_line(game, map_file) == 1)
 		clean_up_exit(game, NULL);
-	printf("there is no empty line in map!\n"); // delete it
+	//printf("there is no empty line in map!\n"); // delete it
 	game->map = copy_2darray(game->file_copy + 6);
 	if (game->map == NULL)
-
 		clean_up_exit(game, ": failed to create game->map array");
-	free_grid(game->file_copy);
-	map_validation(game, game->map);
 	return (0);
 }
