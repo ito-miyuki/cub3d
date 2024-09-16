@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/16 09:56:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/16 11:29:50 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	find_angle(t_game *game)
 	//printf("player fov = %d\n", game->raycast->player_fov);
 }
 
-void	find_mvmnt(t_raycast *ray)
+/*void	find_mvmnt(t_raycast *ray)
 {
 	double	move_x;
 	double	move_y;
@@ -69,7 +69,7 @@ void	find_mvmnt(t_raycast *ray)
 		move_x = sin(ray->player_angle) * PLAYER_SPEED;
 		move_y = cos(ray->player_angle) * PLAYER_SPEED;
 	}
-}
+}*/
 
 int	check_ray_dir(float angle, char c)
 {
@@ -261,7 +261,7 @@ void	math_to_display(void *data) //void	math_to_display(void *dis)
 	game = (t_game *) data;
 	// game->raycast = malloc(sizeof(t_raycast));
 	// find_angle(game);
-	find_mvmnt(game->raycast);
+	// find_mvmnt(game->raycast);
 	//move_player
 	cast_rays(game);
 }
