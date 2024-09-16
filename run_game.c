@@ -6,43 +6,11 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 13:42:24 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:18:36 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-/*static void	paint_floor_ceiling(t_game *game)
-{
-	uint32_t x;
-	uint32_t y;
-
-	x = 0;
-	y = 0;
-    while (y < WINDOW_HEIGHT / 2)
-    {
-        x = 0;
-        while (x < WINDOW_WIDTH)
-        {
-            mlx_put_pixel(game->canvas, x, y,
-				color(game->ceiling_r, game->ceiling_g, game->ceiling_b));
-			x++;
-        }
-        y++;
-    }
-	while (y < WINDOW_HEIGHT)
-    {
-        x = 0;
-        while (x < WINDOW_WIDTH)
-        {
-            mlx_put_pixel(game->canvas, x, y,
-				color(game->floor_r, game->floor_g, game->floor_b));
-            x++;
-        }
-        y++;
-    }
-	printf("floor color is: r %d g %d b %d\n", game->floor_r, game->floor_g, game->floor_b);
-}*/
 
 // static int	load_texture(t_game *game)
 // {
@@ -70,6 +38,54 @@
 // 	return (0);
 // }
 
+static int load_texture(t_game *game)
+{
+    printf("Loading textures...\n"); // delete it
+
+
+    game->no_texture = mlx_load_png(game->no_tex_path);
+    if (!game->no_texture)
+    {
+        printf("NO texture load fail\n");
+        return (-1);
+    }
+    game->so_texture = mlx_load_png(game->so_tex_path);
+    if (!game->so_texture)
+    {
+        printf("SO texture load fail\n");
+        mlx_delete_texture(game->no_texture);
+        return (-1);
+    }
+
+    game->we_texture = mlx_load_png(game->we_tex_path);
+    if (!game->we_texture)
+    {
+        printf("WE texture load fail\n");
+        mlx_delete_texture(game->no_texture);
+        mlx_delete_texture(game->so_texture);
+        return (-1);
+    }
+
+    game->ea_texture = mlx_load_png(game->ea_tex_path);
+    if (!game->ea_texture)
+    {
+        printf("EA texture load fail\n");
+        mlx_delete_texture(game->no_texture);
+        mlx_delete_texture(game->so_texture);
+        mlx_delete_texture(game->we_texture);
+        return (-1);
+    }
+
+	printf("game->so_texture is %p\n", game->so_texture);
+	printf("game->no_texture is %p\n", game->no_texture);
+	printf("game->we_texture is %p\n", game->we_texture);
+	printf("game->ea_texture is %p\n", game->ea_texture);
+
+    printf("All textures loaded successfully.\n");
+    return (0);
+}
+
+
 int run_game(t_game *game) // change the function name
 {
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
@@ -81,13 +97,13 @@ int run_game(t_game *game) // change the function name
 	game->canvas = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!game->canvas)
 	{
-		ft_putendl_fd("canvas is NULL", 2);
-		return (-1);
+		return (-1); // do error handlings
 	}
-	// paint_floor_ceiling(game);
-	if (!mlx_image_to_window(game->mlx, game->canvas, 0, 0))
+	if (mlx_image_to_window(game->mlx, game->canvas, 0, 0) == -1)
+	{
+		return (-1); // do error handlings
+	}
+	if (load_texture(game) < 0)
 		return (-1);
-	// if (load_texture(game) == -1)
-	// 	return (-1);
 	return (0);
 }

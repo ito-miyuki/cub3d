@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 13:58:43 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/16 15:12:11 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,18 @@ typedef struct s_raycast
 	enum wall_side wall;
 }	t_raycast;
 
+typedef struct s_img
+{
+	mlx_image_t	*north;
+	mlx_image_t	*item;
+	mlx_image_t	*floor;
+	mlx_image_t	*grass;
+	mlx_image_t	*exit;
+	mlx_image_t	*moves_print;
+	mlx_image_t	*moves_nbr;
+}	t_img;
+
+
 typedef struct s_game
 {
 	char		**map;
@@ -113,7 +125,7 @@ int		count_2darray_size(char **src);
 int 	run_game(t_game *game);
 void	get_position(t_game *game, char **map);
 int		is_str_digit(char *str);
-long	ft_atol(const char *str)
+long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 int		is_map_closed(char **map);
