@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/13 12:01:50 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/16 09:56:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,8 +234,8 @@ void	cast_rays(t_game *game)
 		if (v_inter <= h_inter)
 		{
 			game->raycast->distance = v_inter;
-			if (game->raycast->ray_angle > 0)
-			game->raycast->wall_side = WEST_WALL;
+			// if (game->raycast->ray_angle > 0)
+			// game->raycast->wall_side = WEST_WALL;
 			// printf("distance of v_inter: %f\n", game->raycast->distance);
 		}
 		else

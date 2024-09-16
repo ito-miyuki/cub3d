@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/09/12 12:00:56 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/16 09:56:02 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	left_or_right(t_game *game, char key)
 {
 	// if (wall_hit(game->raycast->p_x, game->raycast->p_y, game))
 	// 	return ;
-	if (game->map[game->player_y][game->player_x - 1] != '1' && key == 'A')
+	if (game->map[game->raycast->p_y][game->raycast->p_x / SQ_SIZE] != '1' && key == 'A')
 	{
 		game->player_x -= 1;
+		// game->raycast->p_x = game->player_x * SQ_SIZE
 		game->raycast->p_x += cos(game->raycast->player_angle - PI / 2) * PLAYER_SPEED;
         game->raycast->p_y += sin(game->raycast->player_angle - PI / 2) * PLAYER_SPEED;
 		// printf("A player_y:  %zu\n", game->player_y);
