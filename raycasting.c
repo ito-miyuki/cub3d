@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 10:56:29 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 11:05:38 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ void	cast_rays(t_game *game)
 		// printf("player_fov: %d\n", game->raycast->player_fov);
 		// printf("adjustment: %f\n", game->raycast->player_fov / WINDOW_WIDTH);
 		game->raycast->ray_angle += (game->raycast->player_fov / WINDOW_WIDTH);
-		printf("player_angle: %f\n", game->raycast->player_angle);
+		// printf("player_angle: %f\n", game->raycast->player_angle);
 		// printf("after ray_angle: %f\n", game->raycast->ray_angle);
 	}
 }

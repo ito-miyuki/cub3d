@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 10:55:47 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 11:22:15 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static mlx_texture_t *get_texture(t_game *game)
         if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI)
 		{
 			// printf("game->so_texture is %p\n", game->so_texture);
-            return (game->so_texture);  // 南の壁
+            return (game->so_texture);  // 南の壁 sunflowers
 		}
         else
 		{
 			// printf("game->no_texture is %p\n", game->no_texture);
-            return game->no_texture;  // 北の壁
+            return game->no_texture;  // 北の壁 starry night
 		}
     }
     else
@@ -72,12 +72,12 @@ static mlx_texture_t *get_texture(t_game *game)
         if (game->raycast->ray_angle > PI / 2 && game->raycast->ray_angle < 3 * PI / 2)
 		{
 			// printf("game->we_texture is %p\n", game->we_texture);
-            return game->we_texture;   // 西の壁
+            return game->we_texture;   // 西の壁 sunset
 		}
         else
 		{
 			// printf("game->ea_texture is %p\n", game->ea_texture);
-            return game->ea_texture;   // 東の壁
+            return game->ea_texture;   // 東の壁  girl with the pearl
 		}
     }
 }
@@ -90,22 +90,32 @@ static double get_x_offset(mlx_texture_t *texture, t_game *game)
     if (game->raycast->is_horizon == 1) // 水平方向の壁に当たった場合
     {
         // 壁の南側か北側かに応じてオフセット計算
-        if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI)  // 南側の壁
-            x_offset = game->raycast->h_inter_x - floor(game->raycast->h_inter_x);
-        else // 北側の壁
-            x_offset = 1.0 - (game->raycast->h_inter_x - floor(game->raycast->h_inter_x));
+        // if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI)  // 南側の壁
+        //     x_offset = game->raycast->h_inter_x - floor(game->raycast->h_inter_x);
+        // else // 北側の壁
+		// {
+        //     x_offset = 1.0 - (game->raycast->h_inter_x - floor(game->raycast->h_inter_x));
+		// 	// printf("offset: %f\n", x_offset);
+		// 	// printf("game->raycast->h_inter_x: %f\n", game->raycast->h_inter_x);
+		// 	// printf("floor of h_inter_x: %f\n", floor(game->raycast->h_inter_x));
+		// }
+		x_offset = (int)fmodf((game->raycast->h_inter_x * \
+		(texture->width / SQ_SIZE)), texture->width);
     }
     else // 垂直方向の壁に当たった場合
     {
         // 壁の東側か西側かに応じてオフセット計算
-        if (game->raycast->ray_angle > PI / 2 && game->raycast->ray_angle < 3 * PI / 2) // 西側の壁
-            x_offset = 1.0 - (game->raycast->h_inter_y - floor(game->raycast->h_inter_y));
-        else // 東側の壁
-            x_offset = game->raycast->h_inter_y - floor(game->raycast->h_inter_y);
+        // if (game->raycast->ray_angle > PI / 2 && game->raycast->ray_angle < 3 * PI / 2) // 西側の壁
+        //     x_offset = 1.0 - (game->raycast->h_inter_y - floor(game->raycast->h_inter_y));
+        // else // 東側の壁
+        //     x_offset = game->raycast->h_inter_y - floor(game->raycast->h_inter_y);
+		x_offset = (int)fmodf((game->raycast->v_inter_y * \
+		(texture->width / SQ_SIZE)), texture->width);
     }
 
     // テクスチャの横幅に合わせてスケーリング
-    x_offset *= texture->width;
+    // x_offset *= texture->width;
+	// printf("x_offset at the end: %f\n", x_offset);
     return (x_offset);
 }
 
@@ -147,7 +157,7 @@ void    draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 
         y_o += factor;
         upper_p++;
-		tex_y = 0;
+		// tex_y = 0;
     }
 }
 
