@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/16 15:12:11 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/18 10:54:48 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@
 # define FOV 60
 # define VFOV 90
 
+# define NORTH 3 * PI / 2.0f
+# define SOUTH PI / 2.0f
+# define EAST PI
+# define WEST 0
+
 typedef struct s_flags
 {
 	int no;
@@ -41,14 +46,6 @@ typedef struct s_flags
 	int c;
 	int all_flags;
 }	t_flags;
-
-enum wall_side
-{
-	NORTH_WALL,
-	EAST_WALL,
-	SOUTH_WALL,
-	WEST_WALL,
-};
 
 typedef struct s_raycast
 {
@@ -67,7 +64,6 @@ typedef struct s_raycast
 	double	distance;
 	bool	is_horizon;
 	int		index;
-	enum wall_side wall;
 }	t_raycast;
 
 typedef struct s_img

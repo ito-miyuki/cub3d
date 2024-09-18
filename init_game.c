@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 12:11:28 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/18 15:33:50 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	init_map(t_game *game, char *map_file)
 		clean_up_exit(game, ": file is empty");
 	parsing(game, map_file); // if it returns 1?
 	free_grid(game->file_copy);
+	game->file_copy = NULL;
 	map_validation(game, game->map);
 }
 

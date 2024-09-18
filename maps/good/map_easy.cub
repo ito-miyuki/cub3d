@@ -1,12 +1,12 @@
-       NO textures/test1.png
+       NO textures/alice.png
+
+
+SO textures/yunchia.png
 
 
 
-SO         textures/test2.png
-
-
-WE textures/test3.png
-EA textures/test4.png
+WE textures/lempi.png
+EA textures/miyuki.png
 
 C 204,225,255
 F 225,204,255
@@ -15,7 +15,7 @@ F 225,204,255
 1000000000000000001
 1000000000000000001
 1000000000000000001
-100000000E000000001
+100000000S000000001
 1000000000000000001
 1000000000000000001
 1000000000000000001

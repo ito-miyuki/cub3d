@@ -6,83 +6,90 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/09/12 12:00:56 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/17 11:04:17 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	for_or_back(t_game *game, char key)
+void	move_player(t_game *game, double move_x, double move_y)
 {
-	// if (wall_hit(game->raycast->p_x, game->raycast->p_y, game))
-	// 	return ;
-	printf("entered for_back\n");
-	if (game->map[game->player_y - 1][game->player_x] != '1' && key == 'W')
+	double	new_x;
+	double	new_y;
+	int		map_x;
+	int		map_y;
+
+	new_x = game->raycast->p_x + move_x;
+	new_y = game->raycast->p_y + move_y;
+	map_x = new_x / SQ_SIZE;
+	map_y = new_y / SQ_SIZE;
+	if (game->map[map_y][map_x] != '1' && game->map[map_y][game->raycast->p_x / SQ_SIZE] != '1'
+		&& game->map[game->raycast->p_y / SQ_SIZE][map_x] != '1') //checking for wall collision
 	{
-		game->player_y -= 1;
-		game->raycast->p_x += cos(game->raycast->player_angle) * PLAYER_SPEED;
-        game->raycast->p_y += sin(game->raycast->player_angle) * PLAYER_SPEED;
-		printf("W player_y:  %zu\n", game->player_y);
-		printf("W player_x:  %zu\n", game->player_x);
-	}
-	if (game->map[game->player_y + 1][game->player_x] != '1' && key == 'S')
-	{
-		game->player_y += 1;
-		game->raycast->p_x -= cos(game->raycast->player_angle) * PLAYER_SPEED;
-        game->raycast->p_y -= sin(game->raycast->player_angle) * PLAYER_SPEED;
-		printf("S player_y:  %zu\n", game->player_y);
-		printf("S player_x:  %zu\n", game->player_x);
+		game->raycast->p_x = new_x;
+		game->raycast->p_y = new_y;
 	}
 }
 
+void	for_or_back(t_game *game, char key)
+{
+	double	move_x;
+	double	move_y;
+
+	move_x = 0;
+	move_y = 0;
+	if (key == 'W')
+	{
+		move_x = cos(game->raycast->player_angle) * PLAYER_SPEED;
+		move_y = sin(game->raycast->player_angle) * PLAYER_SPEED;
+	}
+	if (key == 'S')
+	{
+		move_x = -cos(game->raycast->player_angle) * PLAYER_SPEED;
+		move_y = -sin(game->raycast->player_angle) * PLAYER_SPEED;
+	}
+	move_player(game, move_x, move_y);
+}
+
+
 void	left_or_right(t_game *game, char key)
 {
-	// if (wall_hit(game->raycast->p_x, game->raycast->p_y, game))
-	// 	return ;
-	if (game->map[game->player_y][game->player_x - 1] != '1' && key == 'A')
+	double	move_x;
+	double	move_y;
+
+	move_x = 0;
+	move_y = 0;
+	if (key == 'A')
 	{
-		game->player_x -= 1;
-		game->raycast->p_x += cos(game->raycast->player_angle - PI / 2) * PLAYER_SPEED;
-        game->raycast->p_y += sin(game->raycast->player_angle - PI / 2) * PLAYER_SPEED;
-		// printf("A player_y:  %zu\n", game->player_y);
-		// printf("A player_x:  %zu\n", game->player_x);
+		move_x = sin(game->raycast->player_angle) * PLAYER_SPEED;
+		move_y = -cos(game->raycast->player_angle) * PLAYER_SPEED;
 	}
-	if (game->map[game->player_y][game->player_x + 1] != '1' && key == 'D')
+	if (key == 'D')
 	{
-		game->player_x += 1;
-		game->raycast->p_x += cos(game->raycast->player_angle + PI / 2) * PLAYER_SPEED;
-        game->raycast->p_y += sin(game->raycast->player_angle + PI / 2) * PLAYER_SPEED;
-		// printf("D player_y:  %zu\n", game->player_y);
-		// printf("D player_x:  %zu\n", game->player_x);
+		move_x = -sin(game->raycast->player_angle) * PLAYER_SPEED;
+		move_y = cos(game->raycast->player_angle) * PLAYER_SPEED;
 	}
+	move_player(game, move_x, move_y);
 }
 void	rotate(t_game *game, char key)
 {
-	// printf("before player_angle in rotate: %f\n", game->raycast->player_angle);
 	if (key == 'L')
 	{
 		game->raycast->player_angle -= ROTATE_SPEED;
 		if (game->raycast->player_angle < 0)
 			game->raycast->player_angle += 2 * PI;
-		// game->raycast->p_x = cos(game->raycast->player_angle) * PLAYER_SPEED;
-		// game->raycast->p_y = sin(game->raycast->player_angle) * PLAYER_SPEED;
 	}
 	if (key == 'R')
 	{
 		game->raycast->player_angle += ROTATE_SPEED;
 		if (game->raycast->player_angle > 2 * PI)
 			game->raycast->player_angle -= 2 * PI;
-		// game->raycast->p_x = cos(game->raycast->player_angle) * PLAYER_SPEED;
-		// game->raycast->p_y = sin(game->raycast->player_angle) * PLAYER_SPEED;
 	}
-	// game->raycast->p_x = cos(game->raycast->player_angle) * PLAYER_SPEED;
-	// game->raycast->p_y = sin(game->raycast->player_angle) * PLAYER_SPEED;
-	// printf("after player_angle in rotate: %f\n", game->raycast->player_angle);
 }
 
 void	move_hook(void *data)
 {
-	t_game *game;
+	t_game	*game;
 	
 	game = (t_game *)data;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))

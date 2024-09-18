@@ -53,8 +53,6 @@ int	set_floor_colors(t_game *game, char *color_str)
 	color_split = ft_split(color_str, ','); // add checks if the str comes in a correct format
 	if (!color_split)
 		return (1); // do something else
-	// for (int i = 0; color_split[i] != NULL; i++)
-	// 	printf("splited str is '%s'\n", color_split[i]);
 	if (count_2darray_size(color_split) != 3)
 	{
 		free_grid(color_split);
@@ -79,7 +77,6 @@ int	set_floor_colors(t_game *game, char *color_str)
 	game->floor_r = rgb[0];
 	game->floor_g = rgb[1];
 	game->floor_b = rgb[2];
-	//printf("Floor Color - R: %d, G: %d, B: %d\n", game->floor_r, game->floor_g, game->floor_b);
 	free_grid(color_split);
 	return (0);
 }
@@ -121,8 +118,6 @@ int	set_ceiling_colors(t_game *game, char *color_str)
 	game->ceiling_r = rgb[0];
 	game->ceiling_g = rgb[1];
 	game->ceiling_b = rgb[2];
-	// dlete this printf
-	//printf("Ceiling Color - R: %d, G: %d, B: %d\n", game->ceiling_r, game->ceiling_g, game->ceiling_b);
 	free_grid(color_split);
 	return (0);
 }
