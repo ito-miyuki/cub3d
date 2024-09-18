@@ -13,8 +13,12 @@ SRCS =    main.c \
 		create_2darray.c \
 		draw_wall.c \
 		free_grid.c \
-		ft_atol.c \
 		get_position.c \
+		ft_atol.c \
+		is_map_closed.c \
+		check_empty_line.c \
+		parsing.c \
+		clean_up.c \
 		init_game.c \
 		map_validation.c \
 		math_utils.c \
@@ -23,7 +27,7 @@ SRCS =    main.c \
 		raycasting.c \
 		run_game.c \
         set_map_info.c \
-		set_colors.c 
+		set_colors.c
 
 OBJS = $(SRCS:.c=.o)
 

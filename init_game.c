@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/09 12:18:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:39:51 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,43 +52,16 @@ static int is_extention_cub(char *file_name)
 static void	init_map(t_game *game, char *map_file)
 {
 	if (!is_extention_cub(map_file))
-	{
-		free(game);
-		print_error_exit(": Map file must be ***.cub");
-	}
-	game->file_copy = create_2darray(map_file); // copy everything
+		clean_up_exit(game, ": Map file must be ***.cub");
+	game->file_copy = create_2darray(map_file); // copy everything without empty lines
 	if (game->file_copy == NULL)
-	{
-		free(game);
-		print_error_exit(": Failed to create map array");
-	}
-	game->info_flags = malloc(sizeof(t_flags));
-	if (game->info_flags == NULL)
-	{
-		free_grid(game->file_copy);
-		free(game);
-		print_error_exit(": Failed to allocate memory for texture flags");
-	}
-	if (check_map_info(game->file_copy, game->info_flags) == 1) // err msg should hs more details(NO/WE is missing etc)
-	{
-		free_grid(game->file_copy);
-		free(game->info_flags);
-		free(game);
-		print_error_exit(": map info is invalid");
-	}
-	free(game->info_flags);
-	set_map_info(game, game->file_copy);
-	game->map = copy_2darray(game->file_copy + 6);
+		clean_up_exit(game, ": Failed to create map array");
+	if (game->file_copy[0] == NULL) // if the file is empty. it also when the file only has empty lines
+		clean_up_exit(game, ": file is empty");
+	// for (int j = 0; game->file_copy[j] != NULL; j++) // for testing
+	// 	printf("file cppy %d: %s\n", j, game->file_copy[j]); // for testing
+	parsing(game, map_file); // if it returns 1?
 	free_grid(game->file_copy);
-	if (game->map == NULL)
-	{
-		free(game->info_flags);
-		free(game);
-		print_error_exit(": map info is invalid"); // is it ok to exit without freeing?
-	}
-	printf("\n\n"); // delet it
-	for (int j = 0; game->map[j] != NULL; j++) // for testing
-		printf("Map line %d: %s\n", j, game->map[j]); // for testing
 	map_validation(game, game->map);
 }
 
@@ -99,14 +72,4 @@ void	init_game(t_game *game, char *map_file)
 	game->height = count_2darray_size(game->map);
 	game->width = get_longest(game->map);
 	get_position(game, game->map);
-
-	//printf("player_x is:%zu\n", game->player_x); // delete it
-	//printf("player_x is:%zu\n", game->player_y); // delete it
-	// game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
-	// if (!game->mlx)
-	// {
-	// 	free(game);
-	// 	print_error_exit(": mlx_init() fail"); // change it
-	// }
-	// I moved this part to run_game;
 }

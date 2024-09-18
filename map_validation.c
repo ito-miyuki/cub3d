@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/03 16:13:07 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/11 11:03:42 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ int map_validation(t_game *game, char **map)
         ft_putendl_fd("map can contain NSEW only once", 2);
         exit(1); // exit is for testing. change it to free everything!
     }
+	if (!is_map_closed(map))
+	{
+		ft_putendl_fd("map is not closed", 2);
+        exit(1); // exit is for testing. change it to free everything!
+	}
     printf("Nice:D Map DOES NOT contain invalid char\n");
     return (0);
 }

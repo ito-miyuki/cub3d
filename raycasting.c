@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 10:25:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 10:56:29 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ float	h_intersect(t_game *game, float angle)
 	float	x;
 	float	y;
 	int	move_ray;
-	
+
 	// printf("before angle: %f\n", angle);
 	if (angle == 0)
 		angle = 0.00001;
@@ -164,7 +164,7 @@ void	cast_rays(t_game *game)
 	int		ray;
 
 	ray = 0; //left most to right most ray
-	
+
 	// printf("player_angle: %f\n", game->raycast->player_angle);
 	game->raycast->ray_angle = game->raycast->player_angle - (game->raycast->player_fov / 2);//have to initialize player_fov
 	while (ray < WINDOW_WIDTH)
