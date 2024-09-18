@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/13 13:17:03 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 10:21:42 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	find_angle(t_game *game)
 {
 	double	move_x;
 	double	move_y;
-	
+
 	// move_x = 0;
 	// move_y = 0;
 	if (ray->player_rotation == -1)
@@ -93,7 +93,7 @@ int wall_hit(float x, float y, t_game *game)
 
 	if (x < 0 || y < 0)
 		return (1);
-	map_y = floor(y / SQ_SIZE); //one grid square, indice where it's locaated 
+	map_y = floor(y / SQ_SIZE); //one grid square, indice where it's locaated
 	map_x = floor(x / SQ_SIZE);
 	if(game->width <= map_x || game->height <= map_y)
 		return (1);
@@ -138,7 +138,7 @@ int	move_ray_dir(float angle, float *inter, float *step, int is_vert)
 		else
 			return (0); // Left direction
 	}
-    
+
     // Check for vertical direction (y-axis)
 	if (c == 'y')
 	{
@@ -149,7 +149,7 @@ int	move_ray_dir(float angle, float *inter, float *step, int is_vert)
 		else
 			return (0); // Up direction
 	}
-    
+
 	return (0);
 }*/
 
@@ -161,13 +161,13 @@ float	h_intersect(t_game *game, float angle)
 	float	x;
 	float	y;
 	int	move_ray;
-	
+
 	// printf("before angle: %f\n", angle);
 	x_step = SQ_SIZE / tan(angle);
 	y_step = SQ_SIZE;
 	y = floor(game->raycast->p_y / SQ_SIZE) * SQ_SIZE; //nearest horizontal line below player's y position.
 	// printf("y = %f\n", y);
-	move_ray = move_ray_dir(angle, &y, &y_step, 1);
+	move_ray = move_ray_dir(angle, &y, &y_step, 0);
 	// printf("player_x %d\n", game->raycast->p_x);
 	x = game->raycast->p_x + (y - game->raycast->p_y) / tan(angle); //moves the ray along the x axis
 	// if (angle > PI / 2 && angle < 3 * PI / 2)  // Moving left
@@ -197,11 +197,11 @@ float	v_intersect(t_game *game, float angle)
 	float	x;
 	float	y;
 	int		move_ray;
-	
+
 	x_step = SQ_SIZE;
 	y_step = SQ_SIZE * tan(angle);
 	x = floor(game->raycast->p_x / SQ_SIZE) * SQ_SIZE;//calculates which tile the player stands on multiplying gets the top edge of tile
-	move_ray = move_ray_dir(angle, &x, &x_step, 0);
+	move_ray = move_ray_dir(angle, &x, &x_step, 1);
 	y = game->raycast->p_y + (x - game->raycast->p_x) * tan(angle); //moves the ray along the y axis
 	if ((check_ray_dir(angle, 'x') && (y_step < 0)) //right and up (so make it go down)
 			|| (!check_ray_dir(angle, 'x') && y_step > 0)) //moving left and down (make it go up)
@@ -223,7 +223,7 @@ void	cast_rays(t_game *game)
 	int		ray;
 
 	ray = 0; //left most to right most ray
-	
+
 	// printf("player_angle: %f\n", game->raycast->player_angle);
 	game->raycast->ray_angle = game->raycast->player_angle - (game->raycast->player_fov / 2);//have to initialize player_fov
 	while (ray < WINDOW_WIDTH)

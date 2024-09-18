@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:00:29 by mito              #+#    #+#             */
-/*   Updated: 2024/09/11 11:46:29 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/18 10:08:12 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ static int	only_char(char *str, char c)
 
 static	int	check_wall_rows(char **map) // tate
 {
-	int	i;
 	int	last_row;
 
-	i = 0;
 	last_row = count_2darray_size(map);
 	if (!(only_char(map[0], '1')))
 		return (0);
