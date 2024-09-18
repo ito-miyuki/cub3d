@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/11 11:03:42 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/18 12:25:48 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ static  int has_only_valid_chars(char **map)
 
 int map_validation(t_game *game, char **map)
 {
-    (void)(game); // delete it
+	game->height = 0; // do I need it?
+	game->height = (size_t)count_2darray_size(game->map); // should I type cast?
+	if (game->height < 3)
+	{
+		printf("game->heght is %zu\n", game->height);
+		clean_up_exit(game, "map is too small");
+	}
     if (!has_only_valid_chars(map))
     {
         ft_putendl_fd("map contains invalid char", 2);

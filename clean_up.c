@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:11:15 by mito              #+#    #+#             */
-/*   Updated: 2024/09/13 11:51:24 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/18 13:36:21 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,18 @@ void	clean_up_exit(t_game *game, char *message)
 {
 	// if (game->mlx)
 	// 	mlx_terminate(game->mlx);
+	printf("clean_up_exit()\n");
+	printf("game->file_copy is %p\n", game->file_copy);
 	if (game->file_copy)
+	{
+		printf("game->file_copy is not empty\n");
 		free_grid(game->file_copy);
+	}
 	if (game->map)
+	{
+		printf("game->map is not empty\n");
 		free_grid(game->map);
+	}
 	// if (game->img)
 	// 	free(game->img);
 	if (game)

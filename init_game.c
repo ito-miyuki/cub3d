@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/16 16:39:51 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/18 12:11:28 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ static void	init_map(t_game *game, char *map_file)
 		clean_up_exit(game, ": Failed to create map array");
 	if (game->file_copy[0] == NULL) // if the file is empty. it also when the file only has empty lines
 		clean_up_exit(game, ": file is empty");
-	// for (int j = 0; game->file_copy[j] != NULL; j++) // for testing
-	// 	printf("file cppy %d: %s\n", j, game->file_copy[j]); // for testing
 	parsing(game, map_file); // if it returns 1?
 	free_grid(game->file_copy);
 	map_validation(game, game->map);
@@ -69,7 +67,6 @@ void	init_game(t_game *game, char *map_file)
 {
 	init_map(game, map_file); // or free everything here instead of init_map() ?
 	//those below are not initialized yet
-	game->height = count_2darray_size(game->map);
 	game->width = get_longest(game->map);
 	get_position(game, game->map);
 }
