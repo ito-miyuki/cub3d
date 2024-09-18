@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 11:05:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 16:45:51 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,16 @@ int wall_hit(float x, float y, t_game *game)
 	map_y = floor(y / SQ_SIZE); //one grid square, indice where it's locaated 
 	map_x = floor(x / SQ_SIZE);
 	if(game->width <= map_x || game->height <= map_y)
+	{
+		// printf("1 hit wall in wall_hit\n");
 		return (1);
+	}
 	if (game->map[map_y] && map_x <= ft_strlen(game->map[map_y])) //making sure the coordinate exists
 		if (game->map[map_y][map_x] == '1')
+		{
+			// printf("2 hit wall in wall_hit\n");
 			return (1);
+		}
 	return (0);
 }
 
@@ -116,10 +122,11 @@ float	h_intersect(t_game *game, float angle)
 		x_step *= -1;
 	while (!wall_hit (x, y - move_ray, game))
 	{
-		// printf("wall hit\n");
+		
 		x += x_step;
 		y += y_step;
 	}
+	// printf("wall hit2\n");
 	game->raycast->h_inter_x = x;
 	game->raycast->h_inter_y = y;
 	// printf("h_inter x: %f\n", x);
@@ -151,6 +158,7 @@ float	v_intersect(t_game *game, float angle)
 		x += x_step;
 		y += y_step;
 	}
+	// printf("wall hit1\n");
 	game->raycast->v_inter_x = x;
 	game->raycast->v_inter_y = y;
 	// printf("distance for v_inter %f\n", sqrt(pow(x - game->raycast->p_x, 2) + pow(y - game->raycast->p_y, 2)));
