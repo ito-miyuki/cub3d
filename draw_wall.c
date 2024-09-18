@@ -6,40 +6,40 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 10:32:37 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 10:37:41 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
-{
+// void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
+// {
 
-    (void)wall_h;
-    while (upper_p <= lower_p) //wall_h < upper_h
-    {
-		if (game->raycast->is_horizon == 1)
-		{
-			if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI) //hitting south txture blue
-				mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
-					color(178, 255, 255));
-			else
-				mlx_put_pixel(game->canvas, game->raycast->index, upper_p, // NORTH purple
-					color(178, 130, 255));
-		}
-		else
-		{
-			if (game->raycast->ray_angle > PI / 2 && game->raycast->ray_angle < 3 * PI / 2) // east brown
-				mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
-					color(178, 130, 0));
-			else
-				mlx_put_pixel(game->canvas, game->raycast->index, upper_p, //west green
-					color(178, 255, 0));
-		}
-		upper_p++;
-	}
-}
-/*static mlx_texture_t *get_texture(t_game *game)
+//     (void)wall_h;
+//     while (upper_p <= lower_p) //wall_h < upper_h
+//     {
+// 		if (game->raycast->is_horizon == 1)
+// 		{
+// 			if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI) //hitting south txture blue
+// 				mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
+// 					color(178, 255, 255));
+// 			else
+// 				mlx_put_pixel(game->canvas, game->raycast->index, upper_p, // NORTH purple
+// 					color(178, 130, 255));
+// 		}
+// 		else
+// 		{
+// 			if (game->raycast->ray_angle > PI / 2 && game->raycast->ray_angle < 3 * PI / 2) // east brown
+// 				mlx_put_pixel(game->canvas, game->raycast->index, upper_p,
+// 					color(178, 130, 0));
+// 			else
+// 				mlx_put_pixel(game->canvas, game->raycast->index, upper_p, //west green
+// 					color(178, 255, 0));
+// 		}
+// 		upper_p++;
+// 	}
+// }
+static mlx_texture_t *get_texture(t_game *game)
 {
     // printf("game->so_texture is %p\n", game->so_texture);
     // printf("game->no_texture is %p\n", game->no_texture);
@@ -140,7 +140,7 @@ void    draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
         upper_p++;
         tex_y = 0;
     }
-}*/
+}
 /*if (vertical_intersection < horizontal_intersection) {
     // Vertical wall hit
     if (ray_dir_x > 0) {
