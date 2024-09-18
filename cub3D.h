@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 16:50:34 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/18 17:55:58 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <stdio.h> // for printf, delete it
 # include <math.h>
 
-# define WINDOW_WIDTH 2000// change it
-# define WINDOW_HEIGHT 2000 // change it
+# define WINDOW_WIDTH 1200// change it
+# define WINDOW_HEIGHT 1000 // change it
 # define PLAYER_SPEED 5
 # define ROTATE_SPEED 0.045
 # define SQ_SIZE 16

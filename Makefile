@@ -35,7 +35,7 @@ CC = cc
 
 HEADERS	= -I $(MLX_DIR)/include/MLX42
 
-CFLAGS = -Wall -Wextra -Werror -I./libft
+CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -I./libft
 
 RM = rm -f
 
