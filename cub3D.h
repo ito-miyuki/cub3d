@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 10:54:48 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/19 12:40:37 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,6 @@ void	find_angle(t_game *game);
 
 /*movement*/
 void	move_hook(void *data);
+void	mouse_movement(double xpos, double ypos, void *data);
 
 #endif

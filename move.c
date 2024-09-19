@@ -6,11 +6,12 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/09/17 11:04:17 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/19 13:47:28 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
 
 void	move_player(t_game *game, double move_x, double move_y)
 {
@@ -105,4 +106,20 @@ void	move_hook(void *data)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		rotate(game, 'R');
 	cast_rays(game);
+}
+void	mouse_movement(double xpos, double ypos, void *data)
+{
+	t_game *game = data;
+	static double old_pos;
+	
+	(void)ypos;
+	// mlx_get_mouse_pos(game->mlx, (int)xpos, (int32_t)ypos);
+	// printf("xpos: %f\n", xpos);
+	// printf("ypos: %f\n", old_pos);
+	if (xpos <= old_pos)
+		rotate(game, 'L');
+	else 
+		rotate(game, 'R');
+	old_pos = xpos;
+	//mlx cursor hook or find mouse position.
 }

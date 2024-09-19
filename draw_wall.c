@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 11:22:15 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/19 14:47:20 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void    draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 	if (y_o < 0)
 		y_o = 0;
 
-    while (upper_p <= lower_p)
+    while (upper_p < lower_p)
     {
 		tex_y = (int)y_o * texture->width + (int)x_o;
         mlx_put_pixel(game->canvas, game->raycast->index, upper_p, pixels[tex_y]);
@@ -209,9 +209,9 @@ void	render_wall(t_game *game, int ray)
 	double	upper_p;
 
     wall_h = 0;
-	game->raycast->distance *= cos(adjust_angle(game->raycast->player_angle- game->raycast->ray_angle));
+	game->raycast->distance *= cos(adjust_angle(game->raycast->player_angle - game->raycast->ray_angle));
 	// printf("distance %f\n", fabs(game->raycast->distance));
-	wall_h = fabs((SQ_SIZE / game->raycast->distance) * (WINDOW_WIDTH / 3) / tan(game->raycast->player_fov));
+	wall_h = fabs((SQ_SIZE / game->raycast->distance) * (WINDOW_WIDTH / 2) / tan(game->raycast->player_fov));
 	// printf("wall_h 1 in render wall %f\n", wall_h);
     lower_p = (WINDOW_HEIGHT / 2) + (wall_h / 2); //splits the screen in half and calcs the bottom wall
 	upper_p = (WINDOW_HEIGHT / 2) - (wall_h / 2); //top part of the screen
