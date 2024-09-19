@@ -141,7 +141,7 @@ void    draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 	double factor;
 	double x_o;
 	double y_o;
-	int tex_y;
+	//int tex_y;
 
 	texture = get_texture(game);
 	if (texture == NULL )
@@ -165,7 +165,7 @@ void    draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 	// printf("upper_p: %f\n", upper_p);
     while (upper_p < lower_p)
     {
-		tex_y = (int)y_o * texture->width + (int)x_o;
+		//tex_y = (int)y_o * texture->width + (int)x_o;
         mlx_put_pixel(game->canvas, game->raycast->index, upper_p, reverse_bytes(pixels[(int)y_o * texture->width + (int)x_o]));
 		// printf("pixels[tex_y]: %u\n", pixels[tex_y]);
 		// printf("game->raycast->index")

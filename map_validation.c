@@ -63,26 +63,19 @@ int map_validation(t_game *game, char **map)
 {
 	game->height = 0; // do I need it?
 	game->height = (size_t)count_2darray_size(game->map); // should I type cast?
+    get_position(game,game->map);
 	if (game->height < 3)
 	{
 		printf("game->heght is %zu\n", game->height);
 		clean_up_exit(game, "map is too small");
 	}
     if (!has_only_valid_chars(map))
-    {
-        ft_putendl_fd("map contains invalid char", 2);
-        exit(1); // exit is for testing. change it to free everything!
-    }
+        clean_up_exit(game, "map contains invalid char");
     if (!has_nsew_only_once(map))
-    {
-        ft_putendl_fd("map can contain NSEW only once", 2);
-        exit(1); // exit is for testing. change it to free everything!
-    }
+        clean_up_exit(game, "map can contain NSEW only once");
 	if (!is_map_closed(map))
-	{
-		ft_putendl_fd("map is not closed", 2);
-        exit(1); // exit is for testing. change it to free everything!
-	}
-    printf("Nice:D Map DOES NOT contain invalid char\n");
+		clean_up_exit(game, "map is not closed");
+    if (is_player_trapped(map, game->player_y, game->player_x))
+        clean_up_exit(game, ": player is trapped");
     return (0);
 }

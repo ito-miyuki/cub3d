@@ -130,6 +130,7 @@ void	clean_up_exit(t_game *game, char *message);
 int		parsing(t_game *game, char *map_file);
 int		set_ceiling_colors(t_game *game, char *color_str);
 int		set_floor_colors(t_game *game, char *color_str);
+int		is_player_trapped(char **map, int player_y, int player_x);
 
 /*raycasting*/
 void	math_to_display(void *game);

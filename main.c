@@ -26,7 +26,6 @@ int main(int argc, char **argv)
 	//	printf("Map line %d: %s\n", j, game->map[j]); // for testing
 	set_floor_colors(game, game->floor_rgb);
 	set_ceiling_colors(game, game->ceiling_rgb);
-	get_position(game,game->map);
 	if (run_game(game) == 1)
 	{
 		//do error handlings;

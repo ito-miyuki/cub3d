@@ -34,18 +34,21 @@ void	clean_up_exit(t_game *game, char *message)
 	// 	mlx_terminate(game->mlx);
 	if (game->file_copy)
 	{
-		// printf("game->file_copy is not empty\n");
+		printf("we free game->file_copy in clean_up_exit()\n");
 		free_grid(game->file_copy);
 	}
 	if (game->map)
 	{
-		printf("game->map is not empty\n");
+		printf("we free game->map in clean_up_exit()\n");
 		free_grid(game->map);
 	}
 	// if (game->img)
 	// 	free(game->img);
 	if (game)
+	{
+		printf("we free game in clean_up_exit()\n");
 		free(game);
+	}
 	if (message != NULL)
 	{
 		ft_putstr_fd("Error", 2);
