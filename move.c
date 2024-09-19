@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/09/19 13:47:28 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/19 15:49:20 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ void	move_player(t_game *game, double move_x, double move_y)
 	new_y = game->raycast->p_y + move_y;
 	map_x = new_x / SQ_SIZE;
 	map_y = new_y / SQ_SIZE;
+	// printf("map_y: %d\n", map_y);
+	// printf("map_x: %d\n", map_x);
+	// printf("new_x: %f\n", new_x);
+	// printf("map_x: %f\n", new_y);
 	if (game->map[map_y][map_x] != '1' && game->map[map_y][game->raycast->p_x / SQ_SIZE] != '1'
 		&& game->map[game->raycast->p_y / SQ_SIZE][map_x] != '1') //checking for wall collision
 	{
 		game->raycast->p_x = new_x;
 		game->raycast->p_y = new_y;
 	}
+	// printf("game->raycast->p_x: %d\n", game->raycast->p_x);
+	// printf("game->raycast->p_y: %d\n", game->raycast->p_y);
 }
 
 void	for_or_back(t_game *game, char key)
@@ -105,6 +111,7 @@ void	move_hook(void *data)
 		rotate(game, 'L');
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		rotate(game, 'R');
+	// printf("finished movement\n");
 	cast_rays(game);
 }
 void	mouse_movement(double xpos, double ypos, void *data)
