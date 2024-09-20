@@ -27,8 +27,7 @@ SRCS =    main.c \
 		raycasting.c \
 		run_game.c \
         set_map_info.c \
-		set_colors.c \
-		is_player_trapped.c
+		set_colors.c
 
 OBJS = $(SRCS:.c=.o)
 

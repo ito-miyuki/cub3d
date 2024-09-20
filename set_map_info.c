@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:17:27 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 12:08:02 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 09:52:36 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int set_path_color_info(char **map_info, char *path_str)
         ft_putendl_fd("ft_strdup() failed in set_path_color_info", 2);
         return(1);
     }
-    printf("Texture path is: %s\n", *map_info); // delete it
     return (0);
 }
 

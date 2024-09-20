@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 12:25:48 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 15:44:46 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ int map_validation(t_game *game, char **map)
 	if (game->height < 3)
 	{
 		printf("game->heght is %zu\n", game->height);
-		clean_up_exit(game, "map is too small");
+		clean_up_exit(game, ": map is too small");
 	}
     if (!has_only_valid_chars(map))
-        clean_up_exit(game, "map contains invalid char");
+		clean_up_exit(game, ": map contains invalid char");
     if (!has_nsew_only_once(map))
-        clean_up_exit(game, "map can contain NSEW only once");
-	if (!is_map_closed(map))
-		clean_up_exit(game, "map is not closed");
-    if (is_player_trapped(map, game->player_y, game->player_x))
-        clean_up_exit(game, ": player is trapped");
+		clean_up_exit(game, ": map can contain NSEW only once");
+	if (!is_map_closed(game, map, game->player_y, game->player_x))
+		clean_up_exit(game, ": map is not closed");
+    //if (is_player_trapped(map, game->player_y, game->player_x))
+	//	clean_up_exit(game, ": player is trapped");
     return (0);
 }

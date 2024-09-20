@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 17:55:58 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 15:27:07 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,10 @@ int		is_str_digit(char *str);
 long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
-int		is_map_closed(char **map);
+// int		is_map_closed(char **map);
+int is_map_closed(t_game *game, char **map, int player_y, int player_x);
 
 int		check_empty_line(t_game *game, char *map_file);
-void	clean_up_exit(t_game *game, char *message);
 int		parsing(t_game *game, char *map_file);
 int		set_ceiling_colors(t_game *game, char *color_str);
 int		set_floor_colors(t_game *game, char *color_str);
@@ -142,5 +142,8 @@ void	find_angle(t_game *game);
 
 /*movement*/
 void	move_hook(void *data);
+
+void	clean_up_exit(t_game *game, char *message);
+void	clean_up(t_game *game);
 
 #endif
