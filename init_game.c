@@ -6,21 +6,21 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 15:33:50 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 18:17:45 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static size_t    get_longest(char **map)
+static size_t	get_longest(char **map)
 {
-	size_t i;
-	size_t longest;
-	size_t current;
+	size_t	i;
+	size_t	longest;
+	size_t	current;
 
 	i = 0;
 	longest = 0;
-	while(map[i] != NULL)
+	while (map[i] != NULL)
 	{
 		current = ft_strlen(map[i]);
 		if (current > longest)
@@ -30,7 +30,7 @@ static size_t    get_longest(char **map)
 	return (longest);
 }
 
-static int is_extention_cub(char *file_name)
+static int	is_extention_cub(char *file_name)
 {
 	int		len;
 	char	*format;
@@ -67,7 +67,6 @@ static void	init_map(t_game *game, char *map_file)
 void	init_game(t_game *game, char *map_file)
 {
 	init_map(game, map_file); // or free everything here instead of init_map() ?
-	//those below are not initialized yet
 	game->width = get_longest(game->map);
 	get_position(game, game->map);
 }

@@ -6,16 +6,12 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:14:09 by mito              #+#    #+#             */
-/*   Updated: 2024/09/04 10:38:36 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 18:14:58 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/*
-has_nsew_only_once() has already made sure that there is one NSWE
-so no need error handling here for that case, I guess?
-*/
 void	get_position(t_game *game, char **map)
 {
 	size_t	x;
@@ -38,4 +34,3 @@ void	get_position(t_game *game, char **map)
 		y++;
 	}
 }
-

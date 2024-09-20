@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 15:44:46 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 16:21:52 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,5 @@ int map_validation(t_game *game, char **map)
 		clean_up_exit(game, ": map can contain NSEW only once");
 	if (!is_map_closed(game, map, game->player_y, game->player_x))
 		clean_up_exit(game, ": map is not closed");
-    //if (is_player_trapped(map, game->player_y, game->player_x))
-	//	clean_up_exit(game, ": player is trapped");
     return (0);
 }

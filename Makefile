@@ -27,7 +27,8 @@ SRCS =    main.c \
 		raycasting.c \
 		run_game.c \
         set_map_info.c \
-		set_colors.c
+		set_colors.c \
+		count_2darray_size.c
 
 OBJS = $(SRCS:.c=.o)
 

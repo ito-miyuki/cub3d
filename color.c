@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:37:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/05 11:56:41 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 17:39:18 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 //     return (255 << 24 | b << 16 | g << 8 | r); // BGRA: Blue, Green, Red, Alpha(255)
 // }
 
-uint32_t color(uint32_t r, uint32_t g, uint32_t b)
+uint32_t	color(uint32_t r, uint32_t g, uint32_t b)
 {
-    return (r << 24 | g << 16 | b << 8 | 255);
+	return (r << 24 | g << 16 | b << 8 | 255);
 }
-
-

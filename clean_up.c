@@ -6,41 +6,40 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:11:15 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 11:59:56 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 17:38:33 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-
-static void free_tex_color(t_game *game)
+static void	free_tex_color(t_game *game)
 {
-	if(game->no_tex_path)
+	if (game->no_tex_path)
 	{
 		printf("we game->no_tex_path in clean_up_exit()\n");
 		free(game->no_tex_path);
 	}
-	if(game->so_tex_path)
+	if (game->so_tex_path)
 	{
 		printf("we free game->so_tex_path in clean_up_exit()\n");
 		free(game->so_tex_path);
 	}
-	if(game->we_tex_path)
+	if (game->we_tex_path)
 	{
 		printf("we free game->we_tex_path in clean_up_exit()\n");
 		free(game->we_tex_path);
 	}
-	if(game->ea_tex_path)
+	if (game->ea_tex_path)
 	{
 		printf("we free game->ea_tex_path in clean_up_exit()\n");
 		free(game->ea_tex_path);
 	}
-	if(game->floor_rgb)
+	if (game->floor_rgb)
 	{
 		printf("we free game->floor_rgb in clean_up_exit()\n");
 		free(game->floor_rgb);
 	}
-	if(game->ceiling_rgb)
+	if (game->ceiling_rgb)
 	{
 		printf("we free game->ceiling_rgb in clean_up_exit()\n");
 		free(game->ceiling_rgb);
@@ -68,7 +67,6 @@ void	clean_up(t_game *game)
 		free(game);
 	}
 }
-
 
 void	clean_up_exit(t_game *game, char *message)
 {

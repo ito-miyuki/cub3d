@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 10:23:49 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 16:48:12 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ int main(int argc, char **argv)
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		print_error_exit("Malloc failed for game struct");
-	init_game(game, argv[1]);
-	//for (int j = 0; game->map[j] != NULL; j++) // for testing
-	//	printf("Map line %d: %s\n", j, game->map[j]); // for testing
-	set_floor_colors(game, game->floor_rgb);
-	set_ceiling_colors(game, game->ceiling_rgb);
+	init_game(game, argv[1]); // init struct
 	if (run_game(game) == 1)
 	{
 		//do error handlings;

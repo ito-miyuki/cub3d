@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   count_2darray_size.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/22 15:31:38 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 16:36:10 by mito             ###   ########.fr       */
+/*   Created: 2024/09/20 16:45:47 by mito              #+#    #+#             */
+/*   Updated: 2024/09/20 17:57:16 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	print_error(char *message)
+int	count_2darray_size(char **src)
 {
-	ft_putstr_fd("Error", 2);
-	if (message)
-		ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
-}
+	int	i;
 
-void	print_error_exit(char *message)
-{
-	ft_putstr_fd("Error", 2);
-	if (message)
-		ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
-	exit(1);
+	i = 0;
+	while (src[i] != NULL)
+		i++;
+	return (i);
 }

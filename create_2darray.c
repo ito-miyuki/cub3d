@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:09:02 by mito              #+#    #+#             */
-/*   Updated: 2024/09/16 16:29:24 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/20 18:12:20 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char	*read_map_from_file(int fd)
 	line_joint = ft_calloc(1, 1);
 	if (!line_joint)
 		return (NULL);
-
-	while ((new_line = get_next_line(fd)))
+	new_line = get_next_line(fd);
+	while (new_line)
 	{
 		temp = line_joint;
 		line_joint = ft_strjoin(line_joint, new_line);
@@ -34,7 +34,9 @@ static char	*read_map_from_file(int fd)
 		}
 		free(new_line);
 		free(temp);
+		new_line = get_next_line(fd);
 	}
+	// error handling is missing when new_line was NULL
 	return (line_joint);
 }
 
@@ -45,23 +47,33 @@ static char	*read_map(char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		print_error_exit(": read failed");
+	{
+		print_error(": read failed"); // change it
+		return (NULL);
+	}
 	map_string = read_map_from_file(fd);
 	close(fd);
 	return (map_string);
 }
 
-char **create_2darray(char *map_file)
+char	**create_2darray(char *map_file)
 {
 	char	*map_str;
 	char	**map_array;
 
 	map_str = read_map(map_file);
 	if (!map_str)
-		print_error_exit(": read map error");
+	{
+		print_error(": read map error");
+		return (NULL);
+		// print_error_exit(": read map error");
+	}
 	map_array = ft_split(map_str, '\n');
 	free(map_str);
 	if (!map_array)
+	{
+		return (NULL);
 		print_error_exit(": malloc failed");
+	}
 	return (map_array);
 }
