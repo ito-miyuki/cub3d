@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:59:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 17:22:24 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 12:02:51 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,12 @@ int	check_empty_line(t_game *game, char *map_file)
 		else if (ft_strncmp(new_line, "\n", 1) != 0 && empty == 1)
 		{
 			free(new_line);
-			close(fd);
+			close(fd); // add error handling
 			print_error(": empty line in map");
 			return (1);
 		}
 		free(new_line);
 	}
-	close(fd);
+	close(fd); // add error handling
 	return (0);
 }

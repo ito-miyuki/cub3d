@@ -28,7 +28,8 @@ SRCS =    main.c \
 		run_game.c \
         set_map_info.c \
 		set_colors.c \
-		count_2darray_size.c
+		count_2darray_size.c \
+		is_space.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -36,7 +37,7 @@ CC = cc
 
 HEADERS	= -I $(MLX_DIR)/include/MLX42
 
-CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror -I./libft
+CFLAGS = -g -Wall -Wextra -Werror -I./libft
 
 RM = rm -f
 

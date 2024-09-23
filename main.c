@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 16:48:12 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 10:24:36 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	t_game *game;
 
 	if (argc != 2)
-		print_error_exit(":  "); // think about better err msg
+		print_error_exit(": argc is wrong"); // think about better err msg
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		print_error_exit("Malloc failed for game struct");

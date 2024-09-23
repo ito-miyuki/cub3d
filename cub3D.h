@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 17:52:09 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 14:19:00 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int		parsing(t_game *game, char *map_file);
 int		set_ceiling_colors(t_game *game, char *color_str);
 int		set_floor_colors(t_game *game, char *color_str);
 //int		is_player_trapped(char **map, int player_y, int player_x);
+int		is_space(char c);
 
 /*raycasting*/
 void	math_to_display(void *game);

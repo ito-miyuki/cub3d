@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:00:29 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 16:11:33 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 16:44:50 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,40 @@ int is_map_closed(t_game *game, char **map, int player_y, int player_x)
 {
 	char **temp;
 	int	result;
+	int	x;
+	int	y;
 
+	(void)player_x;
+	(void)player_y;
+	(void)game;
 	result = 0;
+	x = 0;
+	y = 0;
+
 	temp = copy_2darray(map);
 	if (!temp)
 	{
 		free_grid(temp);
-		clean_up_exit(game, ": failed copy_2darray() in is map closed()");
+		ft_putendl_fd("failed copy_2darray() in is map closed()", 2);
+		return (0);
+		//clean_up_exit(game, ": failed copy_2darray() in is map closed()");
 	}
-	result = is_map_closed_recursive(temp, player_y, player_x);
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '0' && is_map_closed_recursive(temp, y, x) == 0)
+			{
+				free_grid(temp);
+				return (0);
+			}
+			x++;
+		}
+		y++;
+	}
 	free_grid(temp);
-    return (result);
+    return (1);
 }

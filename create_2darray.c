@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:09:02 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 18:12:20 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 12:02:55 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*read_map(char *map_file)
 		return (NULL);
 	}
 	map_string = read_map_from_file(fd);
-	close(fd);
+	close(fd); // add error handling
 	return (map_string);
 }
 

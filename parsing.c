@@ -6,11 +6,36 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:28:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 16:57:18 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 13:47:06 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static char **create_map(char **file_copy)
+{
+	char **map;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	map = copy_2darray(file_copy);
+	if(!map)
+		return (NULL);
+	while (file_copy[i] != NULL)
+	{
+		j = 0;
+		while (file_copy[i][j] != '\0')
+		{
+			if (file_copy[i][j] == ' ' || file_copy[i][j] == ' ')
+				map[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+	return (map);
+}
 
 static int	check_empty_map(char **file_copy)
 {
@@ -38,8 +63,10 @@ int	parsing(t_game *game, char *map_file)
 		clean_up_exit(game, ": file if empty)");  // should I say Map is empty?
 	if (check_empty_line(game, map_file) == 1)
 		clean_up_exit(game, NULL);
-	game->map = copy_2darray(game->file_copy + 6);
+	game->map = create_map(game->file_copy + 6);
 	if (game->map == NULL)
 		clean_up_exit(game, ": failed to create game->map array");
+	for (int i = 0; game->map[i] != NULL; i++) // delete it
+		printf("map after replce is '%s'\n", game->map[i]); // delete it
 	return (0);
 }
