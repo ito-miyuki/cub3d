@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/16 16:40:24 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/24 15:10:03 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	find_angle(game);
 	// mlx_key_hook(game->mlx, move_hook, game); // this will be for esc
 	mlx_loop_hook(game->mlx, math_to_display, game);
-	mlx_loop_hook(game->mlx, move_hook, game);
+	// mlx_loop_hook(game->mlx, move_hook, game);
 	mlx_loop(game->mlx);
 	free(game->map);
 	free(game);

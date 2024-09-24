@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 16:45:37 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/24 15:07:13 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static mlx_texture_t *get_texture(t_game *game)
 	// printf("game->so_texture is %p\n", game->so_texture);
 	// printf("game->no_texture is %p\n", game->no_texture);
 	// printf("game->we_texture is %p\n", game->we_texture);
-
+	game->raycast->ray_angle = adjust_angle(game->raycast->ray_angle);
     if (game->raycast->is_horizon == 1)
     {
         if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI)
@@ -166,7 +166,7 @@ void    draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
     while (upper_p < lower_p)
     {
 		tex_y = (int)y_o * texture->width + (int)x_o;
-        mlx_put_pixel(game->canvas, game->raycast->index, upper_p, reverse_bytes(pixels[(int)y_o * texture->width + (int)x_o]));
+        mlx_put_pixel(game->canvas, game->raycast->index, upper_p, reverse_bytes(pixels[tex_y]));
 		// printf("pixels[tex_y]: %u\n", pixels[tex_y]);
 		// printf("game->raycast->index")
         y_o += factor;

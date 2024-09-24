@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/18 16:50:34 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/24 15:10:57 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <stdio.h> // for printf, delete it
 # include <math.h>
 
-# define WINDOW_WIDTH 2000// change it
-# define WINDOW_HEIGHT 2000 // change it
+# define WINDOW_WIDTH 1000// change it
+# define WINDOW_HEIGHT 1000 // change it
 # define PLAYER_SPEED 5
 # define ROTATE_SPEED 0.045
 # define SQ_SIZE 16
@@ -140,6 +140,6 @@ void	cast_rays(t_game *game);
 void	find_angle(t_game *game);
 
 /*movement*/
-void	move_hook(void *data);
+void	move_hook(t_game *game);
 
 #endif

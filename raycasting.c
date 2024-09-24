@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 16:45:51 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/24 15:10:14 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ void	math_to_display(void *data) //void	math_to_display(void *dis)
 	t_game *game;
 
 	game = (t_game *) data;
-	//move_player
+	move_hook(game);
 	cast_rays(game);
 }
 
