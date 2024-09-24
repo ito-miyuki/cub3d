@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/24 10:06:10 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/24 16:50:05 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,46 +49,20 @@
 //for testing
 static mlx_texture_t *get_texture(t_game *game)
 {
-	// printf("game->so_texture is %p\n", game->so_texture);
-	// printf("game->no_texture is %p\n", game->no_texture);
-	// printf("game->we_texture is %p\n", game->we_texture);
-	// printf("before rayangle in get_texture: %f\n", game->raycast->ray_angle);
-	game->raycast->ray_angle = adjust_angle(game->raycast->ray_angle);
-	// printf("after rayangle in get_texture: %f\n", game->raycast->ray_angle);
+	// game->raycast->ray_angle = adjust_angle(game->raycast->ray_angle);
     if (game->raycast->is_horizon == 1)
     {
-       	if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI)
-		{
-			// printf("south player_angle: %f\n", game->raycast->player_angle);
-			// printf("south ray_angle: %f\n", game->raycast->ray_angle);
-			// printf("game->so_texture is %p\n", game->so_texture);
-			// printf("before return so text\n");
+       	if (game->raycast->ray_angle > WEST && game->raycast->ray_angle < EAST)
             return (game->so_texture);  // 南の壁 yunchia
-		}
         else
-		{
-			// printf("north player_angle: %f\n", game->raycast->player_angle);
-			// printf("north ray_angle: %f\n", game->raycast->ray_angle);
-			// printf("before return no text\n");
-			// printf("before player_angle: %f\n", game->raycast->player_angle);
-			// printf("game->no_texture is %p\n", game->no_texture);
             return (game->no_texture);  // 北の壁 starry night
-		}
     }
     else
     {
-
-		if (game->raycast->ray_angle > PI / 2 && game->raycast->ray_angle < 3 * PI / 2)
-		{
-			// printf("game->we_texture is %p\n", game->we_texture);
-			// printf("before return we text\n");
+		if (game->raycast->ray_angle > SOUTH && game->raycast->ray_angle < NORTH)
             return (game->ea_texture);   // 西の壁 sunset
-		}
         else
-		{
-			// printf("game->ea_texture is %p\n", game->ea_texture);
             return (game->we_texture);   // 東の壁  girl with the pearl
-		}
     }
 }
 
