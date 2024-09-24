@@ -124,14 +124,15 @@ long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 // int		is_map_closed(char **map);
-int is_map_closed(t_game *game, char **map, int player_y, int player_x);
+int is_map_closed(t_game *game, char **map);
 
 int		check_empty_line(t_game *game, char *map_file);
 int		parse_elements(t_game *game, char *map_file);
-int		set_ceiling_colors(t_game *game, char *color_str);
-int		set_floor_colors(t_game *game, char *color_str);
+void	set_ceiling_colors(t_game *game, char *color_str);
+void	set_floor_colors(t_game *game, char *color_str);
 //int		is_player_trapped(char **map, int player_y, int player_x);
-int		is_space(char c);
+int		has_space(char *str);
+int color_validation(char **color_split);
 
 /*raycasting*/
 void	math_to_display(void *game);

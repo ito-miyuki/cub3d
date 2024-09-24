@@ -17,7 +17,7 @@ SRCS =    main.c \
 		ft_atol.c \
 		is_map_closed.c \
 		check_empty_line.c \
-		parsing.c \
+		parse_elements.c \
 		clean_up.c \
 		init_game.c \
 		map_validation.c \
@@ -29,7 +29,8 @@ SRCS =    main.c \
         set_map_info.c \
 		set_colors.c \
 		count_2darray_size.c \
-		is_space.c
+		has_space.c \
+		color_validation.c
 
 OBJS = $(SRCS:.c=.o)
 

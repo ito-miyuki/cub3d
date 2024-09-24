@@ -68,8 +68,8 @@ static void	parse_file(t_game *game, char *map_file)
 void	init_game(t_game *game, char *map_file)
 {
 	parse_file(game, map_file); // or free everything here instead of init_map() ?
-	for (int i = 0; game->map[i] != NULL; i++) // delete it
-		printf("map is '%s'\n", game->map[i]); // delete it
+	// for (int i = 0; game->map[i] != NULL; i++) // delete it
+	// 	printf("map is '%s'\n", game->map[i]); // delete it
 	game->width = get_longest(game->map);
 	map_validation(game, game->map);
 	get_position(game, game->map);

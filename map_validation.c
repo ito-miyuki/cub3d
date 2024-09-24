@@ -73,7 +73,7 @@ int map_validation(t_game *game, char **map)
 		clean_up_exit(game, ": map contains invalid char");
     if (!has_nsew_only_once(map))
 		clean_up_exit(game, ": map can contain NSEW only once");
-	if (!is_map_closed(game, map, game->player_y, game->player_x))
+	if (!is_map_closed(game, map))
 		clean_up_exit(game, ": map is not closed");
     return (0);
 }

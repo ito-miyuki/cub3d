@@ -12,9 +12,13 @@
 
 #include "cub3D.h"
 
-int is_space(char c)
+int has_space(char *str)
 {
-	if (c == ' ' || c == '\t')
-		return (1);
-	return (3);
+	while (*str != '\0')
+	{
+		if (*str == ' ' || *str == '\t')
+			return (1);
+		str++;
+	}
+	return (0);
 }

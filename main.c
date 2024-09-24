@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		print_error_exit(": argc is wrong"); // think about better err msg
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
-		print_error_exit("Malloc failed for game struct");
+		print_error_exit(": Malloc failed for game struct");
 	init_game(game, argv[1]); // init struct
 	if (run_game(game) == 1)
 	{
