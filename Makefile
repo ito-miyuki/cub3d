@@ -37,7 +37,7 @@ CC = cc
 
 HEADERS	= -I $(MLX_DIR)/include/MLX42
 
-CFLAGS = -g -Wall -Wextra -Werror -I./libft
+CFLAGS = -Wall -Wextra -Werror -I./libft
 
 RM = rm -f
 

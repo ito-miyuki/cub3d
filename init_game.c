@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/23 13:31:51 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/24 10:18:57 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	is_extention_cub(char *file_name)
 	return (1);
 }
 
-static void	init_map(t_game *game, char *map_file)
+static void	parse_file(t_game *game, char *map_file)
 {
 	if (!is_extention_cub(map_file)) // should this one excuted earlier than malloc game?
 		clean_up_exit(game, ": Map file must be ***.cub");
@@ -58,7 +58,7 @@ static void	init_map(t_game *game, char *map_file)
 		clean_up_exit(game, ": Failed to create map array");
 	if (game->file_copy[0] == NULL) // if the file is empty. it also when the file only has empty lines
 		clean_up_exit(game, ": file is empty");
-	parsing(game, map_file); // if it returns 1?
+	parse_elements(game, map_file); // if it returns 1?
 	for (int i = 0; game->file_copy[i] != NULL; i++) // delete it
 		printf("file_copy is '%s'\n", game->file_copy[i]); // delete it
 	free_grid(game->file_copy);
@@ -67,7 +67,7 @@ static void	init_map(t_game *game, char *map_file)
 
 void	init_game(t_game *game, char *map_file)
 {
-	init_map(game, map_file); // or free everything here instead of init_map() ?
+	parse_file(game, map_file); // or free everything here instead of init_map() ?
 	for (int i = 0; game->map[i] != NULL; i++) // delete it
 		printf("map is '%s'\n", game->map[i]); // delete it
 	game->width = get_longest(game->map);

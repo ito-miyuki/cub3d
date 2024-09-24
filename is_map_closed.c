@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:00:29 by mito              #+#    #+#             */
-/*   Updated: 2024/09/23 16:44:50 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/23 16:47:38 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ static int is_map_closed_recursive(char **map, int player_y, int player_x)
 int is_map_closed(t_game *game, char **map, int player_y, int player_x)
 {
 	char **temp;
-	int	result;
+	int	result; //delete it
 	int	x;
 	int	y;
 
-	(void)player_x;
-	(void)player_y;
-	(void)game;
-	result = 0;
+	(void)player_x; // delete it
+	(void)player_y; //delete it
+	(void)game; //delete it
+	result = 0; //delete it
 	x = 0;
 	y = 0;
 

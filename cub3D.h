@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/23 14:19:00 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/24 12:03:12 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ typedef struct s_raycast
 	int		index;
 }	t_raycast;
 
-typedef struct s_img
-{
-	mlx_image_t	*north;
-	mlx_image_t	*item;
-	mlx_image_t	*floor;
-	mlx_image_t	*grass;
-	mlx_image_t	*exit;
-	mlx_image_t	*moves_print;
-	mlx_image_t	*moves_nbr;
-}	t_img;
+// typedef struct s_img
+// {
+// 	mlx_image_t	*north;
+// 	mlx_image_t	*item;
+// 	mlx_image_t	*floor;
+// 	mlx_image_t	*grass;
+// 	mlx_image_t	*exit;
+// 	mlx_image_t	*moves_print;
+// 	mlx_image_t	*moves_nbr;
+// }	t_img;
 
 
 typedef struct s_game
@@ -127,7 +127,7 @@ uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
 int is_map_closed(t_game *game, char **map, int player_y, int player_x);
 
 int		check_empty_line(t_game *game, char *map_file);
-int		parsing(t_game *game, char *map_file);
+int		parse_elements(t_game *game, char *map_file);
 int		set_ceiling_colors(t_game *game, char *color_str);
 int		set_floor_colors(t_game *game, char *color_str);
 //int		is_player_trapped(char **map, int player_y, int player_x);

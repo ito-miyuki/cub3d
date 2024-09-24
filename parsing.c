@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:28:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/23 13:47:06 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/24 10:17:33 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_empty_map(char **file_copy)
 	return (0); // change it to free something
 }
 
-int	parsing(t_game *game, char *map_file)
+int	parse_elements(t_game *game, char *map_file)
 {
 	game->info_flags = ft_calloc(1, sizeof(t_flags)); // is this correct?
 	if (game->info_flags == NULL)
