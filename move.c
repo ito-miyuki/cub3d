@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/09/19 15:49:20 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/23 16:20:09 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	left_or_right(t_game *game, char key)
 
 	move_x = 0;
 	move_y = 0;
+	// printf("player_angle: %f\n", game->raycast->player_angle);
 	if (key == 'A')
 	{
 		move_x = sin(game->raycast->player_angle) * PLAYER_SPEED;
@@ -82,23 +83,32 @@ void	rotate(t_game *game, char key)
 {
 	if (key == 'L')
 	{
+		// printf("b4 rotate player_angle: %f\n", game->raycast->player_angle);
 		game->raycast->player_angle -= ROTATE_SPEED;
-		if (game->raycast->player_angle < 0)
+		// printf("before player_angle: %f\n", game->raycast->player_angle);
+		if (game->raycast->player_angle <= 0)
+		{
+			
 			game->raycast->player_angle += 2 * PI;
+			// printf("after: %f\n", game->raycast->player_angle);
+			// game->raycast->ray_angle += 2 * PI;
+			// printf("ray_angle: %f\n", game->raycast->ray_angle);
+		}
+		// game->raycast->player_angle -= ROTATE_SPEED;
 	}
 	if (key == 'R')
 	{
 		game->raycast->player_angle += ROTATE_SPEED;
-		if (game->raycast->player_angle > 2 * PI)
+		if (game->raycast->player_angle >= 2 * PI)
 			game->raycast->player_angle -= 2 * PI;
 	}
 }
 
-void	move_hook(void *data)
+void	move_hook(t_game *game)
 {
-	t_game	*game;
+	// t_game	*game;
 	
-	game = (t_game *)data;
+	// game = (t_game *)data;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
 		for_or_back(game, 'W');
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
@@ -112,7 +122,8 @@ void	move_hook(void *data)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		rotate(game, 'R');
 	// printf("finished movement\n");
-	cast_rays(game);
+	// printf("after: %f\n", game->raycast->player_angle);
+	// cast_rays(game);
 }
 void	mouse_movement(double xpos, double ypos, void *data)
 {

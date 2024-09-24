@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/18 16:45:51 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/23 16:01:57 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	find_angle(t_game *game)
 	if (game->map[game->player_y][game->player_x] == 'S')
 		game->raycast->player_angle = PI / 2;
 	if (game->map[game->player_y][game->player_x] == 'W' )
-		game->raycast->player_angle = PI;
-	if (game->map[game->player_y][game->player_x] == 'E')
 		game->raycast->player_angle = 0;
+	if (game->map[game->player_y][game->player_x] == 'E')
+		game->raycast->player_angle = PI;
 	game->raycast->p_x = (game->player_x * SQ_SIZE) + SQ_SIZE / 2; //place player in the middle of the sq
 	game->raycast->p_y = (game->player_y * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->player_fov = (FOV * PI / 180);
@@ -37,12 +37,18 @@ int	check_ray_dir(float angle, char c)
 	if (c == 'x')
 	{
 		if (angle > 0 && angle < PI) //headed south
+		{
+			// printf("facing south\n");
 			return (1);
+		}
 	}
 	else if (c == 'y')
 	{
 		if (angle > PI / 2 && angle < 3 * PI / 2) //headed east
+		{
+			// printf("facing east\n");
 			return (1);
+		}
 	}
 	return (0);
 }
@@ -104,8 +110,8 @@ float	h_intersect(t_game *game, float angle)
 	int	move_ray;
 
 	// printf("before angle: %f\n", angle);
-	if (angle == 0)
-		angle = 0.00001;
+	// if (angle == 0)
+	// 	angle = 0.00001;
 	x_step = SQ_SIZE / tan(angle);
 	y_step = SQ_SIZE;
 	y = floor(game->raycast->p_y / SQ_SIZE) * SQ_SIZE; //nearest horizontal line below player's y position.
@@ -204,7 +210,7 @@ void	cast_rays(t_game *game)
 		// printf("player_fov: %d\n", game->raycast->player_fov);
 		// printf("adjustment: %f\n", game->raycast->player_fov / WINDOW_WIDTH);
 		game->raycast->ray_angle += (game->raycast->player_fov / WINDOW_WIDTH);
-		// printf("player_angle: %f\n", game->raycast->player_angle);
+		// printf("cast ray player_angle: %f\n", game->raycast->player_angle);
 		// printf("after ray_angle: %f\n", game->raycast->ray_angle);
 	}
 }
@@ -214,7 +220,9 @@ void	math_to_display(void *data) //void	math_to_display(void *dis)
 	t_game *game;
 
 	game = (t_game *) data;
-	//move_player
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(game->mlx);
+	move_hook(game);
 	cast_rays(game);
 }
 
