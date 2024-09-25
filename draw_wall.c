@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 11:18:56 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 12:03:29 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static double get_x_offset(mlx_texture_t *texture, t_game *game)
 {
 	double x_offset;
 
-	if (game->raycast->is_horizon == 1) // 水平方向の壁に当たった場合 
+	if (game->raycast->is_horizon == 1) // 水平方向の壁に当たった場合
 	{
 		x_offset = (int)fmodf((game->raycast->h_inter_x * (texture->width / SQ_SIZE)), texture->width);
 	}

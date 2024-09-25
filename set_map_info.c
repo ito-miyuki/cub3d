@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:17:27 by mito              #+#    #+#             */
-/*   Updated: 2024/09/16 16:49:14 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/25 09:49:00 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static int set_path_color_info(char **map_info, char *path_str)
         ft_putendl_fd("ft_strdup() failed in set_path_color_info", 2);
         return(1);
     }
-    // printf("Texture path is: %s\n", *map_info); // delete it
     return (0);
 }
 
-int	set_map_info(t_game *game, char **file_copy)
+int	set_map_info(t_game *game, char **file_copy) // this is for saving the path to the struct
 {
 	int i;
 	int j;

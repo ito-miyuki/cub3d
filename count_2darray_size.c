@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   count_2darray_size.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 16:58:00 by mito              #+#    #+#             */
-/*   Updated: 2024/08/28 14:57:59 by mito             ###   ########.fr       */
+/*   Created: 2024/09/20 16:45:47 by mito              #+#    #+#             */
+/*   Updated: 2024/09/20 17:57:16 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_HPP
-# define VECTOR_HPP
+#include "cub3D.h"
 
-# include <stdlib.h>
-
-typedef struct s_vector
+int	count_2darray_size(char **src)
 {
-	char	**map_data; // a pointer to data array
-	size_t	used_node; // number of current elements that is stored
-	size_t	max_size; // max size of the map vector
-}	t_vector;
+	int	i;
 
-t_vector	*init_vector(size_t max_size);
-
-
-#endif
+	i = 0;
+	while (src[i] != NULL)
+		i++;
+	return (i);
+}
