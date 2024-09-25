@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/23 16:01:57 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 09:28:06 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	find_angle(t_game *game)
 
 int	check_ray_dir(float angle, char c)
 {
+	// void(c);
 	if (c == 'x')
 	{
 		if (angle > 0 && angle < PI) //headed south
@@ -46,11 +47,20 @@ int	check_ray_dir(float angle, char c)
 	{
 		if (angle > PI / 2 && angle < 3 * PI / 2) //headed east
 		{
-			// printf("facing east\n");
+			// if (x_step > 0)
 			return (1);
 		}
 	}
 	return (0);
+	// have to check if x or y.then it will need to be flipped accordingly.
+	// if (angle > WEST && angle < SOUTH)
+	// 	return (0);
+	// else if (angle < SOUTH && angle > EAST)
+	// 	return (1);
+	// else if (angle > EAST && angle < NORTH)
+	// 	return (1)
+	// else if (angle < NORTH && angle > 2 * PI)
+	// 	return (0);
 }
 
 int wall_hit(float x, float y, t_game *game)
