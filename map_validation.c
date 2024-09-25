@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:18:56 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 14:53:15 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	map_validation(t_game *game, char **map)
 	if (!has_only_valid_chars(map))
 		clean_up_exit(game, ": map contains invalid char");
 	if (!has_nsew_only_once(map))
-		clean_up_exit(game, ": map can contain NSEW only once");
+		clean_up_exit(game, ": map can only contain NSEW once");
 	if (!is_map_closed(game, map))
 		clean_up_exit(game, ": map is not closed");
 	return (0);

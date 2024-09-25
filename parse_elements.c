@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:28:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:56:47 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 14:57:48 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	parse_elements(t_game *game, char *map_file)
 	set_floor_colors(game, game->floor_rgb);
 	set_ceiling_colors(game, game->ceiling_rgb);
 	if (check_empty_map(game->file_copy) == 1)
-		clean_up_exit(game, ": file if empty)"); // should I say Map is empty?
+		clean_up_exit(game, ": map is empty"); // should I say Map is empty?
 	if (check_empty_line(game, map_file) == 1)
 		clean_up_exit(game, NULL);
 	game->map = create_map(game->file_copy + 6);
