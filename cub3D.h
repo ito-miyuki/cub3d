@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 12:58:45 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 13:02:11 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ typedef struct s_raycast
 	int		index;
 }	t_raycast;
 
-typedef struct s_img
-{
-	mlx_image_t	*north;
-	mlx_image_t	*item;
-	mlx_image_t	*floor;
-	mlx_image_t	*grass;
-	mlx_image_t	*exit;
-	mlx_image_t	*moves_print;
-	mlx_image_t	*moves_nbr;
-}	t_img;
+// typedef struct s_img
+// {
+// 	mlx_image_t	*north;
+// 	mlx_image_t	*item;
+// 	mlx_image_t	*floor;
+// 	mlx_image_t	*grass;
+// 	mlx_image_t	*exit;
+// 	mlx_image_t	*moves_print;
+// 	mlx_image_t	*moves_nbr;
+// }	t_img;
 
 typedef struct s_game
 {
@@ -122,13 +122,16 @@ int		is_str_digit(char *str);
 long	ft_atol(const char *str);
 //unsigned int	color(int r, int g, int b, int a);
 uint32_t	color(uint32_t r, uint32_t g, uint32_t b);
-int		is_map_closed(char **map);
+// int		is_map_closed(char **map);
+int is_map_closed(t_game *game, char **map);
 
 int		check_empty_line(t_game *game, char *map_file);
-void	clean_up_exit(t_game *game, char *message);
-int		parsing(t_game *game, char *map_file);
-int		set_ceiling_colors(t_game *game, char *color_str);
-int		set_floor_colors(t_game *game, char *color_str);
+int		parse_elements(t_game *game, char *map_file);
+void	set_ceiling_colors(t_game *game, char *color_str);
+void	set_floor_colors(t_game *game, char *color_str);
+//int		is_player_trapped(char **map, int player_y, int player_x);
+int		has_space(char *str);
+int color_validation(char **color_split);
 
 /*raycasting*/
 void	math_to_display(void *game);
@@ -146,5 +149,8 @@ void	move_player(t_game *game, double move_x, double move_y);
 void	for_or_back(t_game *game, char key);
 void	left_or_right(t_game *game, char key);
 void	rotate(t_game *game, char key);
+
+void	clean_up_exit(t_game *game, char *message);
+void	clean_up(t_game *game);
 
 #endif
