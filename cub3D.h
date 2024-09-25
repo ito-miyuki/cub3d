@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/24 15:10:57 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 11:20:39 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 # define WINDOW_WIDTH 1000// change it
 # define WINDOW_HEIGHT 1000 // change it
-# define PLAYER_SPEED 5
+# define PLAYER_SPEED 3
 # define ROTATE_SPEED 0.045
-# define SQ_SIZE 16
+# define SQ_SIZE 64
 # define PI 3.14159265
 # define FOV 60
 
@@ -135,11 +135,13 @@ int		set_floor_colors(t_game *game, char *color_str);
 void	math_to_display(void *game);
 void	render_wall(t_game *game, int ray);
 float	adjust_angle(double angle);
-int		wall_hit(float x, float y, t_game *game);
+// int		wall_hit(float x, float y, t_game *game);
 void	cast_rays(t_game *game);
 void	find_angle(t_game *game);
+float	distance(t_game *game,float x, float y);
 
 /*movement*/
 void	move_hook(t_game *game);
+void	mouse_movement(double xpos, double ypos, void *data);
 
 #endif

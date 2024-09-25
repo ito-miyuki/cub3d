@@ -6,16 +6,12 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:53:43 by alli              #+#    #+#             */
-/*   Updated: 2024/09/17 10:17:14 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 09:56:16 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-//  cos(x), sin(x), and tan(x) return the cosine, sine and tangent of x,
-    //  respectively.  Note that x is interpreted as specifying an angle in
-    //  radians.
-     
 float  adjust_angle(double angle)
 {
     if (angle < 0)
@@ -31,10 +27,14 @@ float  adjust_angle(double angle)
 	return (angle);
 }
 
-// float adjust_angle(double *angle)
-// {
-//     *angle = fmod(*angle, 2 * PI);
-//     if (*angle < 0)
-//         *angle += 2 * PI;
-//     return (float)(*angle);
-// }
+float	distance(t_game *game,float x, float y)
+{
+	float	new_x;
+	float	new_y;
+	float	distance;
+
+	new_x = x - game->raycast->p_x;
+	new_y = y - game->raycast->p_y;
+	distance = sqrt(pow(new_x, 2) + (pow(new_y, 2)));
+	return (distance);
+}
