@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 11:59:40 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 12:58:45 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct s_img
 	mlx_image_t	*moves_print;
 	mlx_image_t	*moves_nbr;
 }	t_img;
-
 
 typedef struct s_game
 {
