@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/24 10:18:57 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/25 13:27:32 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,12 @@ static void	parse_file(t_game *game, char *map_file)
 {
 	if (!is_extention_cub(map_file)) // should this one excuted earlier than malloc game?
 		clean_up_exit(game, ": Map file must be ***.cub");
-	game->file_copy = create_2darray(map_file); // copy everything without empty lines
+	game->file_copy = create_2darray(map_file);
 	if (game->file_copy == NULL)
 		clean_up_exit(game, ": Failed to create map array");
-	if (game->file_copy[0] == NULL) // if the file is empty. it also when the file only has empty lines
+	if (game->file_copy[0] == NULL)
 		clean_up_exit(game, ": file is empty");
 	parse_elements(game, map_file); // if it returns 1?
-	for (int i = 0; game->file_copy[i] != NULL; i++) // delete it
-		printf("file_copy is '%s'\n", game->file_copy[i]); // delete it
 	free_grid(game->file_copy);
 	game->file_copy = NULL;
 }
@@ -68,8 +66,6 @@ static void	parse_file(t_game *game, char *map_file)
 void	init_game(t_game *game, char *map_file)
 {
 	parse_file(game, map_file); // or free everything here instead of init_map() ?
-	// for (int i = 0; game->map[i] != NULL; i++) // delete it
-	// 	printf("map is '%s'\n", game->map[i]); // delete it
 	game->width = get_longest(game->map);
 	map_validation(game, game->map);
 	get_position(game, game->map);

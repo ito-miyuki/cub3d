@@ -11,6 +11,7 @@ SRCS =    main.c \
 		color.c \
 		copy_2darray.c \
 		create_2darray.c \
+		draw_wall_utils.c \
 		draw_wall.c \
 		free_grid.c \
 		get_position.c \
@@ -24,10 +25,10 @@ SRCS =    main.c \
 		math_utils.c \
 		move.c \
 		move_direction.c \
-        print_error.c \
+		print_error.c \
 		raycasting.c \
 		run_game.c \
-        set_map_info.c \
+		set_map_info.c \
 		set_colors.c \
 		count_2darray_size.c \
 		has_space.c \

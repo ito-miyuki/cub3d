@@ -12,9 +12,9 @@
 
 #include "cub3D.h"
 
-static int count_char(char *str, char c)
+static int	count_char(char *str, char c)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*str != '\0')
@@ -28,10 +28,9 @@ static int count_char(char *str, char c)
 
 void	set_floor_colors(t_game *game, char *color_str)
 {
-	char **color_split;
-	//uint32_t rgb[3];
-	int rgb[3];
-	int i;
+	char	**color_split;
+	int		rgb[3];
+	int		i;
 
 	i = 0;
 	if (count_char(color_str, ',') != 2)
@@ -62,10 +61,9 @@ void	set_floor_colors(t_game *game, char *color_str)
 
 void	set_ceiling_colors(t_game *game, char *color_str)
 {
-	char **color_split;
-	//uint32_t rgb[3];
-	int rgb[3];
-	int i;
+	char	**color_split;
+	int		rgb[3];
+	int		i;
 
 	i = 0;
 	if (count_char(color_str, ',') != 2)

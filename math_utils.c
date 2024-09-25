@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:53:43 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 12:55:32 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 13:32:19 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,17 @@ float	distance(t_game *game, float x, float y)
 	new_y = y - game->raycast->p_y;
 	distance = sqrt(pow(new_x, 2) + (pow(new_y, 2)));
 	return (distance);
+}
+
+double get_x_offset(mlx_texture_t *texture, t_game *game)
+{
+	double x_offset;
+
+	if (game->raycast->is_horizon == 1)
+	{
+		x_offset = (int)fmodf((game->raycast->h_inter_x * (texture->width / SQ_SIZE)), texture->width);
+	}
+	else
+		x_offset = (int)fmodf((game->raycast->v_inter_y * (texture->width / SQ_SIZE)), texture->width);
+	return (x_offset);
 }

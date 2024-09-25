@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 12:04:18 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/25 13:53:50 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game *game;
+	t_game	*game;
 
 	if (argc != 2)
 		print_error_exit(": argc is wrong"); // think about better err msg
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	}
 	game->raycast = malloc(sizeof(t_raycast));
 	if (!game->raycast)
-		return (1);
+		return (1); //print error or cleanup
 	find_angle(game);
 	mlx_loop_hook(game->mlx, math_to_display, game);
 	mlx_cursor_hook(game->mlx, &mouse_movement, game);
