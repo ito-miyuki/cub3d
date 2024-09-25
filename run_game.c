@@ -6,14 +6,15 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 11:12:30 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 11:52:39 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	delete_texture(t_game *game)
+void	delete_texture(t_game *game, char *message)
 {
+	ft_putendl_fd(message, 2);
 	if (game->no_texture)
 		mlx_delete_texture(game->no_texture);
 	if (game->so_texture)
@@ -24,33 +25,30 @@ void	delete_texture(t_game *game)
 		mlx_delete_texture(game->we_texture);
 }
 
-static int load_texture(t_game *game)
+static int	load_texture(t_game *game)
 {
 	game->no_texture = mlx_load_png(game->no_tex_path);
 	if (!game->no_texture)
 	{
-		ft_putendl_fd("NO texture load fail\n", 2);
+		delete_texture(game, "NO texture load fail\n");
 		return (-1);
 	}
 	game->so_texture = mlx_load_png(game->so_tex_path);
 	if (!game->so_texture)
 	{
-		ft_putendl_fd("SO texture load fail\n", 2);
-		delete_texture(game);
+		delete_texture(game, "SO texture load fail\n");
 		return (-1);
 	}
 	game->we_texture = mlx_load_png(game->we_tex_path);
 	if (!game->we_texture)
 	{
-		ft_putendl_fd("WE texture load fail\n", 2);
-		delete_texture(game);
+		delete_texture(game, "WE texture load fail\n");
 		return (-1);
 	}
 	game->ea_texture = mlx_load_png(game->ea_tex_path);
 	if (!game->ea_texture)
 	{
-		ft_putendl_fd("EA texture load fail\n", 2);
-		delete_texture(game);
+		delete_texture(game, "EA texture load fail\n");
 		return (-1);
 	}
 	return (0);
@@ -58,7 +56,7 @@ static int load_texture(t_game *game)
 
 void	find_angle(t_game *game)
 {
-	if (game->map[game->player_y][game->player_x]  == 'N')
+	if (game->map[game->player_y][game->player_x] == 'N')
 		game->raycast->player_angle = NORTH;
 	if (game->map[game->player_y][game->player_x] == 'S')
 		game->raycast->player_angle = SOUTH;
@@ -71,7 +69,7 @@ void	find_angle(t_game *game)
 	game->raycast->player_fov = (FOV * PI / 180);
 }
 
-int run_game(t_game *game) // change the function name
+int	run_game(t_game *game)
 {
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
 	if (!game->mlx)
@@ -88,7 +86,7 @@ int run_game(t_game *game) // change the function name
 
 void	math_to_display(void *data)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *) data;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))

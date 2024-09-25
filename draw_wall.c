@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 10:49:23 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 11:45:11 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static double get_x_offset(mlx_texture_t *texture, t_game *game)
 {
 	double x_offset;
 
-	if (game->raycast->is_horizon == 1) // 水平方向の壁に当たった場合 
+	if (game->raycast->is_horizon == 1)
 	{
 		x_offset = (int)fmodf((game->raycast->h_inter_x * (texture->width / SQ_SIZE)), texture->width);
 	}
-	else // 垂直方向の壁に当たった場合
+	else
 		x_offset = (int)fmodf((game->raycast->v_inter_y * (texture->width / SQ_SIZE)), texture->width);
 	return (x_offset);
 }
@@ -87,7 +87,7 @@ void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
     }
 }
 
-void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p) // double wall_h
+void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p)
 {
 	uint32_t ceil;
 

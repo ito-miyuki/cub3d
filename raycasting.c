@@ -6,13 +6,13 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 10:28:55 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 11:54:48 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int wall_hit(float x, float y, t_game *game)
+static int	wall_hit(float x, float y, t_game *game)
 {
 	size_t	map_y;
 	size_t	map_x;
@@ -21,7 +21,7 @@ static int wall_hit(float x, float y, t_game *game)
 		return (1);
 	map_y = floor(y / SQ_SIZE);
 	map_x = floor(x / SQ_SIZE);
-	if(game->width <= map_x || game->height <= map_y)
+	if (game->width <= map_x || game->height <= map_y)
 		return (1);
 	if (game->map[map_y] && map_x <= ft_strlen(game->map[map_y]))
 		if (game->map[map_y][map_x] == '1')
@@ -58,7 +58,7 @@ static float	h_intersect(t_game *game, float angle)
 	float	y_step;
 	float	x;
 	float	y;
-	int	move_ray;
+	int		move_ray;
 
 	if (angle == 0)
 		angle = 0.00001;
@@ -68,8 +68,8 @@ static float	h_intersect(t_game *game, float angle)
 	move_ray = move_ray_dir(angle, &y, &y_step, 0);
 	x = game->raycast->p_x + (y - game->raycast->p_y) / tan(angle);
 	if (angle > SOUTH && angle < NORTH)
-        x_step = -fabs(x_step);
-    else
+		x_step = -fabs(x_step);
+	else
 		x_step = fabs(x_step);
 	while (!wall_hit (x, y - move_ray, game))
 	{
@@ -88,7 +88,7 @@ static float	v_intersect(t_game *game, float angle)
 	float	x;
 	float	y;
 	int		move_ray;
-	
+
 	if (angle == 0)
 		angle = 0.00001;
 	x_step = SQ_SIZE;
@@ -96,10 +96,10 @@ static float	v_intersect(t_game *game, float angle)
 	x = floor(game->raycast->p_x / SQ_SIZE) * SQ_SIZE;
 	move_ray = move_ray_dir(angle, &x, &x_step, 1);
 	y = game->raycast->p_y + (x - game->raycast->p_x) * tan(angle);
-	if (angle > WEST && angle < EAST)  // Moving left
-        y_step = fabs(y_step);
-    else
-		y_step = -fabs(y_step);	
+	if (angle > WEST && angle < EAST)
+		y_step = fabs(y_step);
+	else
+		y_step = -fabs(y_step);
 	while (!wall_hit(x - move_ray, y, game))
 	{
 		x += x_step;
@@ -117,7 +117,8 @@ void	cast_rays(t_game *game)
 	int		ray;
 
 	ray = 0;
-	game->raycast->ray_angle = game->raycast->player_angle - (game->raycast->player_fov / 2);
+	game->raycast->ray_angle = game->raycast->player_angle
+		- (game->raycast->player_fov / 2);
 	while (ray < WINDOW_WIDTH)
 	{
 		game->raycast->ray_angle = adjust_angle(game->raycast->ray_angle);
@@ -136,4 +137,3 @@ void	cast_rays(t_game *game)
 		game->raycast->ray_angle += (game->raycast->player_fov / WINDOW_WIDTH);
 	}
 }
-

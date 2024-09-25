@@ -23,6 +23,7 @@ SRCS =    main.c \
 		map_validation.c \
 		math_utils.c \
 		move.c \
+		move_direction.c \
         print_error.c \
 		raycasting.c \
 		run_game.c \

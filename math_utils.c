@@ -6,28 +6,28 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:53:43 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 09:56:16 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 12:55:32 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-float  adjust_angle(double angle)
+float	adjust_angle(double angle)
 {
-    if (angle < 0)
+	if (angle < 0)
 	{
-        angle += 2 * PI;
+		angle += 2 * PI;
 		return (angle);
 	}
-    if (angle > 2 * PI)
+	if (angle > 2 * PI)
 	{
-        angle -= 2 * PI;
+		angle -= 2 * PI;
 		return (angle);
 	}
 	return (angle);
 }
 
-float	distance(t_game *game,float x, float y)
+float	distance(t_game *game, float x, float y)
 {
 	float	new_x;
 	float	new_y;

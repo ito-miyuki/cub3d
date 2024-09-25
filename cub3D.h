@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 10:36:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/25 11:59:40 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,9 @@ float	distance(t_game *game,float x, float y);
 /*movement*/
 void	move_hook(t_game *game);
 void	mouse_movement(double xpos, double ypos, void *data);
+void	move_player(t_game *game, double move_x, double move_y);
+void	for_or_back(t_game *game, char key);
+void	left_or_right(t_game *game, char key);
+void	rotate(t_game *game, char key);
 
 #endif
