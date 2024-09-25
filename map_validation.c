@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 16:21:52 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/25 09:48:02 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ static  int has_only_valid_chars(char **map)
     {
         while (map[i][j] != '\0')
         {
-            if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ' && map[i][j] != '\t'
-                    && map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W')
+            if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' '
+				&& map[i][j] != '\t' && map[i][j] != 'N' && map[i][j] != 'S'
+				&& map[i][j] != 'E' && map[i][j] != 'W')
                 return (0);
             j++;
         }

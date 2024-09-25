@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/24 10:09:11 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/25 10:11:01 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int argc, char **argv)
 	mlx_loop_hook(game->mlx, math_to_display, game);
 	mlx_loop_hook(game->mlx, move_hook, game);
 	mlx_loop(game->mlx);
+	free(game->raycast); // it it temporary solution
 	clean_up(game);
 	return (0);
 }
