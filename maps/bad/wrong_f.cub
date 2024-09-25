@@ -3,8 +3,8 @@ SO textures/yunchia.png
 WE textures/lempi.png
 EA textures/miyuki.png
 
-C 60,179,
-F 10,89,90
+C 60,179,78
+F 10,89,
 
         11111111111111111111111111
         100000000011100000000000001
