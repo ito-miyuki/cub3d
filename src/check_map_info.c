@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:48:21 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 14:32:06 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/26 15:44:19 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,34 @@ static void	init_flags(t_flags *flags)
 	flags->all_flags = 0;
 }
 
+// work in progress. to print correct message
+// int	check_map_info(char **map, t_flags *flags)
+// {
+// 	int	i;
+// 	int invalid;
+
+// 	i = 0;
+// 	invalid = 0;
+// 	init_flags(flags);
+// 	while (map[i] != NULL)
+// 	{
+// 		while (i < 6)
+// 		{
+// 			if (set_flags(map[i++], flags) == 1)
+// 				continue ;
+// 		}
+// 			return (1);
+// 		i++;
+// 	}
+// 	if (flags->all_flags == 6)
+// 		return (0);
+// 	else
+// 		print_missing_flags(flags);
+// 	return (1);
+// }
+
+
+// original
 int	check_map_info(char **map, t_flags *flags)
 {
 	int	i;

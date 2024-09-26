@@ -6,7 +6,11 @@ LIBFT = ./libft/libft.a
 MLX_DIR = ./MLX42
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS =    main.c \
+SRCS_DIR = src
+
+INCLUDE = -I include
+
+SRCS =  $(addprefix $(SRCS_DIR)/,main.c \
 		check_map_info.c \
 		color.c \
 		copy_2darray.c \
@@ -33,7 +37,7 @@ SRCS =    main.c \
 		count_2darray_size.c \
 		has_space.c \
 		color_validation.c \
-		set_flags.c
+		set_flags.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -55,7 +59,7 @@ makelibft:
 	@$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(MLX42) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(HEADERS) $(LIBS) -L$(LIBFT_DIR) -lft
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDE) $(HEADERS) $(LIBS) -L$(LIBFT_DIR) -lft
 
 $(MLX42):
 	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
@@ -64,7 +68,7 @@ $(LIBFT):
 	make -C ./libft
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) $(HEADERS) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
