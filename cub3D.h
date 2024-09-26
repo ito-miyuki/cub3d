@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 14:01:16 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/26 13:57:23 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <errno.h>
-# include <stdio.h> // for printf, delete it
+# include <stdio.h>
 # include <math.h>
 
-# define WINDOW_WIDTH 1000// change it
-# define WINDOW_HEIGHT 1000 // change it
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
 # define PLAYER_SPEED 3
 # define ROTATE_SPEED 0.045
 # define SQ_SIZE 64

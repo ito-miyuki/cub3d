@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:05:45 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/26 13:21:44 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	find_angle(t_game *game)
 	if (game->map[game->player_y][game->player_x] == 'S')
 		game->raycast->player_angle = SOUTH;
 	if (game->map[game->player_y][game->player_x] == 'W' )
-		game->raycast->player_angle = WEST;
-	if (game->map[game->player_y][game->player_x] == 'E')
 		game->raycast->player_angle = EAST;
+	if (game->map[game->player_y][game->player_x] == 'E')
+		game->raycast->player_angle = WEST;
 	game->raycast->p_x = (game->player_x * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->p_y = (game->player_y * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->player_fov = (FOV * PI / 180);

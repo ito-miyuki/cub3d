@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 17:18:33 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/26 13:57:06 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ static mlx_texture_t	*get_texture(t_game *game)
 {
 	if (game->raycast->is_horizon == 1)
 	{
-		if (game->raycast->ray_angle > WEST && game->raycast->ray_angle < EAST)  //facing south
-			return (game->so_texture);
-		else
+		if (game->raycast->ray_angle > WEST && game->raycast->ray_angle < EAST)
 			return (game->no_texture);
+		else
+			return (game->so_texture);
 	}
 	else
 	{
 		if (game->raycast->ray_angle > SOUTH
 			&& game->raycast->ray_angle < NORTH)
-			// return (game->ea_texture);
 			return (game->ea_texture);
 		else
-			// return (game->we_texture);
 			return (game->we_texture);
 	}
 }
