@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 13:57:23 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/26 14:22:02 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,9 @@ int is_map_closed(t_game *game, char **map);
 
 int		check_empty_line(t_game *game, char *map_file);
 int		parse_elements(t_game *game, char *map_file);
-void	set_ceiling_colors(t_game *game, char *color_str);
-void	set_floor_colors(t_game *game, char *color_str);
+// void	set_ceiling_colors(t_game *game, char *color_str);
+// void	set_floor_colors(t_game *game, char *color_str);
+void	set_fc_colors(t_game *game, char *c_color, char *f_color);
 //int		is_player_trapped(char **map, int player_y, int player_x);
 int		has_space(char *str);
 int color_validation(char **color_split);

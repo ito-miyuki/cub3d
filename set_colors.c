@@ -26,68 +26,57 @@ static int	count_char(char *str, char c)
 	return (count);
 }
 
-void	set_floor_colors(t_game *game, char *color_str)
+void	find_color(t_game *game, char **color_split, char c)
 {
-	char	**color_split;
 	int		rgb[3];
 	int		i;
 
-	i = 0;
-	if (count_char(color_str, ',') != 2)
-		clean_up_exit(game, ": not a correct format in color info");
-	color_split = ft_split(color_str, ',');
-	if (!color_split)
-		clean_up_exit(game, ": failed to create color_split array");
-	if (color_validation(color_split) == 1)
-	{
-		free_grid(color_split);
-		clean_up_exit(game, NULL);
-	}
-	while (color_split[i] != NULL)
-	{
-		rgb[i] = ft_atoi(color_split[i]); // atol? rgb should be long?
-		if (rgb[i] > 255 || rgb[i] < 0)
-		{
-			free_grid(color_split);
-			clean_up_exit(game, ": avaiable color range is 0 to 255");
-		}
-		i++;
-	}
-	game->floor_r = rgb[0];
-	game->floor_g = rgb[1];
-	game->floor_b = rgb[2];
-	free_grid(color_split);
-}
-
-void	set_ceiling_colors(t_game *game, char *color_str)
-{
-	char	**color_split;
-	int		rgb[3];
-	int		i;
-
-	i = 0;
-	if (count_char(color_str, ',') != 2)
-		clean_up_exit(game, ": not a correct format in color info");
-	color_split = ft_split(color_str, ',');
-	if (!color_split)
-		clean_up_exit(game, ": failed to create color_split array");
-	if (color_validation(color_split) == 1)
-	{
-		free_grid(color_split);
-		clean_up_exit(game, NULL);
-	}
-	while (color_split[i] != NULL)
+	i = -1;
+	while (color_split[++i] != NULL)
 	{
 		rgb[i] = ft_atoi(color_split[i]); // atoi? rgb should be long?
 		if (rgb[i] > 255 || rgb[i] < 0)
 		{
 			free_grid(color_split);
-			clean_up_exit(game, ": avaiable color range is 0 to 255");
+			clean_up_exit(game, ": available color range is 0 to 255");
 		}
-		i++;
 	}
-	game->ceiling_r = rgb[0];
-	game->ceiling_g = rgb[1];
-	game->ceiling_b = rgb[2];
-	free_grid(color_split);
+	if (c == 'F')
+	{
+		game->floor_r = rgb[0];
+		game->floor_g = rgb[1];
+		game->floor_b = rgb[2];
+	}
+	else
+	{
+		game->ceiling_r = rgb[0];
+		game->ceiling_g = rgb[1];
+		game->ceiling_b = rgb[2];
+	}
+}
+
+
+void	set_fc_colors(t_game *game, char *c_color, char *f_color)
+{
+	char	**c_split;
+	char	**f_split;
+
+	if (count_char(c_color, ',') != 2 && count_char(f_color, ',') != 2)
+		clean_up_exit(game, ": not a correct format in color info");
+	c_split = ft_split(c_color, ',');
+	if (!c_split)
+		clean_up_exit(game, ": failed to create color_split array");
+	f_split = ft_split(f_color, ',');
+	if (!f_split)
+		clean_up_exit(game, ": failed to create color_split array");
+	if (color_validation(c_split) == 1 && color_validation(f_split) == 1)
+	{
+		free_grid(c_split);
+		free_grid(f_split);
+		clean_up_exit(game, NULL);
+	}
+	find_color(game, f_split, 'F');
+	find_color(game, c_split, 'C');
+	free_grid(c_split);
+	free_grid(f_split);
 }
