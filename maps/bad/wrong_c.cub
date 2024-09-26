@@ -1,10 +1,9 @@
-NO textures/Mona_Lisa.png
-SO textures/Wheat_Field.png
-WE textures/the_starry_night.png
-EA textures/girl_with_a_pearl_earring.png
-F 0095 ,7     8,9
-C 00,78,05
-C 00,78,05
+NO textures/alice.png
+SO textures/yunchia.png
+WE textures/lempi.png
+EA textures/miyuki.png
+F 95,78,9
+C 155,78,05
         11111111111111111111111111
         100000000011100000000000001
         10110000011 110000000000001
