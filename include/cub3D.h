@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 16:23:57 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/26 17:02:38 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_raycast
 {
 	double	player_angle;
 	double	player_rotation;
-	double	player_fov; //have to initialize this
+	double	player_fov;
 	int		p_x;
 	int		p_y;
 	int		up_down;
@@ -105,7 +105,7 @@ void		free_grid(char **grid);
 int			set_map_info(t_game *game, char **file_copy);
 int			map_validation(t_game *game, char **map);
 int			count_2darray_size(char **src);
-int			run_game(t_game *game);
+void		run_game(t_game *game);
 void		get_position(t_game *game, char **map);
 int			is_str_digit(char *str);
 long		ft_atol(const char *str);
@@ -157,5 +157,6 @@ void		mouse_movement(double xpos, double ypos, void *data);
 
 void		clean_up_exit(t_game *game, char *message);
 void		clean_up(t_game *game);
+void		delete_texture(t_game *game, char *message);
 
 #endif

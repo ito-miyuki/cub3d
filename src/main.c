@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:53:50 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/26 16:52:49 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,20 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	if (argc != 2)
-		print_error_exit(": argc is wrong"); // think about better err msg
+		print_error_exit(": not correct argc");
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		print_error_exit(": Malloc failed for game struct");
-	init_game(game, argv[1]); // init struct
-	if (run_game(game) == 1)
-	{
-		//do error handlings;
-		print_error_exit(": mlx function fail");
-	}
+	init_game(game, argv[1]);
+	run_game(game);
 	game->raycast = malloc(sizeof(t_raycast));
 	if (!game->raycast)
-		return (1); //print error or cleanup
+		clean_up_exit(game, "Malloc failed for raycast struct");
 	find_angle(game);
 	mlx_loop_hook(game->mlx, math_to_display, game);
 	mlx_cursor_hook(game->mlx, &mouse_movement, game);
 	mlx_loop(game->mlx);
-	free(game->raycast); // it it temporary solution
+	free(game->raycast);
 	clean_up(game);
 	return (0);
 }

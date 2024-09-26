@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 12:09:02 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:20:18 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/26 17:09:54 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static char	*read_map_from_file(int fd)
 		free(temp);
 		new_line = get_next_line(fd);
 	}
-	// error handling is missing when new_line was NULL
 	return (line_joint);
 }
 

@@ -6,24 +6,11 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 15:00:04 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/26 16:51:25 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	delete_texture(t_game *game, char *message)
-{
-	ft_putendl_fd(message, 2);
-	if (game->no_texture)
-		mlx_delete_texture(game->no_texture);
-	if (game->so_texture)
-		mlx_delete_texture(game->so_texture);
-	if (game->ea_texture)
-		mlx_delete_texture(game->ea_texture);
-	if (game->we_texture)
-		mlx_delete_texture(game->we_texture);
-}
 
 static int	load_texture(t_game *game)
 {
@@ -69,7 +56,7 @@ void	find_angle(t_game *game)
 	game->raycast->player_fov = (FOV * PI / 180);
 }
 
-int	run_game(t_game *game)
+void	run_game(t_game *game)
 {
 	if (load_texture(game) < 0)
 		clean_up_exit(game, ": load_texture() fail");
@@ -81,7 +68,6 @@ int	run_game(t_game *game)
 		clean_up_exit(game, ": mlx_new_image() fail");
 	if (mlx_image_to_window(game->mlx, game->canvas, 0, 0) == -1)
 		clean_up_exit(game, ": mlx_image_to_window() fail");
-	return (0);
 }
 
 void	math_to_display(void *data)
