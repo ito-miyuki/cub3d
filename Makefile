@@ -32,7 +32,8 @@ SRCS =    main.c \
 		set_colors.c \
 		count_2darray_size.c \
 		has_space.c \
-		color_validation.c
+		color_validation.c \
+		set_flags.c
 
 OBJS = $(SRCS:.c=.o)
 

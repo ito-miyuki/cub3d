@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 13:21:44 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/26 14:56:41 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	find_angle(t_game *game)
 
 int	run_game(t_game *game)
 {
+	if (load_texture(game) < 0)
+		clean_up_exit(game, ": load_texture() fail");
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
 	if (!game->mlx)
 		clean_up_exit(game, ": mlx_init() fail");
@@ -79,8 +81,6 @@ int	run_game(t_game *game)
 		clean_up_exit(game, ": mlx_new_image() fail");
 	if (mlx_image_to_window(game->mlx, game->canvas, 0, 0) == -1)
 		clean_up_exit(game, ": mlx_image_to_window() fail");
-	if (load_texture(game) < 0)
-		clean_up_exit(game, ": load_texture() fail");
 	return (0);
 }
 
