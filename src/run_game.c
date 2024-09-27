@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 16:51:25 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:48:10 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static int	load_texture(t_game *game)
 void	find_angle(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x] == 'N')
-		game->raycast->player_angle = NORTH;
+		game->raycast->player_angle = 3 * PI / 2;
 	if (game->map[game->player_y][game->player_x] == 'S')
-		game->raycast->player_angle = SOUTH;
+		game->raycast->player_angle = PI / 2;
 	if (game->map[game->player_y][game->player_x] == 'W' )
-		game->raycast->player_angle = EAST;
+		game->raycast->player_angle = 0;
 	if (game->map[game->player_y][game->player_x] == 'E')
-		game->raycast->player_angle = WEST;
+		game->raycast->player_angle = PI;
 	game->raycast->p_x = (game->player_x * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->p_y = (game->player_y * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->player_fov = (FOV * PI / 180);

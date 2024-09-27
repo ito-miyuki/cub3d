@@ -34,7 +34,7 @@ void	find_color(t_game *game, char **color_split, char c)
 	i = -1;
 	while (color_split[++i] != NULL)
 	{
-		rgb[i] = ft_atoi(color_split[i]); // atoi? rgb should be long?
+		rgb[i] = ft_atoi(color_split[i]);
 		if (rgb[i] > 255 || rgb[i] < 0)
 		{
 			free_grid(color_split);
@@ -54,7 +54,6 @@ void	find_color(t_game *game, char **color_split, char c)
 		game->ceiling_b = rgb[2];
 	}
 }
-
 
 void	set_fc_colors(t_game *game, char *c_color, char *f_color)
 {

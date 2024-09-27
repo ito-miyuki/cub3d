@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:11:15 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 16:58:31 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:22:41 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
 
 void	delete_texture(t_game *game, char *message)
 {

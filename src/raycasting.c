@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:15:24 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 13:56:50 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:49:01 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	move_ray_dir(float angle, float *inter, float *step, int is_vert)
 {
 	if (!is_vert)
 	{
-		if (angle > WEST && angle < EAST)
+		if (angle > 0 && angle < PI)
 		{
 			*inter += SQ_SIZE;
 			return (-1);
@@ -42,7 +42,7 @@ static int	move_ray_dir(float angle, float *inter, float *step, int is_vert)
 	}
 	else
 	{
-		if (!(angle > SOUTH && angle < NORTH))
+		if (!(angle > PI / 2 && angle < 3 * PI / 2))
 		{
 			*inter += SQ_SIZE;
 			return (-1);
@@ -67,7 +67,7 @@ static float	h_intersect(t_game *game, float angle)
 	y = floor(game->raycast->p_y / SQ_SIZE) * SQ_SIZE;
 	move_ray = move_ray_dir(angle, &y, &y_step, 0);
 	x = game->raycast->p_x + (y - game->raycast->p_y) / tan(angle);
-	if (angle > SOUTH && angle < NORTH)
+	if (angle > PI / 2 && angle < 3 * PI / 2)
 		x_step = -fabs(x_step);
 	else
 		x_step = fabs(x_step);
@@ -96,7 +96,7 @@ static float	v_intersect(t_game *game, float angle)
 	x = floor(game->raycast->p_x / SQ_SIZE) * SQ_SIZE;
 	move_ray = move_ray_dir(angle, &x, &x_step, 1);
 	y = game->raycast->p_y + (x - game->raycast->p_x) * tan(angle);
-	if (angle > WEST && angle < EAST)
+	if (angle > 0 && angle < PI)
 		y_step = fabs(y_step);
 	else
 		y_step = -fabs(y_step);

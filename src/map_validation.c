@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 14:56:19 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:18:55 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ static int	has_only_valid_chars(char **map)
 	return (1);
 }
 
-int	map_validation(t_game *game, char **map)
+void	map_validation(t_game *game, char **map)
 {
-	game->height = 0; // do I need it?
-	game->height = (size_t)count_2darray_size(game->map); // should I type cast?
+	game->height = 0;
+	game->height = (size_t)count_2darray_size(game->map);
 	get_position(game, game->map);
 	if (game->height < 3)
 	{
@@ -77,5 +77,4 @@ int	map_validation(t_game *game, char **map)
 		clean_up_exit(game, ": map can only contain NSEW once");
 	if (!is_map_closed(game, map))
 		clean_up_exit(game, ": map is not closed");
-	return (0);
 }

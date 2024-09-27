@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/26 13:57:06 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 11:19:01 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ static mlx_texture_t	*get_texture(t_game *game)
 {
 	if (game->raycast->is_horizon == 1)
 	{
-		if (game->raycast->ray_angle > WEST && game->raycast->ray_angle < EAST)
+		if (game->raycast->ray_angle > 0 && game->raycast->ray_angle < PI)
 			return (game->no_texture);
 		else
 			return (game->so_texture);
 	}
 	else
 	{
-		if (game->raycast->ray_angle > SOUTH
-			&& game->raycast->ray_angle < NORTH)
+		if (game->raycast->ray_angle > PI / 2
+			&& game->raycast->ray_angle < 3 * PI /2)
 			return (game->ea_texture);
 		else
 			return (game->we_texture);
@@ -51,6 +51,8 @@ void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 	while (upper_p < lower_p)
 	{
 		tex_y = (int)y_o * texture->width + (int)x_o;
+		if (tex_y < 0)
+			return ;
 		mlx_put_pixel(game->canvas, game->raycast->index,
 			upper_p, norm_color(pixels[tex_y]));
 		y_o += (double)texture->height / wall_h;
@@ -84,8 +86,10 @@ void	render_wall(t_game *game, int ray)
 	double	upper_p;
 
 	wall_h = 0;
-	game->raycast->distance *= cos(adjust_angle
+	game->raycast->distance *= cos(
 			(game->raycast->player_angle - game->raycast->ray_angle));
+	if (game->raycast->distance == 0)
+		game->raycast->distance = adjust_angle(game->raycast->distance);
 	wall_h = fabs((SQ_SIZE / game->raycast->distance)
 			* (WINDOW_WIDTH / 2) / tan(game->raycast->player_fov));
 	lower_p = (WINDOW_HEIGHT / 2) + (wall_h / 2);

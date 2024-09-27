@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:37:54 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 14:04:40 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:22:30 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	check_texture(mlx_texture_t *texture)
 
 int	norm_color(int c)
 {
-	unsigned char bytes[4];
-	int reversed;
-	unsigned char reversed_bytes[4];
+	unsigned char	bytes[4];
+	int				reversed;
+	unsigned char	reversed_bytes[4];
 
 	ft_memcpy(bytes, &c, sizeof(int));
 	reversed_bytes[0] = bytes[3];

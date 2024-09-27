@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   set_flags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:17:44 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 11:50:54 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:10:58 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub3D.h"
 
-static int set_flag(int *flag, t_flags *flags)
+static int	set_flag(int *flag, t_flags *flags)
 {
-    if (*flag == 1)
-        return (1);
-    *flag = 1;
-    flags->all_flags += 1;
-    return (0);
+	if (*flag == 1)
+		return (1);
+	*flag = 1;
+	flags->all_flags += 1;
+	return (0);
 }
 
 int	set_flags(char *line, t_flags *flags)

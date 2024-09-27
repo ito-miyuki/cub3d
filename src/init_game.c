@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:21:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:27:32 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 10:21:48 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@ static int	is_extention_cub(char *file_name)
 
 static void	parse_file(t_game *game, char *map_file)
 {
-	if (!is_extention_cub(map_file)) // should this one excuted earlier than malloc game?
+	if (!is_extention_cub(map_file))
 		clean_up_exit(game, ": Map file must be ***.cub");
 	game->file_copy = create_2darray(map_file);
 	if (game->file_copy == NULL)
 		clean_up_exit(game, ": Failed to create map array");
 	if (game->file_copy[0] == NULL)
 		clean_up_exit(game, ": file is empty");
-	parse_elements(game, map_file); // if it returns 1?
+	parse_elements(game, map_file);
 	free_grid(game->file_copy);
 	game->file_copy = NULL;
 }
 
 void	init_game(t_game *game, char *map_file)
 {
-	parse_file(game, map_file); // or free everything here instead of init_map() ?
+	parse_file(game, map_file);
 	game->width = get_longest(game->map);
 	map_validation(game, game->map);
 	get_position(game, game->map);
