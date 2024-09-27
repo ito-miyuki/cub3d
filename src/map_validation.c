@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 10:18:55 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 12:37:36 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ void	map_validation(t_game *game, char **map)
 	game->height = (size_t)count_2darray_size(game->map);
 	get_position(game, game->map);
 	if (game->height < 3)
-	{
-		printf("game->heght is %zu\n", game->height);
 		clean_up_exit(game, ": map is too small");
-	}
 	if (!has_only_valid_chars(map))
 		clean_up_exit(game, ": map contains invalid char");
 	if (!has_nsew_only_once(map))

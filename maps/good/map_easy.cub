@@ -8,9 +8,9 @@ SO textures/yunchia.png
 WE textures/lempi.png
 EA textures/miyuki.png
 
-C 204,225,255
-F 255,255,255
-F 255,255,255
+C 0,225,255
+F 99,78,255
+
 
 
     11111111111 11111 111

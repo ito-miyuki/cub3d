@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:48:21 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 15:44:19 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/27 11:30:12 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static void	print_missing_flags(t_flags *flags)
 		return ;
 	}
 	if (flags->no == 0)
-		ft_putendl_fd("Please put NO in a correct format/position", 2);
+		ft_putendl_fd("Please put NO correctly", 2);
 	if (flags->so == 0)
-		ft_putendl_fd("Please put SO in a correct format/position", 2);
+		ft_putendl_fd("Please put SO correctly", 2);
 	if (flags->we == 0)
-		ft_putendl_fd("Please put WE in a correct format/position", 2);
+		ft_putendl_fd("Please put WE correctly", 2);
 	if (flags->ea == 0)
-		ft_putendl_fd("Please put EA in a correct format/position", 2);
+		ft_putendl_fd("Please put EA correctly", 2);
 	if (flags->f == 0)
-		ft_putendl_fd("Please put F in a correct format/position", 2);
+		ft_putendl_fd("Please put F correctly", 2);
 	if (flags->c == 0)
-		ft_putendl_fd("Please put C in a correct format/position", 2);
+		ft_putendl_fd("Please put C correctly", 2);
 }
 
 static void	init_flags(t_flags *flags)
@@ -44,50 +44,28 @@ static void	init_flags(t_flags *flags)
 	flags->all_flags = 0;
 }
 
-// work in progress. to print correct message
-// int	check_map_info(char **map, t_flags *flags)
-// {
-// 	int	i;
-// 	int invalid;
-
-// 	i = 0;
-// 	invalid = 0;
-// 	init_flags(flags);
-// 	while (map[i] != NULL)
-// 	{
-// 		while (i < 6)
-// 		{
-// 			if (set_flags(map[i++], flags) == 1)
-// 				continue ;
-// 		}
-// 			return (1);
-// 		i++;
-// 	}
-// 	if (flags->all_flags == 6)
-// 		return (0);
-// 	else
-// 		print_missing_flags(flags);
-// 	return (1);
-// }
-
-
-// original
 int	check_map_info(char **map, t_flags *flags)
 {
 	int	i;
 
 	i = 0;
 	init_flags(flags);
-	//while (map[i] != NULL)
 	while (map[i] != NULL && i < 6)
 	{
 		if (set_flags(map[i], flags) == 1)
 			return (1);
 		i++;
 	}
-	if (flags->all_flags == 6)
-		return (0);
-	else
+	if (flags->all_flags != 6)
+	{
 		print_missing_flags(flags);
-	return (1);
+		return (1);
+	}
+	while (map[i] != NULL)
+	{
+		if (set_flags(map[i], flags) == 1)
+			return (1);
+		i++;
+	}
+	return (0);
 }

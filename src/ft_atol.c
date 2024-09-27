@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:23:36 by alli              #+#    #+#             */
-/*   Updated: 2024/09/25 13:28:48 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 13:23:57 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static int	ft_digit(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
 	if (str[i] == '\0')
+	{
 		return (1);
+	}
 	else
 		return (0);
 }
@@ -55,28 +57,20 @@ static int	str_char_check(const char *str)
 
 long	ft_atol(const char *str)
 {
-	int				sign;
 	long			total;
 	int				i;
 
-	sign = 1;
 	total = 0;
 	i = 0;
 	if (str_char_check(str) == -1)
-		return (0);
+		return (-1);
 	if (((str[i] == '+') || str[i] == '-') && str[i])
-	{
-		if (str[i] == '-')
-			sign = 0;
-		i++;
-	}
+		return (-1);
 	while (str[i])
 	{
 		if (check_longint(total, str[i] - '0'))
-			return (0);
+			return (-1);
 		total = total * 10 + (str[i++] - '0');
 	}
-	if (!sign)
-		total = total * -1;
 	return (total);
 }

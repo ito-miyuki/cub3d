@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/27 11:19:01 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 13:24:25 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static mlx_texture_t	*get_texture(t_game *game)
 	else
 	{
 		if (game->raycast->ray_angle > PI / 2
-			&& game->raycast->ray_angle < 3 * PI /2)
+			&& game->raycast->ray_angle < 3 * PI / 2)
 			return (game->ea_texture);
 		else
 			return (game->we_texture);
