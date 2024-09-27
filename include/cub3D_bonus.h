@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 14:31:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/27 14:27:24 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "../libft/libft.h"
 # include "MLX42.h"
@@ -111,6 +111,7 @@ void		print_error(char *message);
 
 /*movement*/
 void		move_hook(t_game *game);
+void		mouse_movement(double xpos, double ypos, void *data);
 void		move_player(t_game *game, double move_x, double move_y);
 void		for_or_back(t_game *game, char key);
 void		left_or_right(t_game *game, char key);

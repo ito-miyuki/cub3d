@@ -1,4 +1,5 @@
 NAME = cub3D
+BONUS_NAME = cub3D_bonus
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
@@ -7,6 +8,7 @@ MLX_DIR = ./MLX42
 MLX42 = ./MLX42/build/libmlx42.a
 
 SRCS_DIR = src
+BONUS_DIR = bonus
 
 INCLUDE = -I include
 
@@ -39,7 +41,11 @@ SRCS =  $(addprefix $(SRCS_DIR)/,main.c \
 		color_validation.c \
 		set_flags.c)
 
+BONUS = $(addprefix $(BONUS_DIR)/, main_bonus.c move_bonus.c)
+
 OBJS = $(SRCS:.c=.o)
+
+BONUS_OBJS = $(BONUS:.c=.o)
 
 CC = cc
 
@@ -73,12 +79,20 @@ $(LIBFT):
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(RM) $(OBJS)
+	$(RM) $(BONUS_OBJS)
 	rm -rf MLX42/build
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
 	$(RM) $(LIBFT)
+	$(RM) $(BONUS_OBJS)
+	$(RM) $(BONUS_NAME)
+
+bonus: $(BONUS_NAME) 
+
+$(BONUS_NAME): $(BONUS_OBJS) $(MLX42) $(LIBFT)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(INCLUDE) $(HEADERS) $(MLX42) $(LIBS) $(LDFLAGS) -L$(LIBFT_DIR) -lft
 
 re: fclean all
 
