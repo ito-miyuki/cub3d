@@ -41,7 +41,34 @@ SRCS =  $(addprefix $(SRCS_DIR)/,main.c \
 		color_validation.c \
 		set_flags.c)
 
-BONUS = $(addprefix $(BONUS_DIR)/, main_bonus.c move_bonus.c)
+BONUS = $(addprefix $(BONUS_DIR)/, main_bonus.c move_bonus.c) \
+		$(addprefix $(SRCS_DIR)/, \
+		check_map_info.c \
+		color.c \
+		copy_2darray.c \
+		create_2darray.c \
+		draw_wall_utils.c \
+		draw_wall.c \
+		free_grid.c \
+		get_position.c \
+		ft_atol.c \
+		is_map_closed.c \
+		check_empty_line.c \
+		parse_elements.c \
+		clean_up.c \
+		init_game.c \
+		map_validation.c \
+		math_utils.c \
+		move_direction.c \
+		print_error.c \
+		raycasting.c \
+		run_game.c \
+		set_map_info.c \
+		set_colors.c \
+		count_2darray_size.c \
+		has_space.c \
+		color_validation.c \
+		set_flags.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -89,10 +116,12 @@ fclean: clean
 	$(RM) $(BONUS_OBJS)
 	$(RM) $(BONUS_NAME)
 
-bonus: $(BONUS_NAME) 
 
-$(BONUS_NAME): $(BONUS_OBJS) $(MLX42) $(LIBFT)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(INCLUDE) $(HEADERS) $(MLX42) $(LIBS) $(LDFLAGS) -L$(LIBFT_DIR) -lft
+bonus: $(BONUS_NAME)
+
+# Rule for creating the bonus executable
+$(BONUS_NAME): $(BONUS_OBJS) $(LIBFT) $(MLX42)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(INCLUDE) $(HEADERS) $(LDFLAGS) $(LIBS) -L$(LIBFT_DIR) -lft
 
 re: fclean all
 

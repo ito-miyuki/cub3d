@@ -6,11 +6,11 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 14:46:53 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/30 10:47:54 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D_bonus.h"
+#include "./cub3D_bonus.h"
 
 int	main(int argc, char **argv)
 {
