@@ -26,7 +26,7 @@ static int	count_char(char *str, char c)
 	return (count);
 }
 
-void	find_color(t_game *game, char **color_split, char c)
+static void	find_color(t_game *game, char **color_split, char c)
 {
 	int		rgb[3];
 	int		i;

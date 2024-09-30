@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 14:31:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/30 11:26:55 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <math.h>
-# include <stdio.h>
 
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
