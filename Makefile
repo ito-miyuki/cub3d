@@ -119,7 +119,6 @@ fclean: clean
 
 bonus: $(BONUS_NAME)
 
-# Rule for creating the bonus executable
 $(BONUS_NAME): $(BONUS_OBJS) $(LIBFT) $(MLX42)
 	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(INCLUDE) $(HEADERS) $(LDFLAGS) $(LIBS) -L$(LIBFT_DIR) -lft
 
