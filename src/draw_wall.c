@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/27 13:24:25 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/30 11:18:17 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static mlx_texture_t	*get_texture(t_game *game)
 	}
 }
 
-void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
+static void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 {
 	mlx_texture_t	*texture;
 	uint32_t		*pixels;
@@ -60,7 +60,7 @@ void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
 	}
 }
 
-void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p)
+static void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p)
 {
 	uint32_t	ceil;
 

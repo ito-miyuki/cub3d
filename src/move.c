@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/09/27 14:44:46 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/30 11:20:23 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,3 @@ void	move_hook(t_game *game)
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		rotate(game, 'R');
 }
-
-// void	mouse_movement(double xpos, double ypos, void *data)
-// {
-// 	t_game			*game;
-// 	static double	old_pos;
-
-// 	game = (t_game *)data;
-// 	(void)ypos;
-// 	if (xpos <= old_pos)
-// 		rotate(game, 'L');
-// 	else
-// 		rotate(game, 'R');
-// 	old_pos = xpos;
-// }

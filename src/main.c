@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:20 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 14:44:55 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/30 11:18:40 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 		clean_up_exit(game, "Malloc failed for raycast struct");
 	find_angle(game);
 	mlx_loop_hook(game->mlx, math_to_display, game);
-	// mlx_cursor_hook(game->mlx, &mouse_movement, game);
 	mlx_loop(game->mlx);
 	free(game->raycast);
 	clean_up(game);
