@@ -1,8 +1,8 @@
-NO textures/alice.png
+NO textures/alice.pngg
 SO textures/yunchia.png
 WE textures/lempi.png
 EA textures/miyuki.png
-F 20,20,000020
+F 20,20,20
 C 200,200,200
 
 11111
