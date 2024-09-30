@@ -68,7 +68,7 @@ void	set_fc_colors(t_game *game, char *c_color, char *f_color)
 	f_split = ft_split(f_color, ',');
 	if (!f_split)
 		clean_up_exit(game, ": failed to create color_split array");
-	if (color_validation(c_split) == 1 && color_validation(f_split) == 1)
+	if (color_validation(c_split) == 1 || color_validation(f_split) == 1)
 	{
 		free_grid(c_split);
 		free_grid(f_split);

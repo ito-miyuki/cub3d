@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mito <mito@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 09:19:31 by mito              #+#    #+#             */
-/*   Updated: 2023/11/15 14:12:13 by mito             ###   ########.fr       */
+/*   Updated: 2024/09/30 11:19:36 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	char	*char_dest;
-	char	*char_src;	
+	char	*char_src;
 	size_t	i;
 
 	char_dest = (char *)dest;

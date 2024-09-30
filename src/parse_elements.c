@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:28:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 10:17:22 by alli             ###   ########.fr       */
+/*   Updated: 2024/09/30 11:16:01 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	**create_map(char **file_copy)
 		j = 0;
 		while (file_copy[i][j] != '\0')
 		{
-			if (file_copy[i][j] == ' ' || file_copy[i][j] == ' ')
+			if (file_copy[i][j] == ' ' || file_copy[i][j] == '\t')
 				map[i][j] = '1';
 			j++;
 		}
