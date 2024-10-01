@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/09/30 11:18:17 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/01 13:39:40 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static mlx_texture_t	*get_texture(t_game *game)
 	}
 }
 
-static void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_h)
+static void	draw_wall(t_game *game, double lower_p,
+	double upper_p, double wall_h)
 {
 	mlx_texture_t	*texture;
 	uint32_t		*pixels;
@@ -60,7 +61,8 @@ static void	draw_wall(t_game *game, double lower_p, double upper_p, double wall_
 	}
 }
 
-static void	draw_floor_ceil(t_game *game, int ray, double lower_p, double upper_p)
+static void	draw_floor_ceil(t_game *game, int ray,
+	double lower_p, double upper_p)
 {
 	uint32_t	ceil;
 
@@ -86,10 +88,10 @@ void	render_wall(t_game *game, int ray)
 	double	upper_p;
 
 	wall_h = 0;
-	game->raycast->distance *= cos(
-			(game->raycast->player_angle - game->raycast->ray_angle));
+	game->raycast->distance *= cos(game->raycast->player_angle
+			- game->raycast->ray_angle);
 	if (game->raycast->distance == 0)
-		game->raycast->distance = adjust_angle(game->raycast->distance);
+		game->raycast->distance += PI / 2;
 	wall_h = fabs((SQ_SIZE / game->raycast->distance)
 			* (WINDOW_WIDTH / 2) / tan(game->raycast->player_fov));
 	lower_p = (WINDOW_HEIGHT / 2) + (wall_h / 2);
