@@ -6,32 +6,11 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:48:21 by mito              #+#    #+#             */
-/*   Updated: 2024/10/01 16:45:34 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/01 17:30:58 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static void	print_missing_flags(t_flags *flags)
-{
-	if (flags->all_flags == 0)
-	{
-		ft_putendl_fd("all map info is missing or placed in a wrong place", 2);
-		return ;
-	}
-	if (flags->no == 0)
-		ft_putendl_fd("Please put NO correctly", 2);
-	if (flags->so == 0)
-		ft_putendl_fd("Please put SO correctly", 2);
-	if (flags->we == 0)
-		ft_putendl_fd("Please put WE correctly", 2);
-	if (flags->ea == 0)
-		ft_putendl_fd("Please put EA correctly", 2);
-	if (flags->f == 0)
-		ft_putendl_fd("Please put F correctly", 2);
-	if (flags->c == 0)
-		ft_putendl_fd("Please put C correctly", 2);
-}
 
 static void	init_flags(t_flags *flags)
 {
@@ -89,10 +68,7 @@ int	check_map_info(char **file_copy, t_game *game, t_flags *flags)
 	if (last_item < 0)
 		return (1);
 	if (flags->all_flags != 6)
-	{
-		print_missing_flags(flags);
 		return (1);
-	}
 	game->last_item = last_item - 1;
 	if (check_duplicate(&file_copy[last_item], flags) == 1)
 		return (1);

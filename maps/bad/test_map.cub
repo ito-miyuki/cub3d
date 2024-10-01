@@ -8,12 +8,12 @@ SO textures/yunchia.png
 WE textures/lempi.png
 EA textures/snowprincess.png
 
-F 20,20,-20
+F 20,20,20
 C 200,200,200
 
-11111
+S1111
 10001
-10S01
+10001
 10001
 10001
 10001
@@ -24,17 +24,3 @@ C 200,200,200
 10001
 10001
 11111
-
-
-
-
-
-
-
-
-
-
-
-
-
-1

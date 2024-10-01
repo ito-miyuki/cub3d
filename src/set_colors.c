@@ -60,7 +60,7 @@ void	set_fc_colors(t_game *game, char *c_color, char *f_color)
 	char	**c_split;
 	char	**f_split;
 
-	if (count_char(c_color, ',') != 2 && count_char(f_color, ',') != 2)
+	if (count_char(c_color, ',') != 2 || count_char(f_color, ',') != 2)
 		clean_up_exit(game, ": not a correct format in color info");
 	c_split = ft_split(c_color, ',');
 	if (!c_split)
