@@ -25,6 +25,7 @@ SRCS =  $(addprefix $(SRCS_DIR)/,main.c \
 		is_map_closed.c \
 		check_empty_line.c \
 		parse_elements.c \
+		is_all_space.c \
 		clean_up.c \
 		init_game.c \
 		map_validation.c \
@@ -55,6 +56,7 @@ BONUS = $(addprefix $(BONUS_DIR)/, main_bonus.c move_bonus.c) \
 		is_map_closed.c \
 		check_empty_line.c \
 		parse_elements.c \
+		is_all_space.c \
 		clean_up.c \
 		init_game.c \
 		map_validation.c \

@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:59:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/25 13:13:45 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/01 14:17:06 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static int	validate_map_line(char *new_line, int fd)
 
 static void	find_last_element(t_game *game, char *new_line, int fd)
 {
-	if (!game->file_copy || !game->file_copy[5])
+	if (!game->file_copy || !game->file_copy[game->last_item])
 		clean_up_exit(game, ": file_copy doesn't have enough line\n");
 	new_line = get_next_line(fd);
 	while (new_line != NULL)
 	{
-		if (ft_strncmp(game->file_copy[5],
-				new_line, ft_strlen(game->file_copy[5])) == 0)
+		if (ft_strncmp(game->file_copy[game->last_item],
+				new_line, ft_strlen(game->file_copy[game->last_item])) == 0)
 		{
 			free(new_line);
 			break ;

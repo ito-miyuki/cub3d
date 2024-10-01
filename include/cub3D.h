@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/30 11:26:55 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/01 16:11:14 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_game
 	char			*ea_tex_path;
 	char			*floor_rgb;
 	char			*ceiling_rgb;
+	int				last_item;
 	size_t			height;
 	size_t			width;
 	uint32_t		floor_r;
@@ -117,7 +118,7 @@ void		rotate(t_game *game, char key);
 
 /*parsing*/
 int			check_empty_line(t_game *game, char *map_file);
-int			check_map_info(char **map, t_flags *flags);
+int			check_map_info(char **file_copy, t_game *game, t_flags *flags);
 char		**copy_2darray(char **src);
 int			count_2darray_size(char **src);
 char		**create_2darray(char *map_file);
@@ -133,6 +134,7 @@ void		parse_elements(t_game *game, char *map_file);
 void		run_game(t_game *game);
 int			set_map_info(t_game *game, char **file_copy);
 int			set_flags(char *line, t_flags *flags);
+int			is_all_space(char *str);
 
 /*raycasting*/
 float		adjust_angle(double angle);
