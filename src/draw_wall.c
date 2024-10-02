@@ -6,7 +6,7 @@
 /*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/10/01 13:39:40 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/02 08:55:51 by alli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static mlx_texture_t	*get_texture(t_game *game)
 }
 
 static void	draw_wall(t_game *game, double lower_p,
-	double upper_p, double wall_h)
+				double upper_p, double wall_h)
 {
 	mlx_texture_t	*texture;
 	uint32_t		*pixels;
@@ -62,7 +62,7 @@ static void	draw_wall(t_game *game, double lower_p,
 }
 
 static void	draw_floor_ceil(t_game *game, int ray,
-	double lower_p, double upper_p)
+				double lower_p, double upper_p)
 {
 	uint32_t	ceil;
 
