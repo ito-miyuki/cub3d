@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:33:46 by alli              #+#    #+#             */
-/*   Updated: 2024/10/02 08:54:03 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/02 09:24:29 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ void	render_wall(t_game *game, int ray)
 	wall_h = 0;
 	game->raycast->distance *= cos(
 			(game->raycast->player_angle - game->raycast->ray_angle));
-	if (game->raycast->distance == 0)
-        game->raycast->distance += PI / 2;
 	wall_h = fabs((SQ_SIZE / game->raycast->distance)
 			* (WINDOW_WIDTH / 2) / tan(game->raycast->player_fov));
 	lower_p = (WINDOW_HEIGHT / 2) + (wall_h / 2);

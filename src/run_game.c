@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/10/02 08:50:38 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/02 09:30:01 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,16 @@ static int	load_texture(t_game *game)
 {
 	game->no_texture = mlx_load_png(game->no_tex_path);
 	if (!game->no_texture)
-	{
-		ft_putendl_fd("NO texture load fail", 2);
 		return (-1);
-	}
 	game->so_texture = mlx_load_png(game->so_tex_path);
 	if (!game->so_texture)
-	{
-		ft_putendl_fd("SO texture load fail", 2);
 		return (-1);
-	}
 	game->we_texture = mlx_load_png(game->we_tex_path);
 	if (!game->we_texture)
-	{
-		ft_putendl_fd("WE texture load fail", 2);
 		return (-1);
-	}
 	game->ea_texture = mlx_load_png(game->ea_tex_path);
 	if (!game->ea_texture)
-	{
-		ft_putendl_fd("EA texture load fail", 2);
 		return (-1);
-	}
 	return (0);
 }
 
