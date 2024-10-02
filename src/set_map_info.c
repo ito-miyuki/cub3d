@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:17:27 by mito              #+#    #+#             */
-/*   Updated: 2024/09/26 14:59:06 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/01 16:12:49 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	set_map_info(t_game *game, char **file_copy)
 
 	i = 0;
 	j = 0;
-	while (i < 6)
+	while (i < (game->last_item + 1))
 	{
 		while (file_copy[i][j] == ' ' || file_copy[i][j] == '\t')
 			j++;

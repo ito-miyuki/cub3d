@@ -2,7 +2,7 @@ NO textures/alice.png
 SO textures/yunchia.png
 WE textures/lempi.png
 EA textures/miyuki.png
-F 95,78,-99
+F 95,78,+
 C 155,78,05
 
 1111111111111111111

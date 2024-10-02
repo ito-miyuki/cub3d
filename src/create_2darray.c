@@ -60,7 +60,7 @@ char	**create_2darray(char *map_file)
 	map_str = read_map(map_file);
 	if (!map_str)
 	{
-		print_error(": read map error");
+		print_error("read map error");
 		return (NULL);
 	}
 	map_array = ft_split(map_str, '\n');
@@ -68,7 +68,7 @@ char	**create_2darray(char *map_file)
 	if (!map_array)
 	{
 		return (NULL);
-		print_error_exit(": malloc failed");
+		print_error_exit("malloc failed");
 	}
 	return (map_array);
 }

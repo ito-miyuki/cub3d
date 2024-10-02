@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:54:16 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 12:37:36 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/01 15:59:24 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,15 @@ void	map_validation(t_game *game, char **map)
 {
 	game->height = 0;
 	game->height = (size_t)count_2darray_size(game->map);
+	if (game->height > 400 || game->width > 400)
+		clean_up_exit(game, "map is too big");
 	get_position(game, game->map);
 	if (game->height < 3)
-		clean_up_exit(game, ": map is too small");
+		clean_up_exit(game, "map is too small");
 	if (!has_only_valid_chars(map))
-		clean_up_exit(game, ": map contains invalid char");
+		clean_up_exit(game, "map contains invalid char");
 	if (!has_nsew_only_once(map))
-		clean_up_exit(game, ": map can only contain NSEW once");
+		clean_up_exit(game, "map can only contain NSEW once");
 	if (!is_map_closed(game, map))
-		clean_up_exit(game, ": map is not closed");
+		clean_up_exit(game, "map is not closed");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 14:27:24 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/01 16:11:43 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <math.h>
-# include <stdio.h>
 
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
@@ -71,6 +70,7 @@ typedef struct s_game
 	char			*ea_tex_path;
 	char			*floor_rgb;
 	char			*ceiling_rgb;
+	int				last_item;
 	size_t			height;
 	size_t			width;
 	uint32_t		floor_r;
@@ -135,6 +135,7 @@ void		parse_elements(t_game *game, char *map_file);
 void		run_game(t_game *game);
 int			set_map_info(t_game *game, char **file_copy);
 int			set_flags(char *line, t_flags *flags);
+int			is_all_space(char *str);
 
 /*raycasting*/
 float		adjust_angle(double angle);

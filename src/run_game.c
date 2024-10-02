@@ -59,15 +59,15 @@ void	find_angle(t_game *game)
 void	run_game(t_game *game)
 {
 	if (load_texture(game) < 0)
-		clean_up_exit(game, ": load_texture() fail");
+		clean_up_exit(game, "load_texture() fail");
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", false);
 	if (!game->mlx)
-		clean_up_exit(game, ": mlx_init() fail");
+		clean_up_exit(game, "mlx_init() fail");
 	game->canvas = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!game->canvas)
-		clean_up_exit(game, ": mlx_new_image() fail");
+		clean_up_exit(game, "mlx_new_image() fail");
 	if (mlx_image_to_window(game->mlx, game->canvas, 0, 0) == -1)
-		clean_up_exit(game, ": mlx_image_to_window() fail");
+		clean_up_exit(game, "mlx_image_to_window() fail");
 }
 
 void	math_to_display(void *data)

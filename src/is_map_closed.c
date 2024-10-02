@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_map_closed.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:00:29 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 10:22:12 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/02 08:18:58 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static int	floodfill_map(char **map, char **char_temp)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '0'
+			if ((map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'E' || map[y][x] == 'W')
 				&& is_map_closed_recursive(char_temp, y, x) == 0)
 				return (1);
 			x++;
@@ -61,7 +62,7 @@ int	is_map_closed(t_game *game, char **map)
 	if (!temp)
 	{
 		free_grid(temp);
-		clean_up_exit(game, ": failed copy_2darray() in is map closed()");
+		clean_up_exit(game, "failed copy_2darray() in is map closed()");
 	}
 	if (floodfill_map(map, temp) == 1)
 	{

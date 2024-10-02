@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   is_all_space.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/22 15:31:38 by mito              #+#    #+#             */
-/*   Updated: 2024/09/20 16:36:10 by mito             ###   ########.fr       */
+/*   Created: 2024/10/01 16:10:21 by mito              #+#    #+#             */
+/*   Updated: 2024/10/01 16:10:48 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	print_error(char *message)
+int	is_all_space(char *str)
 {
-	ft_putendl_fd("Error", 2);
-	if (message)
-		ft_putstr_fd(message, 2);
-}
-
-void	print_error_exit(char *message)
-{
-	ft_putendl_fd("Error", 2);
-	if (message)
-		ft_putendl_fd(message, 2);
-	exit(1);
+	while (*str != '\0')
+	{
+		if (*str != ' ' && *str != '\t')
+			return (0);
+		str++;
+	}
+	return (1);
 }

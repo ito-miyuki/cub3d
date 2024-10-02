@@ -17,10 +17,10 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	if (argc != 2)
-		print_error_exit(": not correct argc");
+		print_error_exit("not correct argc");
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
-		print_error_exit(": Malloc failed for game struct");
+		print_error_exit("Malloc failed for game struct");
 	init_game(game, argv[1]);
 	run_game(game);
 	game->raycast = malloc(sizeof(t_raycast));
