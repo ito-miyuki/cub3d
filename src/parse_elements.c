@@ -48,21 +48,21 @@ void	parse_elements(t_game *game, char *map_file)
 {
 	game->info_flags = ft_calloc(1, sizeof(t_flags));
 	if (game->info_flags == NULL)
-		clean_up_exit(game, ": Failed to allocate memory for texture flags");
+		clean_up_exit(game, "failed to allocate memory for texture flags");
 	if (check_map_info(game->file_copy, game, game->info_flags) == 1)
 	{
 		free(game->info_flags);
-		clean_up_exit(game, ": map info is invalid");
+		clean_up_exit(game, "map info is invalid");
 	}
 	free(game->info_flags);
 	if (set_map_info(game, game->file_copy) == 1)
 		clean_up_exit(game, NULL);
 	set_fc_colors(game, game->ceiling_rgb, game->floor_rgb);
 	if (check_empty_map(game, game->file_copy) == 1)
-		clean_up_exit(game, ": map is empty");
+		clean_up_exit(game, "map is empty");
 	if (check_empty_line(game, map_file) == 1)
 		clean_up_exit(game, NULL);
 	game->map = create_map(game->file_copy + (game->last_item + 1));
 	if (game->map == NULL)
-		clean_up_exit(game, ": failed to create game->map array");
+		clean_up_exit(game, "failed to create game->map array");
 }

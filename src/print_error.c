@@ -14,17 +14,15 @@
 
 void	print_error(char *message)
 {
-	ft_putstr_fd("Error", 2);
+	ft_putendl_fd("Error", 2);
 	if (message)
 		ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
 }
 
 void	print_error_exit(char *message)
 {
-	ft_putstr_fd("Error", 2);
+	ft_putendl_fd("Error", 2);
 	if (message)
-		ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
+		ft_putendl_fd(message, 2);
 	exit(1);
 }

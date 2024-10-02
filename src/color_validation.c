@@ -46,12 +46,12 @@ int	color_validation(char **color_split)
 {
 	if (count_2darray_size(color_split) != 3)
 	{
-		print_error(": 3 elements required in rgb color");
+		print_error("3 elements required in rgb color");
 		return (1);
 	}
 	if (!is_color_digit(color_split))
 	{
-		print_error(": invalid char or format in rgb color info");
+		print_error("invalid char or format in rgb color info");
 		return (1);
 	}
 	return (0);

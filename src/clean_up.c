@@ -71,11 +71,8 @@ void	clean_up_exit(t_game *game, char *message)
 		free(game);
 	if (message != NULL)
 	{
-		ft_putstr_fd("Error", 2);
-		if (message == NULL)
-			ft_putstr_fd("\n", 2);
-		else
-			ft_putendl_fd(message, 2);
+		ft_putendl_fd("Error", 2);
+		ft_putendl_fd(message, 2);
 	}
 	exit(1);
 }

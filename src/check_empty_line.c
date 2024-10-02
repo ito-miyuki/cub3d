@@ -31,7 +31,7 @@ static int	validate_map_line(char *new_line, int fd)
 		else if (ft_strncmp(new_line, "\n", 1) != 0 && empty == 1)
 		{
 			free(new_line);
-			print_error(": empty line in map");
+			print_error("empty line in map");
 			return (1);
 		}
 		free(new_line);
@@ -43,7 +43,7 @@ static int	validate_map_line(char *new_line, int fd)
 static void	find_last_element(t_game *game, char *new_line, int fd)
 {
 	if (!game->file_copy || !game->file_copy[game->last_item])
-		clean_up_exit(game, ": file_copy doesn't have enough line\n");
+		clean_up_exit(game, "file_copy doesn't have enough line\n");
 	new_line = get_next_line(fd);
 	while (new_line != NULL)
 	{
@@ -65,7 +65,7 @@ static int	open_file(t_game *game, char *map_file)
 	fd = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		clean_up_exit(game, ": read failed\n");
+		clean_up_exit(game, "read failed\n");
 	return (fd);
 }
 
