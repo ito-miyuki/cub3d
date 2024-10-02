@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:11:15 by mito              #+#    #+#             */
-/*   Updated: 2024/09/27 10:22:41 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/02 15:12:01 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ void	clean_up_exit(t_game *game, char *message)
 		mlx_delete_image(game->mlx, game->canvas);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
+	if (game->f_split)
+		free_grid(game->f_split);
+	if (game->c_split)
+		free_grid(game->c_split);
 	if (game)
 		free(game);
 	if (message != NULL)

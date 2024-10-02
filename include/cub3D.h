@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 15:24:37 by mito              #+#    #+#             */
-/*   Updated: 2024/10/01 16:11:14 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/02 15:13:15 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_game
 {
 	char			**map;
 	char			**file_copy;
+	char			**c_split;
+	char			**f_split;
 	t_flags			*info_flags;
 	char			*no_tex_path;
 	char			*so_tex_path;
