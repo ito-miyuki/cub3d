@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 11:09:57 by alli              #+#    #+#             */
-/*   Updated: 2024/10/01 13:42:04 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/02 09:14:13 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	move_player(t_game *game, double move_x, double move_y)
 	{
 		game->raycast->p_x = new_x;
 		game->raycast->p_y = new_y;
-		if (game->raycast->p_x == SQ_SIZE)
-			game->raycast->p_x = 65;
-		if (game->raycast->p_y == SQ_SIZE)
-			game->raycast->p_y = 65;
+		if (game->raycast->p_x % SQ_SIZE == 0)
+            game->raycast->p_x += 1;
+        if (game->raycast->p_y % SQ_SIZE == 0)
+            game->raycast->p_y += 1;
 	}
 }
 

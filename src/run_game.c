@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alli <alli@student.hive.fi>                +#+  +:+       +#+        */
+/*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:16:23 by mito              #+#    #+#             */
-/*   Updated: 2024/09/30 11:45:38 by alli             ###   ########.fr       */
+/*   Updated: 2024/10/02 08:50:38 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	find_angle(t_game *game)
 	if (game->map[game->player_y][game->player_x] == 'S')
 		game->raycast->player_angle = PI / 2;
 	if (game->map[game->player_y][game->player_x] == 'W' )
-		game->raycast->player_angle = 0;
-	if (game->map[game->player_y][game->player_x] == 'E')
 		game->raycast->player_angle = PI;
+	if (game->map[game->player_y][game->player_x] == 'E')
+		game->raycast->player_angle = 0;
 	game->raycast->p_x = (game->player_x * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->p_y = (game->player_y * SQ_SIZE) + SQ_SIZE / 2;
 	game->raycast->player_fov = (FOV * PI / 180);

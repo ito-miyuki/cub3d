@@ -6,7 +6,7 @@
 /*   By: mito <mito@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:17:27 by mito              #+#    #+#             */
-/*   Updated: 2024/10/01 16:12:49 by mito             ###   ########.fr       */
+/*   Updated: 2024/10/02 08:29:41 by mito             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	set_path_color_info(char **map_info, char *path_str)
 	*map_info = ft_strtrim(path_str, " ");
 	if (!*map_info)
 	{
-		ft_putendl_fd("ft_strtrim() failed in set_path_color_info", 2);
+		print_error("ft_strtrim() failed in set_path_color_info");
 		return (1);
 	}
 	return (0);
