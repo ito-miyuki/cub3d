@@ -90,3 +90,5 @@ This project was created in collaboration with my school bestie, [Alice](https:/
 ---
 
 Thank you for exploring Cub3D. Dive into the maze and enjoy the adventure! 🚀
+
+![Demo](./assets/demo.gif)
